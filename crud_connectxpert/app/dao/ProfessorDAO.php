@@ -89,8 +89,8 @@ class ProfessorDAO {
         $conn = Connection::getConn();
 
         $sql = "UPDATE professor SET nome_professor = :nome_professor, nascimento_professor = :nascimento_professor," . 
-               " telefone_professor = :telefone_professor, sexo_professor = :sexo_professor, cpf_professor = :cpf_professor" .   
-               " rg_professor = :rg_professor, email_professor = :email_professor, login_professor = :login_professor, senha_professor = :senha_professor" .
+               " telefone_professor = :telefone_professor, sexo_professor = :sexo_professor, cpf_professor = :cpf_professor," .   
+               " rg_professor = :rg_professor, email_professor = :email_professor, login_professor = :login_professor, senha_professor = :senha_professor," .
                " tipo = :tipo" .
                " WHERE id_professor = :id_professor";
         

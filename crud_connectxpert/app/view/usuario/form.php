@@ -57,7 +57,7 @@ require_once(__DIR__ . "/../include/menu.php");
                     <label>Sexo do usuário:</label>
                     <?php foreach($dados["sexo"] as $sexo): ?>
                         <div class="form-radio">
-                            <input type="radio" , UsuarioSexo::FEMININO
+                            <input type="radio" , Sexo::FEMININO
                                 name="sexo" id="<?= 'ckb' . $sexo ?>" value="<?= $sexo ?>"
                                 
                                 <?php

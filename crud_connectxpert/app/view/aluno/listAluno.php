@@ -41,7 +41,7 @@ require_once(__DIR__ . "/../include/menu.php");
                     <?php foreach($dados['lista'] as $aln): ?>
                         <tr>
                             <td><?= $aln->getNomeAluno(); ?></td>
-                            <td><?= $aln->getNascimentoAluno(); ?></td>
+                            <td><?= $aln->getNascimentoAlunoFormatada(); ?></td>
                             <td><?= $aln->getTelefone(); ?></td>
                             <td><?= $aln->getSexoAluno(); ?></td>
                             <td><?= $aln->getEmailAluno(); ?></td>

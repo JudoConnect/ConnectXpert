@@ -196,13 +196,7 @@ class Professor {
             $this->tipo = NULL;
     }
 
-    public function getPapeisStr() {
-        return str_replace(Tipo::$SEPARADOR, ", ", $this->tipo);
-    }
 
-    /**
-     * Get the value of cpf_professor
-     */ 
     public function getCpfProfessor()
     {
         return $this->cpf_professor;

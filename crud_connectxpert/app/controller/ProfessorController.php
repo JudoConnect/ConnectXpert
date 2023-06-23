@@ -40,18 +40,21 @@ class ProfessorController extends Controller {
     protected function create() {
         $dados["id_professor"] = 0;
         $dados["sexo"] = Sexo::getAllAsArray();
-
+        $dados["tipo"] = Tipo::getAllAsArray();
 
         $this->loadView("professor/formProfessor.php", $dados);
     }
 
     protected function edit() {
-        $professor = $this->findUsuarioById();
+        $professor = $this->findProfessorById();
         if($professor) {
-            $dados["id_professor"] = $professor->getId();
-            $professor->setSenha("");
+            $dados["id_professor"] = $professor->getIdProfessor();
+            $professor->setSenhaProfessor("");
             $dados["professor"] = $professor;
             //$dados["confSenha"] = $usuario->getSenha();
+            $dados["sexo"] = Sexo::getAllAsArray();
+            $dados["tipo"] = Tipo::getAllAsArray();
+    
 
             $this->loadView("professor/formProfessor.php", $dados);
         } else
@@ -72,14 +75,6 @@ class ProfessorController extends Controller {
         $senha_professor = isset($_POST['senhaProfessor']) ? trim($_POST['senhaProfessor']) : NULL;
         $confSenhaProfessor = isset($_POST['confSenhaProfessor']) ? trim($_POST['confSenhaProfessor']) : "";
         $tipo = isset($_POST['tipo']) ? trim($_POST['tipo']) : NULL;
-
-        //Captura os papeis do formulario
-        $tipo = array();
-        foreach(Tipo::getAllAsArray() as $tipo) {
-            if(isset($_POST[$tipo]))
-                array_push($tipo, $tipos);
-        }
-
 
         //Cria objeto Usuario
         $professor = new Professor();
@@ -103,7 +98,7 @@ class ProfessorController extends Controller {
                 if($dados["id_professor"] == 0)  //Inserindo
                     $this->professorDao->insert($professor);
                 else { //Alterando
-                    $professor->setId($dados["id_professor"]);
+                    $professor->setIdProfessor($dados["id_professor"]);
                     $this->professorDao->update($professor);
                 }
 
@@ -112,12 +107,12 @@ class ProfessorController extends Controller {
                 $this->list("", $msg);
                 exit;
             } catch (PDOException $e) {
-                $erros = "[Erro ao salvar o professor na base de dados.]";                
+                $erros = ["Erro ao salvar o professor na base de dados." . $e];                
             }
         }
 
         //Se há erros, volta para o formulário
-        
+
         //Carregar os valores recebidos por POST de volta para o formulário
         $dados["professor"] = $professor;
         $dados["confSenhaProfessor"] = $confSenhaProfessor;
@@ -141,7 +136,7 @@ class ProfessorController extends Controller {
     private function findProfessorById() {
         $id = 0;
         if(isset($_GET['id']))
-            $id_professor = $_GET['id'];
+            $id = $_GET['id'];
 
         $professor = $this->professorDao->findById($id);
         return $professor;

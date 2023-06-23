@@ -4,6 +4,7 @@
 
 require_once(__DIR__ . "/../include/header.php");
 require_once(__DIR__ . "/../include/menu.php");
+
 ?>
 
 <h3 class="text-center">
@@ -58,7 +59,7 @@ require_once(__DIR__ . "/../include/menu.php");
                     <label for="txtCpfProfessor">Cpf:</label>
                     <input class="form-control" type="text" id="txtCpfProfessor" name="cpfProfessor" 
                         maxlength="15" placeholder="Informe o cpf"
-                        value="<?php echo (isset($dados["profesor"]) ? $dados["professor"]->getCpfProfessor() : ''); ?>"/>
+                        value="<?php echo (isset($dados["professor"]) ? $dados["professor"]->getCpfProfessor() : ''); ?>"/>
                 </div>
 
                 <div class="form-group">
@@ -79,11 +80,11 @@ require_once(__DIR__ . "/../include/menu.php");
                     <label>Tipo Professor:</label>
                     <?php foreach($dados["tipo"] as $tipo): ?>
                         <div class="form-radio">
-                            <input type="radio" name="tipo" id="<?= 'ckb' . $tipo ?>" value="<?= strtolower($tipo) ?>"
+                            <input type="radio" name="tipo" id="<?= 'ckb' . $tipo ?>" value="<?= $tipo ?>"
                                 
                                 <?php
                                     if(isset($dados['professor']) && 
-                                        strtolower($tipo) == $dados['professor']->getTipo())
+                                        $tipo == $dados['professor']->getTipo())
                                         echo " checked";
                                 ?>        
                             />
@@ -94,23 +95,23 @@ require_once(__DIR__ . "/../include/menu.php");
 
                 <div class="form-group">
                     <label for="txtLoginProfessor">Login:</label>
-                    <input class="form-control" type="text" id="txtLoginProfessor" name="login_professor" 
+                    <input class="form-control" type="text" id="txtLoginProfessor" name="loginProfessor" 
                         maxlength="15" placeholder="Informe o login"
                         value="<?php echo (isset($dados["professor"]) ? $dados["professor"]->getLoginProfessor() : ''); ?>"/>
                 </div>
 
                 <div class="form-group">
                     <label for="txtSenha">Senha:</label>
-                    <input class="form-control" type="password" id="txtPasswordProfessor" name="senha_professor" 
+                    <input class="form-control" type="password" id="txtPasswordProfessor" name="senhaProfessor" 
                         maxlength="15" placeholder="Informe a senha"
                         value="<?php echo (isset($dados["professor"]) ? $dados["professor"]->getSenhaProfessor() : ''); ?>"/>
                 </div>
 
                 <div class="form-group">
                     <label for="txtConfSenhaProfessor">Confirmação da senha:</label>
-                    <input class="form-control" type="password" id="txtConfSenhaProfessor" name="conf_senha" 
+                    <input class="form-control" type="password" id="txtConfSenhaProfessor" name="confSenhaProfessor" 
                         maxlength="15" placeholder="Informe a confirmação da senha"
-                        value="<?php echo isset($dados['professor']) ? $dados['professor'] : '';?>"/>
+                        value="<?php echo isset($dados['confSenhaProfessor']) ? $dados['confSenhaProfessor'] : '';?>"/>
                 </div>
 
                 

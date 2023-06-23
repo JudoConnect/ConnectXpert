@@ -37,7 +37,7 @@ class UsuarioController extends Controller {
     protected function create() {
         $dados["id"] = 0;
         $dados["papeis"] = UsuarioPapel::getAllAsArray();
-        $dados["sexo"] = UsuarioSexo::getAllAsArray();
+        $dados["sexo"] = Sexo::getAllAsArray();
 
         $this->loadView("usuario/form.php", $dados);
     }
@@ -106,7 +106,7 @@ class UsuarioController extends Controller {
         $dados["usuario"] = $usuario;
         $dados["confSenha"] = $confSenha;
         $dados["papeis"] = UsuarioPapel::getAllAsArray();
-        $dados["sexo"] = UsuarioSexo::getAllAsArray();
+        $dados["sexo"] = Sexo::getAllAsArray();
 
         $msgsErro = implode("<br>", $erros);
         $this->loadView("usuario/form.php", $dados, $msgsErro);

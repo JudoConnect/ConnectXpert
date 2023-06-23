@@ -10,7 +10,7 @@ class ProfessorService {
 
         //Validar campos vazios
         if(! $professor->getNomeProfessor())
-            array_push($erros, "O campo Nome do Professor é obrigatório.");
+            array_push($erros, "O campo Nome  é obrigatório.");
         
         if(! $professor->getNascimentoProfessor())
             array_push($erros, "O campo Data de Nascimento é obrigatório.");

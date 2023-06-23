@@ -69,6 +69,16 @@ class Aluno {
         return $this->nascimento_aluno;
     }
 
+    public function getNascimentoAlunoFormatada()
+    {
+        if($this->nascimento_aluno) {
+            $data = date_create($this->nascimento_aluno);
+            return date_format($data,"d/m/Y");
+        }
+
+        return '';
+    }
+
     /**
      * Set the value of nascimento_aluno
      */
