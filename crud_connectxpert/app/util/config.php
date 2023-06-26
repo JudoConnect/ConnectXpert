@@ -10,7 +10,7 @@ define('DB_PASSWORD', '');
 
 //Caminho para adionar imagens, scripts e chamar páginas no sistema
 //Deve ter o nome da pasta do projeto no servidor APACHE
-define('BASEURL', '/crud_connectxpert/app');
+define('BASEURL', '/ConnectXpert/crud_connectxpert/app');
 
 //Nome do sistema
 define('APP_NAME', 'Template do Projeto Integrador');
