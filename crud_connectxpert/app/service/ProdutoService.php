@@ -5,7 +5,7 @@ require_once(__DIR__ . "/../model/Produto.php");
 class ProdutoService {
 
     /* Método para validar os dados de produto que vem do formulário */
-    public function validarDados(Produto $produto,) {
+    public function validarDados(Produto $produto) {
         $erros = array();
 
         //Validar campos vazios
