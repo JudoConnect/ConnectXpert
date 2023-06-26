@@ -6,158 +6,158 @@ require_once(__DIR__ . "/enum/Tipo.php");
 
 class Professor {
 
-    private $id_professor;
-    private $nome_professor;
-    private $nascimento_professor;
-    private $telefone_professor;
-    private $sexo_professor;
-    private $cpf_professor;
-    private $rg_professor;
-    private $email_professor;
-    private $login_professor;
-    private $senha_professor;
+    private $idProfessor;
+    private $nomeProfessor;
+    private $nascimentoProfessor;
+    private $telefoneProfessor;
+    private $sexoProfessor;
+    private $cpfProfessor;
+    private $rgProfessor;
+    private $emailProfessor;
+    private $loginProfessor;
+    private $senhaProfessor;
     private $tipo;
 
     /**
-     * Get the value of id_professor
+     * Get the value of idProfessor
      */
     public function getIdProfessor()
     {
-        return $this->id_professor;
+        return $this->idProfessor;
     }
 
     /**
-     * Set the value of id_professor
+     * Set the value of idProfessor
      */
-    public function setIdProfessor($id_professor): self
+    public function setIdProfessor($idProfessor): self
     {
-        $this->id_professor = $id_professor;
+        $this->idProfessor = $idProfessor;
 
         return $this;
     }
 
     /**
-     * Get the value of nome_professor
+     * Get the value of nomeProfessor
      */
     public function getNomeProfessor()
     {
-        return $this->nome_professor;
+        return $this->nomeProfessor;
     }
 
     /**
-     * Set the value of nome_professor
+     * Set the value of nomeProfessor
      */
-    public function setNomeProfessor($nome_professor): self
+    public function setNomeProfessor($nomeProfessor): self
     {
-        $this->nome_professor = $nome_professor;
+        $this->nomeProfessor = $nomeProfessor;
 
         return $this;
     }
 
     /**
-     * Get the value of nascimento_professor
+     * Get the value of nascimentoProfessor
      */
     public function getNascimentoProfessor()
     {
-        return $this->nascimento_professor;
+        return $this->nascimentoProfessor;
     }
 
     /**
-     * Set the value of nascimento_professor
+     * Set the value of nascimentoProfessor
      */
-    public function setNascimentoProfessor($nascimento_professor): self
+    public function setNascimentoProfessor($nascimentoProfessor): self
     {
-        $this->nascimento_professor = $nascimento_professor;
+        $this->nascimentoProfessor = $nascimentoProfessor;
 
         return $this;
     }
 
     /**
-     * Get the value of telefone_professor
+     * Get the value of telefoneProfessor
      */
     public function getTelefoneProfessor()
     {
-        return $this->telefone_professor;
+        return $this->telefoneProfessor;
     }
 
     /**
-     * Set the value of telefone_professor
+     * Set the value of telefoneProfessor
      */
-    public function setTelefoneProfessor($telefone_professor): self
+    public function setTelefoneProfessor($telefoneProfessor): self
     {
-        $this->telefone_professor = $telefone_professor;
+        $this->telefoneProfessor = $telefoneProfessor;
 
         return $this;
     }
 
     /**
-     * Get the value of sexo_professor
+     * Get the value of sexoProfessor
      */
     public function getSexoProfessor()
     {
-        return $this->sexo_professor;
+        return $this->sexoProfessor;
     }
 
     /**
-     * Set the value of sexo_professor
+     * Set the value of sexoProfessor
      */
-    public function setSexoProfessor($sexo_professor): self
+    public function setSexoProfessor($sexoProfessor): self
     {
-        $this->sexo_professor = $sexo_professor;
+        $this->sexoProfessor = $sexoProfessor;
 
         return $this;
     }
     
     public function getSexoProfessorAsArray() {
-        if($this->sexo_professor) 
-            return explode(ProfessorSexo::$SEPARADOR, $this->sexo_professor);
+        if($this->sexoProfessor) 
+            return explode(ProfessorSexo::$SEPARADOR, $this->sexoProfessor);
         
         return array();    
     }
 
     public function setSexoProfessorAsArray($array) {
         if($array)
-            $this->sexo_professor = implode(ProfessorSexo::$SEPARADOR, $array);
+            $this->sexoProfessor = implode(ProfessorSexo::$SEPARADOR, $array);
         else
-            $this->sexo_professor = NULL;
+            $this->sexoProfessor = NULL;
     }
 
     public function getSexoProfessorStr() {
-        return str_replace(ProfessorSexo::$SEPARADOR, ", ", $this->sexo_professor);
+        return str_replace(ProfessorSexo::$SEPARADOR, ", ", $this->sexoProfessor);
     }
 
     /**
-     * Get the value of login_professor
+     * Get the value of loginProfessor
      */
     public function getLoginProfessor()
     {
-        return $this->login_professor;
+        return $this->loginProfessor;
     }
 
     /**
-     * Set the value of login_professor
+     * Set the value of loginProfessor
      */
-    public function setLoginProfessor($login_professor): self
+    public function setLoginProfessor($loginProfessor): self
     {
-        $this->login_professor = $login_professor;
+        $this->loginProfessor = $loginProfessor;
 
         return $this;
     }
 
     /**
-     * Get the value of senha_professor
+     * Get the value of senhaProfessor
      */
     public function getSenhaProfessor()
     {
-        return $this->senha_professor;
+        return $this->senhaProfessor;
     }
 
     /**
-     * Set the value of senha_professor
+     * Set the value of senhaProfessor
      */
-    public function setSenhaProfessor($senha_professor): self
+    public function setSenhaProfessor($senhaProfessor): self
     {
-        $this->senha_professor = $senha_professor;
+        $this->senhaProfessor = $senhaProfessor;
 
         return $this;
     }
@@ -199,57 +199,57 @@ class Professor {
 
     public function getCpfProfessor()
     {
-        return $this->cpf_professor;
+        return $this->cpfProfessor;
     }
 
     /**
-     * Set the value of cpf_professor
+     * Set the value of cpfProfessor
      *
      * @return  self
      */ 
-    public function setCpfProfessor($cpf_professor)
+    public function setCpfProfessor($cpfProfessor)
     {
-        $this->cpf_professor = $cpf_professor;
+        $this->cpfProfessor = $cpfProfessor;
 
         return $this;
     }
 
     /**
-     * Get the value of rg_professor
+     * Get the value of rgProfessor
      */ 
     public function getRgProfessor()
     {
-        return $this->rg_professor;
+        return $this->rgProfessor;
     }
 
     /**
-     * Set the value of rg_professor
+     * Set the value of rgProfessor
      *
      * @return  self
      */ 
-    public function setRgProfessor($rg_professor)
+    public function setRgProfessor($rgProfessor)
     {
-        $this->rg_professor = $rg_professor;
+        $this->rgProfessor = $rgProfessor;
 
         return $this;
     }
 
     /**
-     * Get the value of email_professor
+     * Get the value of emailProfessor
      */ 
     public function getEmailProfessor()
     {
-        return $this->email_professor;
+        return $this->emailProfessor;
     }
 
     /**
-     * Set the value of email_professor
+     * Set the value of emailProfessor
      *
      * @return  self
      */ 
-    public function setEmailProfessor($email_professor)
+    public function setEmailProfessor($emailProfessor)
     {
-        $this->email_professor = $email_professor;
+        $this->emailProfessor = $emailProfessor;
 
         return $this;
     }

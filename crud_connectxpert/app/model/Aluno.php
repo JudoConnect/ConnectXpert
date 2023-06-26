@@ -6,17 +6,17 @@ require_once(__DIR__ . "/enum/Sexo.php");
 
 class Aluno {
 
-    private $id_aluno;
-    private $nome_aluno;
-    private $nascimento_aluno;
+    private $idAluno;
+    private $nomeAluno;
+    private $nascimentoAluno;
     private $telefone;
     private $nome_responsavel;
-    private $sexo_aluno;
-    private $cpf_aluno;
-    private $rg_aluno;
-    private $email_aluno;
-    private $login_aluno;
-    private $senha_aluno;
+    private $sexoAluno;
+    private $cpfAluno;
+    private $rgAluno;
+    private $emailAluno;
+    private $loginAluno;
+    private $senhaAluno;
     private $historico;
     private $end_rua;
     private $end_bairro;
@@ -25,54 +25,56 @@ class Aluno {
     private $end_numero;
     private $end_complemento;
 
+    private $ies; //Objeto do tipo Ie (modelo)
+
     /**
-     * Get the value of id_aluno
+     * Get the value of idAluno
      */
     public function getIdAluno()
     {
-        return $this->id_aluno;
+        return $this->idAluno;
     }
 
     /**
-     * Set the value of id_aluno
+     * Set the value of idAluno
      */
-    public function setIdAluno($id_aluno): self
+    public function setIdAluno($idAluno): self
     {
-        $this->id_aluno = $id_aluno;
+        $this->idAluno = $idAluno;
 
         return $this;
     }
 
     /**
-     * Get the value of nome_aluno
+     * Get the value of nomeAluno
      */
     public function getNomeAluno()
     {
-        return $this->nome_aluno;
+        return $this->nomeAluno;
     }
 
     /**
-     * Set the value of nome_aluno
+     * Set the value of nomeAluno
      */
-    public function setNomeAluno($nome_aluno): self
+    public function setNomeAluno($nomeAluno): self
     {
-        $this->nome_aluno = $nome_aluno;
+        $this->nomeAluno = $nomeAluno;
 
         return $this;
     }
 
     /**
-     * Get the value of nascimento_aluno
+     * Get the value of nascimentoAluno
      */
     public function getNascimentoAluno()
     {
-        return $this->nascimento_aluno;
+        return $this->nascimentoAluno;
     }
 
     public function getNascimentoAlunoFormatada()
     {
-        if($this->nascimento_aluno) {
-            $data = date_create($this->nascimento_aluno);
+        if($this->nascimentoAluno) {
+            $data = date_create($this->nascimentoAluno);
             return date_format($data,"d/m/Y");
         }
 
@@ -80,11 +82,11 @@ class Aluno {
     }
 
     /**
-     * Set the value of nascimento_aluno
+     * Set the value of nascimentoAluno
      */
-    public function setNascimentoAluno($nascimento_aluno): self
+    public function setNascimentoAluno($nascimentoAluno): self
     {
-        $this->nascimento_aluno = $nascimento_aluno;
+        $this->nascimentoAluno = $nascimentoAluno;
 
         return $this;
     }
@@ -126,77 +128,77 @@ class Aluno {
     }
 
     /**
-     * Get the value of sexo_aluno
+     * Get the value of sexoAluno
      */
     public function getSexoAluno()
     {
-        return $this->sexo_aluno;
+        return $this->sexoAluno;
     }
 
     /**
-     * Set the value of sexo_aluno
+     * Set the value of sexoAluno
      */
-    public function setSexoAluno($sexo_aluno): self
+    public function setSexoAluno($sexoAluno): self
     {
-        $this->sexo_aluno = $sexo_aluno;
+        $this->sexoAluno = $sexoAluno;
 
         return $this;
     }
 
     public function getSexoAlunoAsArray() {
-        if($this->sexo_aluno) 
-            return explode(Sexo::$SEPARADOR, $this->sexo_aluno);
+        if($this->sexoAluno) 
+            return explode(Sexo::$SEPARADOR, $this->sexoAluno);
         
         return array();    
     }
 
     public function setSexoAlunoAsArray($array) {
         if($array)
-            $this->sexo_aluno = implode(Sexo::$SEPARADOR, $array);
+            $this->sexoAluno = implode(Sexo::$SEPARADOR, $array);
         else
-            $this->sexo_aluno = NULL;
+            $this->sexoAluno = NULL;
     }
 
     public function getSexoAlunoStr() {
-        //if($this->sexo_aluno == exo::FEMININO)
+        //if($this->sexoAluno == exo::FEMININO)
         //    return "Feminino";
 
         //return "";
-        return str_replace(Sexo::$SEPARADOR, ", ", $this->sexo_aluno);
+        return str_replace(Sexo::$SEPARADOR, ", ", $this->sexoAluno);
     }
 
     /**
-     * Get the value of login_aluno
+     * Get the value of loginAluno
      */
     public function getLoginAluno()
     {
-        return $this->login_aluno;
+        return $this->loginAluno;
     }
 
     /**
-     * Set the value of login_aluno
+     * Set the value of loginAluno
      */
-    public function setLoginAluno($login_aluno): self
+    public function setLoginAluno($loginAluno): self
     {
-        $this->login_aluno = $login_aluno;
+        $this->loginAluno = $loginAluno;
 
         return $this;
     }
 
     /**
-     * Get the value of senha_aluno
+     * Get the value of senhaAluno
      */
     public function getSenhaAluno()
     {
-        return $this->senha_aluno;
+        return $this->senhaAluno;
     }
 
     /**
-     * Set the value of senha_aluno
+     * Set the value of senhaAluno
      */
-    public function setSenhaAluno($senha_aluno): self
+    public function setSenhaAluno($senhaAluno): self
     {
-        $this->senha_aluno = $senha_aluno;
+        $this->senhaAluno = $senhaAluno;
 
         return $this;
     }
@@ -220,61 +222,61 @@ class Aluno {
     }
 
     /**
-     * Get the value of cpf_aluno
+     * Get the value of cpfAluno
      */ 
     public function getCpfAluno()
     {
-        return $this->cpf_aluno;
+        return $this->cpfAluno;
     }
 
     /**
-     * Set the value of cpf_aluno
+     * Set the value of cpfAluno
      *
      * @return  self
      */ 
-    public function setCpfAluno($cpf_aluno)
+    public function setCpfAluno($cpfAluno)
     {
-        $this->cpf_aluno = $cpf_aluno;
+        $this->cpfAluno = $cpfAluno;
 
         return $this;
     }
 
     /**
-     * Get the value of rg_aluno
+     * Get the value of rgAluno
      */ 
     public function getRgAluno()
     {
-        return $this->rg_aluno;
+        return $this->rgAluno;
     }
 
     /**
-     * Set the value of rg_aluno
+     * Set the value of rgAluno
      *
      * @return  self
      */ 
-    public function setRgAluno($rg_aluno)
+    public function setRgAluno($rgAluno)
     {
-        $this->rg_aluno = $rg_aluno;
+        $this->rgAluno = $rgAluno;
 
         return $this;
     }
 
     /**
-     * Get the value of email_aluno
+     * Get the value of emailAluno
      */ 
     public function getEmailAluno()
     {
-        return $this->email_aluno;
+        return $this->emailAluno;
     }
 
     /**
-     * Set the value of email_aluno
+     * Set the value of emailAluno
      *
      * @return  self
      */ 
-    public function setEmailAluno($email_aluno)
+    public function setEmailAluno($emailAluno)
     {
-        $this->email_aluno = $email_aluno;
+        $this->emailAluno = $emailAluno;
 
         return $this;
     }
