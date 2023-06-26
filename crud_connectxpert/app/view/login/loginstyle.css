@@ -1,0 +1,26 @@
+.btn{
+    color: white; 
+    background-color:#00ab84;
+    width: 169px; 
+    height: 60px;
+}
+.col-6{
+    background-color: #ff7f32;  
+    background-image: url('/crud_aij/ConnectXpert/alunologin.png');
+    background-size: cover;
+}
+h4{
+    width: 138px;
+    height: 53px;
+    left: 865px;
+    top: 161px;
+    color: rgba(255, 127, 50, 1) #00ab84;
+    font-family: 'sourcesanspro';
+    font-style: normal;
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 1.2;
+    letter-spacing: 0px;
+    text-decoration: none;
+    text-transform: none;
+}
