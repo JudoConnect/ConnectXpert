@@ -29,6 +29,7 @@ require_once(__DIR__ . "/../include/menu.php");
                         <th>ID</th>
                         <th>Nome</th>
                         <th>Descrição</th>
+                        <th>Foto</th>
                         <th>Alterar</th>
                         <th>Excluir</th>
                     </tr>
