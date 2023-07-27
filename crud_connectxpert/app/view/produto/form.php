@@ -1,6 +1,6 @@
 <?php
-#Nome do arquivo: usuario/list.php
-#Objetivo: interface para listagem dos usuários do sistema
+#Nome do arquivo: produto/list.php
+#Objetivo: interface para listagem dos produtos do sistema
 
 require_once(__DIR__ . "/../include/header.php");
 require_once(__DIR__ . "/../include/menu.php");
@@ -38,8 +38,27 @@ require_once(__DIR__ . "/../include/menu.php");
                     <input type="file" name="foto" id="uplImagem" accept="image/*" />  
                 </div>
 
+                <div class="form-group">
+                    <label>Situação:</label>
+                    <?php foreach($dados["situacao"] as $situacao): ?>
+                        <div class="form-radio">
+                            <input type="radio" name="situacao" id="<?= 'ckb' . $situacao ?>" value="<?= $situacao ?>"
+                                
+                                <?php
+                                    if(isset($dados['situacao']) && 
+                                        $situacao == $dados['situacao']->getSituacao())
+                                        echo " checked";
+                                ?>        
+                            />
+                            <label for="<?= 'ckb' . $situacao ?>"><?= $situacao ?></label>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+
                 <input type="hidden" id="hddId" name="idProduto" 
                     value="<?= $dados['idProduto']; ?>" />
+
+              
 
                 <button type="submit" class="btn btn-success">Gravar</button>
                 <button type="reset" class="btn btn-danger">Limpar</button>

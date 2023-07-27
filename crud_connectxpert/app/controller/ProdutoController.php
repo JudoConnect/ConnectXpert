@@ -5,6 +5,8 @@ require_once(__DIR__ . "/../dao/ProdutoDAO.php");
 require_once(__DIR__ . "/../service/ProdutoService.php");
 require_once(__DIR__ . "/../model/Produto.php");
 require_once(__DIR__ . "/../model/enum/UsuarioPapel.php");
+require_once(__DIR__ . "/../model/enum/Situacao.php");
+
 
 class ProdutoController extends Controller {
 
@@ -39,6 +41,8 @@ class ProdutoController extends Controller {
     protected function create() {
         $dados["idProduto"] = 0;
         $dados["papeis"] = UsuarioPapel::getAllAsArray();
+        $dados["situacao"] = Situacao::getAllAsArray();
+
         $this->loadView("produto/form.php", $dados);
     }
 
@@ -48,6 +52,8 @@ class ProdutoController extends Controller {
         if($produto) {
             $dados["idProduto"] = $produto->getIdProduto();
             $dados['produto'] = $produto;
+            $dados["situacao"] = Situacao::getAllAsArray();
+
 
             $this->loadView("produto/form.php", $dados);
         } else
@@ -60,13 +66,16 @@ class ProdutoController extends Controller {
         $dados["idProduto"] = isset($_POST['idProduto']) ? $_POST['idProduto'] : 0;
         $nome = isset($_POST['nome']) ? trim($_POST['nome']) : NULL;
         $descricao = isset($_POST['descricao']) ? trim($_POST['descricao']) : NULL;
-        
+        $situacao = isset($_POST['situacao']) ? trim($_POST['situacao']) : NULL;
+
         $foto = $_FILES["foto"];
         
         //Cria objeto Produto
         $produto = new Produto();
         $produto->setNome($nome);
         $produto->setDescricao($descricao);
+        $produto->setSituacao($situacao);
+
         //$produto->setFoto($foto);
         //$produto->setFoto("foto");
         
@@ -121,6 +130,8 @@ class ProdutoController extends Controller {
         $dados["foto"] = $foto;
         */
         $dados['produto'] = $produto;
+        $dados["situacao"] = Situacao::getAllAsArray();
+
         $_FILES["foto"] = $foto;
 
         $msgsErro = implode("<br>", $erros);

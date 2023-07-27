@@ -44,13 +44,14 @@ class ProdutoDAO {
     public function insert(Produto $produto) {
         $conn = Connection::getConn();
 
-        $sql = "INSERT INTO produto (nome, descricao, foto)" .
-               " VALUES (:nome, :descricao, :foto)";
+        $sql = "INSERT INTO produto (nome, descricao, foto, situacao)" .
+               " VALUES (:nome, :descricao, :foto, :situacao)";
         
         $stm = $conn->prepare($sql);
         $stm->bindValue("nome", $produto->getNome());
         $stm->bindValue("descricao", $produto->getDescricao());
         $stm->bindValue("foto", $produto->getFoto());
+        $stm->bindValue("situacao", $produto->getSituacao());
         $stm->execute();
     }
 
@@ -59,14 +60,15 @@ class ProdutoDAO {
         $conn = Connection::getConn();
 
         $sql = "UPDATE produto SET nome = :nome, descricao = :descricao," . 
-               " foto = :foto" .   
+               " foto = :foto, situacao = :situacao" .   
                " WHERE id_produto = :id";
         
         $stm = $conn->prepare($sql);
+        $stm->bindValue("id", $produto->getIdProduto());
         $stm->bindValue("nome", $produto->getNome());
         $stm->bindValue("descricao", $produto->getDescricao());
         $stm->bindValue("foto", $produto->getFoto());
-        $stm->bindValue("id", $produto->getIdProduto());
+        $stm->bindValue("situacao", $produto->getSituacao());
         $stm->execute();
     }
     
@@ -90,6 +92,8 @@ class ProdutoDAO {
             $produto->setNome($reg['nome']);
             $produto->setDescricao($reg['descricao']);
             $produto->setFoto($reg['foto']);
+            $produto->setSituacao($reg['situacao']);
+            
             array_push($produtos, $produto);
         }
 
