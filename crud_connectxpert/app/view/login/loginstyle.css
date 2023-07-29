@@ -1,13 +1,22 @@
 .btn{
-    color: white; 
-    background-color:#00ab84;
-    width: 169px; 
-    height: 60px;
+    color: white;
+    background-color: #00ab84;
+    width: 100px;
+    height: 40px;
 }
 .col-6{
     background-color: #ff7f32;  
     background-image: url('/crud_aij/ConnectXpert/alunologin.png');
     background-size: cover;
+}
+.form-control{
+  width: 377px;
+  height: 72px;
+  left: 746px;
+  top: 299px;
+  border-radius: 10px;
+  background-color: rgba(253, 251, 235, 1);
+  border: 1px solid rgba(255, 127, 50, 1);
 }
 h4{
     width: 138px;
