@@ -41,7 +41,7 @@ class AlunoController extends Controller {
 
         $this->loadView("aluno/formAluno.php", $dados);
     }
-
+    
     protected function edit() {
         $aluno = $this->findAlunoById();
         if($aluno) {

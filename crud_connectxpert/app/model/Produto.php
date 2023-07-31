@@ -1,4 +1,8 @@
 <?php
+#Nome do arquivo: Produto.php
+#Objetivo: classe Model para Produto
+
+require_once(__DIR__ . "/enum/Situacao.php");
 
 class Produto {
 
@@ -6,6 +10,8 @@ class Produto {
     private $nome;
     private $descricao;
     private $foto;
+    private $situacao;
+
 
     /**
      * Get the value of idProduto
@@ -86,4 +92,45 @@ class Produto {
 
         return $this;
     }
+
+
+
+    /**
+     * Get the value of situacao
+     */ 
+    public function getSituacao()
+    {
+        return $this->situacao;
+    }
+
+    /**
+     * Set the value of situacao
+     *
+     * @return  self
+     */ 
+    public function setSituacao($situacao) : self
+    {
+        $this->situacao = $situacao;
+
+        return $this;
+    }
+
+    public function getSituacaoAsArray() {
+        if($this->situacao) 
+            return explode(Situacao::$SEPARADOR, $this->situacao);
+        
+        return array();    
+    }
+
+    public function setSituacaoAsArray($array) {
+        if($array)
+            $this->situacao = implode(Situacao::$SEPARADOR, $array);
+        else
+            $this->situacao = NULL;
+    }
+
+    public function getSituacaoStr() {
+        return str_replace(Situacao::$SEPARADOR, ", ", $this->situacao);
+    }
+
 }

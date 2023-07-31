@@ -30,6 +30,7 @@ require_once(__DIR__ . "/../include/menu.php");
                         <th>Nome</th>
                         <th>Descrição</th>
                         <th>Foto</th>
+                        <th>Situação</th>
                         <th>Alterar</th>
                         <th>Excluir</th>
                     </tr>
@@ -40,12 +41,16 @@ require_once(__DIR__ . "/../include/menu.php");
                             <td><?php echo $prod->getIdProduto(); ?></td>
                             <td><?= $prod->getNome(); ?></td>
                             <td><?= $prod->getDescricao(); ?></td>
+                            <td><img src="<?= $prod->getFoto(); ?>" a class="btn btn-warning"></a></td>
+                            <td><?= $prod->getSituacao(); ?></td>
+
                             <td><a class="btn btn-primary" 
                                 href="<?= BASEURL ?>/controller/ProdutoController.php?action=edit&id=<?= $prod->getIdProduto() ?>">
                                 Alterar</a> 
                             </td>
+
                             <td><a class="btn btn-danger" 
-                                onclick="return confirm('Confirma a exclusão do produto?');"
+                                onclick="return confirm('onfirma a exclusão do produto?');"
                                 href="<?= BASEURL ?>/controller/ProdutoController.php?action=delete&id=<?= $prod->getIdProduto() ?>">
                                 Excluir</a> 
                             </td>
@@ -60,3 +65,4 @@ require_once(__DIR__ . "/../include/menu.php");
 <?php  
 require_once(__DIR__ . "/../include/footer.php");
 ?>
+                           

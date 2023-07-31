@@ -24,7 +24,6 @@ class Aluno {
     private $end_estado;
     private $end_numero;
     private $end_complemento;
-
     private $ies; //Objeto do tipo Ie (modelo)
 
     /**
