@@ -1,5 +1,5 @@
 h3{
-width: 160px;
+width: 100px;
 height: 45px;
 top: 30px;
   color: rgba(255, 127, 50, 1);
@@ -31,11 +31,12 @@ top: 30px;
     height: 18px;
     left: 140px;
     top: 261px;
-    color: rgba(0, 0, 0, 1);
+    color: rgb(10, 174, 148, 1);
     font-style: normal;
     font-size: 16px;
     font-weight: 500;
     line-height: 1.2;
     text-decoration: none;
+    text-transform: capitalize
 
 }
