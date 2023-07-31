@@ -18,15 +18,13 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/login/loginstyle.css">';
                         <!-- Formulário de login -->
                         <form id="frmLogin" action="./LoginController.php?action=logon" method="POST">
                             <div class="form-group">
-                                <label for="txtLogin">Usuario</label>
                                 <input type="text" class="form-control" name="login" id="txtLogin" maxlength="15"
-                                    placeholder="Informe o usuario"
+                                    placeholder="Usuario"
                                     value="<?php echo isset($dados['login']) ? $dados['login'] : '' ?>" />
                             </div>
                             <div class="form-group">
-                                <label for="txtSenha">Senha:</label>
                                 <input type="password" class="form-control" name="senha" id="txtSenha" maxlength="15"
-                                    placeholder="Informe a senha"
+                                    placeholder="Senha"
                                     value="<?php echo isset($dados['senha']) ? $dados['senha'] : '' ?>" />
                             </div>
                             <button type="submit" class="btn">Entrar
@@ -36,7 +34,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/login/loginstyle.css">';
                 </div>
             </div>
             <div class="row">
-                <div class="col-6">
+                <div class="">
                     <?php include_once(__DIR__ . "/../include/msg.php") ?>
                 </div>
             </div>

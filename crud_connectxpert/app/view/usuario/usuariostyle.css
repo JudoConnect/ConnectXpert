@@ -1,0 +1,41 @@
+h3{
+width: 160px;
+height: 45px;
+top: 30px;
+  color: rgba(255, 127, 50, 1);
+  font-style: normal;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-transform: none;
+}
+
+.topicos{
+    width: 102.5px;
+    height: 14.73px;
+    left: 135px;
+    top: 187.82px;
+    color: rgba(10, 174, 148, 1);
+    font-style: normal;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0px;
+    text-decoration: none;
+    
+}
+.listagem{
+    width: 201px;
+    height: 18px;
+    left: 140px;
+    top: 261px;
+    color: rgba(0, 0, 0, 1);
+    font-style: normal;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.2;
+    text-decoration: none;
+
+}

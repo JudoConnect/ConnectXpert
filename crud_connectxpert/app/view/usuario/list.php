@@ -4,14 +4,16 @@
 
 require_once(__DIR__ . "/../include/header.php");
 require_once(__DIR__ . "/../include/menu.php");
+echo '<link rel="stylesheet" href="' . BASEURL . '/view/usuario/usuariostyle.css">';
 ?>
 
-<h3 class="text-center">Usuários</h3>
+
 
 <div class="container">
     <div class="row">
+    <h3 class="col-4">Usuários</h3>
         <div class="col-3">
-            <a class="btn btn-success" 
+            <a class="btn" 
                 href="<?= BASEURL ?>/controller/UsuarioController.php?action=create">
                 Inserir</a>
         </div>
@@ -21,11 +23,11 @@ require_once(__DIR__ . "/../include/menu.php");
         </div>
     </div>
 
-    <div class="row" style="margin-top: 10px;">
+    <div class="row">
         <div class="col-12">
-            <table id="tabUsuarios" class='table table-striped table-bordered'>
+            <table id="tabUsuarios" class='table' >
                 <thead>
-                    <tr>
+                    <tr class="topicos">
                         <th>ID</th>
                         <th>Nome</th>
                         <th>E-mail</th>
@@ -36,7 +38,7 @@ require_once(__DIR__ . "/../include/menu.php");
                 </thead>
                 <tbody>
                     <?php foreach($dados['lista'] as $usu): ?>
-                        <tr>
+                        <tr class="listagem">
                             <td><?php echo $usu->getId(); ?></td>
                             <td><?= $usu->getNome(); ?></td>
                             <td><?= $usu->getEmail(); ?></td>
