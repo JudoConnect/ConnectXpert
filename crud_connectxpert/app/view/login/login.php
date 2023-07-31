@@ -19,7 +19,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/login/loginstyle.css">';
                         <form id="frmLogin" action="./LoginController.php?action=logon" method="POST">
                             <div class="form-group">
                                 <input type="text" class="form-control" name="login" id="txtLogin" maxlength="15"
-                                    placeholder="Usuario"
+                                    placeholder="Login"
                                     value="<?php echo isset($dados['login']) ? $dados['login'] : '' ?>" />
                             </div>
                             <div class="form-group">

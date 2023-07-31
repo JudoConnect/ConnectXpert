@@ -35,6 +35,8 @@ $isAdministrador = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR]
                     <a class="dropdown-item" href="<?= BASEURL . '/controller/ProfessorController.php?action=list' ?>">Professor</a>
                     <a class="dropdown-item" href="<?= BASEURL . '/controller/AlunoController.php?action=list' ?>">Aluno</a>
                     <a class="dropdown-item" href="<?= BASEURL . '/controller/TurmaController.php?action=list' ?>">Turma</a>
+                    <a class="dropdown-item" href="<?= BASEURL . '/controller/IeController.php?action=list' ?>">Ie</a>
+
                     <a class="dropdown-item" href="#">Outro cadastro</a>
                 </div>
             </li>

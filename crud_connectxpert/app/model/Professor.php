@@ -182,7 +182,7 @@ class Professor {
         return $this;
     }
 
-    public function geTipoAsArray() {
+    public function getTipoAsArray() {
         if($this->tipo) 
             return explode(Tipo::$SEPARADOR, $this->tipo);
         

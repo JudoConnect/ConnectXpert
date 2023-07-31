@@ -6,8 +6,7 @@ class Ie {
 
     private $idIe;
     private $nomeIe;
-
-
+    private $serieIe;
 
     /**
      * Get the value of idIe
@@ -43,6 +42,40 @@ class Ie {
         $this->nomeIe = $nomeIe;
 
         return $this;
+    }
+
+    /**
+     * Get the value of serieIe
+     */ 
+    public function getSerieIe()
+    {
+        return $this->serieIe;
+    }
+
+    /**
+     * Set the value of serieIe
+     *
+     * @return  self
+     */ 
+    public function setSerieIe($serieIe)
+    {
+        $this->serieIe = $serieIe;
+
+        return $this;
+    }
+
+    public function getSerieIeAsArray() {
+        if($this->serieIe) 
+            return explode(serieIe::$SEPARADOR, $this->serieIe);
+        
+        return array();    
+    }
+
+    public function setSerieIeAsArray($array) {
+        if($array)
+            $this->serieIe = implode(serieIe::$SEPARADOR, $array);
+        else
+            $this->serieIe = NULL;
     }
 }  
 
