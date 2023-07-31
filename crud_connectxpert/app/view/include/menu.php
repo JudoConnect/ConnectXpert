@@ -27,7 +27,7 @@ $isAdministrador = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR]
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
                 role="button" data-toggle="dropdown" aria-haspopup="true" 
                 aria-expanded="false" style="color:#ff7f32; font-style: normal; font-size: 18px; font-weight: regular;"> Cadastros </a>
-                <div class="dropdown-menu show" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <?php if($isAdministrador): ?>
                     <a class="dropdown-item" href="<?= BASEURL . '/controller/UsuarioController.php?action=list' ?>" >Usuários</a>
                     <?php endif; ?>
@@ -46,7 +46,7 @@ $isAdministrador = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR]
 
         <ul class="navbar-nav mr-left">
             <li class="nav-item active"><?= $nome?>
-            <img class="foto" style="  width: 86px; height: 100px; " 
+            <img class="foto" style="  width: 40px; height: 40px; " 
             src="<?= BASEURL . "/view/img/logocx.png" ?>" /></li>
         </div>
         </ul>
