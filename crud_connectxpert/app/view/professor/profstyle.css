@@ -1,42 +1,55 @@
-h3{
-    width: 100px;
-    height: 45px;
-    top: 30px;
-      color: rgba(255, 127, 50, 1);
-      font-style: normal;
-      font-size: 24px;
-      font-weight: 800;
-      line-height: 1.2;
-      letter-spacing: 1px;
-      text-decoration: none;
-      text-transform: none;
-    }
-    
-    .topicos{
-        width: 102.5px;
-        height: 14.73px;
-        left: 135px;
-        top: 187.82px;
-        color: rgba(10, 174, 148, 1);
-        font-style: normal;
-        font-size: 16px;
-        font-weight: 600;
-        line-height: 1.2;
-        letter-spacing: 0px;
-        text-decoration: none;
-        
-    }
-    .listagem{
-        width: 201px;
-        height: 18px;
-        left: 140px;
-        top: 261px;
-        color: rgb(10, 174, 148, 1);
-        font-style: normal;
-        font-size: 16px;
-        font-weight: 500;
-        line-height: 1.2;
-        text-decoration: none;
-        text-transform: capitalize
-    
-    }
+h3 {
+  width: 100px;
+  height: 45px;
+  top: 30px;
+  color: rgba(255, 127, 50, 1);
+  font-style: normal;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-transform: none;
+}
+
+.topicos {
+  width: 102.5px;
+  height: 14.73px;
+  left: 135px;
+  top: 187.82px;
+  color: rgba(10, 174, 148, 1);
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0px;
+  text-decoration: none;
+}
+.listagem {
+  width: 201px;
+  height: 18px;
+  left: 140px;
+  top: 261px;
+  color: rgb(10, 174, 148, 1);
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+/*Tirando as bordas da tabela e alterando cores, sobressaindo o bootsstrap*/
+.table-bordered td,
+.table-bordered th {
+  border: 0px solid transparent !important;
+}
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(255, 129, 50, 0.274) !important;
+}
+.table td,
+.table th {
+  border-top: 0px solid transparent !important;
+}
+.table thead th {
+  border-bottom: 0px solid transparent !important;
+}

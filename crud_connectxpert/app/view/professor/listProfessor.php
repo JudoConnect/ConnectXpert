@@ -6,12 +6,13 @@ require_once(__DIR__ . "/../include/header.php");
 require_once(__DIR__ . "/../include/menu.php");
 echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css">';
 ?>
-?>
 
-<h3 class="text-center">Professores</h3>
+
+
 
 <div class="container">
     <div class="row">
+    <h3 class="col-4">Professores</h3>
         <div class="col-3">
             <a class="btn btn-success" 
                 href="<?= BASEURL ?>/controller/ProfessorController.php?action=create">
@@ -24,9 +25,9 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
     </div>
     <div class="row" style="margin-top: 10px;">
         <div class="col-12">
-            <table id="tabProfessores" class='table table-striped table-bordered'>
+            <table id="tabProfessores" class='table table-striped'>
                 <thead>
-                    <tr>
+                    <tr class="topicos">
                         <th>Nome Professor</th>
                         <th>Data de Nascimento</th>
                         <th>Telefone</th>
@@ -38,7 +39,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
                 </thead>
                 <tbody>
                     <?php foreach($dados['lista'] as $prof): ?>
-                        <tr>
+                        <tr class="listagem">
                             <td><?= $prof->getNomeProfessor(); ?></td>
                             <td><?= $prof->getNascimentoProfessor(); ?></td>
                             <td><?= $prof->getTelefoneProfessor(); ?></td>
