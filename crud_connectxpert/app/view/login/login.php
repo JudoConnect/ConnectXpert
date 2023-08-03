@@ -27,8 +27,13 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/login/loginstyle.css">';
                                     placeholder="Senha"
                                     value="<?php echo isset($dados['senha']) ? $dados['senha'] : '' ?>" />
                             </div>
-                            <button type="submit" class="btn">Entrar
-                            </button>
+                            <div class="form-group">
+                                <label>Selecione o tipo de entrada:</label> </br>
+                                <input type="radio" name="tipo" id="txtTipo">Administrador
+                                <input type="radio" name="tipo" id="txtTipo"> Aluno
+                                <input type="radio" name="tipo" id="txtTipo"> Professor
+                            </div>
+                            <button type="submit" class="btn">Entrar </button>
                         </form>
                     </div>
                 </div>

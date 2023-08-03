@@ -9,10 +9,9 @@ class Usuario {
     private $id;
     private $nome;
     private $login;
-    private $email;
     private $senha;
     private $papeis;
-    private $situacao;
+    private $tipo;
 
     /**
      * Get the value of id
@@ -132,41 +131,21 @@ class Usuario {
         return str_replace(UsuarioPapel::$SEPARADOR, ", ", $this->papeis);
     }
 
-   
     /**
-     * Get the value of email
+     * Get the value of tipo
      */
-    public function getEmail()
+    public function getTipo()
     {
-        return $this->email;
+        return $this->tipo;
     }
 
     /**
-     * Set the value of email
+     * Set the value of tipo
      */
-    public function setEmail($email): self
+    public function setTipo($tipo): self
     {
-        $this->email = $email;
+        $this->tipo = $tipo;
 
         return $this;
     }
-
-    /**
-     * Get the value of situacao
-     */
-    public function getSituacao()
-    {
-        return $this->situacao;
-    }
-
-    /**
-     * Set the value of situacao
-     */
-    public function setSituacao($situacao): self
-    {
-        $this->situacao = $situacao;
-
-        return $this;
-    }
-
 }

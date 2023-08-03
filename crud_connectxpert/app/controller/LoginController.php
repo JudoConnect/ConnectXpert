@@ -24,13 +24,13 @@ class LoginController extends Controller {
     protected function logon() {
         $login = isset($_POST['login']) ? trim($_POST['login']) : null;
         $senha = isset($_POST['senha']) ? trim($_POST['senha']) : null;
+        $tipo = isset($_POST['tipo']) ? trim($_POST['tipo']) : null;
         
-
         //Validar os campos
-        $erros = $this->loginService->validarCampos($login, $senha);
+        $erros = $this->loginService->validarCampos($login, $senha, $tipo);
         if(empty($erros)) {
             //Valida o login a partir do banco de dados
-            $usuario = $this->usuarioDao->findByLoginSenha($login, $senha);
+            $usuario = $this->usuarioDao->findByLoginSenha($login, $senha, $tipo);
             if($usuario) {
                 //Se encontrou o usuário, salva a sessão e redireciona para a HOME do sistema
                 $this->salvarUsuarioSessao($usuario);
@@ -46,6 +46,8 @@ class LoginController extends Controller {
         $msg = implode("<br>", $erros);
         $dados["login"] = $login;
         $dados["senha"] = $senha;
+        $dados["tipo"] = $tipo;
+
 
         $this->loadView("login/login.php", $dados, $msg);
     }
