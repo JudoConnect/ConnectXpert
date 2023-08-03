@@ -41,10 +41,11 @@ require_once(__DIR__ . "/../include/menu.php");
 
                 <div class="form-group">
                     <label for="txtDiaSemana">Dia da Semana:</label>
-                    <input class="form-control" type="date" id="txtDiaSemana" name="diaSemana" 
+                    <input class="form-control" type="text" id="txtDiaSemana" name="diaSemana" 
                         maxlength="15" placeholder="Informe o dia da semana"
                         value="<?php echo (isset($dados["turma"]) ? $dados["turma"]->getDiaSemana() : ''); ?>"/>
-                </div>
+                        <fieldset>
+
 
                 <input type="hidden" id="hddId" name="id_turma" 
                     value="<?= $dados['id_turma']; ?>" />

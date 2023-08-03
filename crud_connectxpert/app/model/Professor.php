@@ -62,6 +62,16 @@ class Professor {
         return $this->nascimentoProfessor;
     }
 
+    public function getNascimentoProfessorFormatada()
+    {
+        if($this->nascimentoProfessor) {
+            $data = date_create($this->nascimentoProfessor);
+            return date_format($data,"d/m/Y");
+        }
+
+        return '';
+    }
+
     /**
      * Set the value of nascimentoProfessor
      */

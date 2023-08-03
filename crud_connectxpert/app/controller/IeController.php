@@ -22,125 +22,102 @@ class IeController extends Controller {
     }
 
         $this->ieDao = new IeDAO();
-        $this->ieService = new ProfessorService();
+        $this->ieService = new IeService();
 
         $this->handleAction();
     }
 
     protected function list(string $msgErro = "", string $msgSucesso = "") {
-        $professores = $this->professorDao->list();
-        //print_r($professores);
-        $dados["lista"] = $professores;
+        $ies = $this->ieDao->list();
+        //print_r($ies);
+        $dados["lista"] = $ies;
 
-        $this->loadView("professor/listProfessor.php", $dados,  $msgErro, $msgSucesso);
+        $this->loadView("ie/listIe.php", $dados,  $msgErro, $msgSucesso);
     }
 
     protected function create() {
-        $dados["id_professor"] = 0;
-        $dados["sexo"] = Sexo::getAllAsArray();
-        $dados["tipo"] = Tipo::getAllAsArray();
+        $dados["id_ie"] = 0;
+        $dados["serieIe"] = serieIe::getAllAsArray();
 
-        $this->loadView("professor/formProfessor.php", $dados);
+        $this->loadView("ie/formIe.php", $dados);
     }
 
     protected function edit() {
-        $professor = $this->findProfessorById();
-        if($professor) {
-            $dados["id_professor"] = $professor->getIdProfessor();
-            $professor->setSenhaProfessor("");
-            $dados["professor"] = $professor;
-            //$dados["confSenha"] = $usuario->getSenha();
-            $dados["sexo"] = Sexo::getAllAsArray();
-            $dados["tipo"] = Tipo::getAllAsArray();
+        $ie = $this->findIeById();
+        if($ie) {
+            $dados["id_ie"] = $ie->getIdIe();
+            $dados["ie"] = $ie;
+            $dados["serieIe"] = serieIe::getAllAsArray();
     
 
-            $this->loadView("professor/formProfessor.php", $dados);
+            $this->loadView("ie/formIe.php", $dados);
         } else
-            $this->list("Professor não encontrado.");
+            $this->list("Instituição de Ensino não encontrada.");
     }
 
     protected function save() {
         //Captura os dados do formulário
-        $dados["id_professor"] = isset($_POST['id_professor']) ? $_POST['id_professor'] : 0;
-        $nome_professor = isset($_POST['nomeProfessor']) ? trim($_POST['nomeProfessor']) : NULL;
-        $nascimento_professor = isset($_POST['nascimentoProfessor']) ? trim($_POST['nascimentoProfessor']) : NULL;
-        $telefone_professor = isset($_POST['telefoneProfessor']) ? trim($_POST['telefoneProfessor']) : NULL;
-        $sexo_professor = isset($_POST['sexo']) ? trim($_POST['sexo']) : NULL;
-        $cpf_professor = isset($_POST['cpfProfessor']) ? trim($_POST['cpfProfessor']) : NULL;
-        $rg_professor = isset($_POST['rgProfessor']) ? trim($_POST['rgProfessor']) : NULL;
-        $email_professor = isset($_POST['emailProfessor']) ? trim($_POST['emailProfessor']) : NULL;
-        $login_professor = isset($_POST['loginProfessor']) ? trim($_POST['loginProfessor']) : NULL;
-        $senha_professor = isset($_POST['senhaProfessor']) ? trim($_POST['senhaProfessor']) : NULL;
-        $confSenhaProfessor = isset($_POST['confSenhaProfessor']) ? trim($_POST['confSenhaProfessor']) : "";
-        $tipo = isset($_POST['tipo']) ? trim($_POST['tipo']) : NULL;
+        $dados["id_ie"] = isset($_POST['id_ie']) ? $_POST['id_ie'] : 0;
+        $nomeIe = isset($_POST['nomeIe']) ? trim($_POST['nomeIe']) : NULL;
+        $serieIe = isset($_POST['serieIe']) ? trim($_POST['serieIe']) : NULL;
 
         //Cria objeto Usuario
-        $professor = new Professor();
-        $professor->setNomeProfessor($nome_professor);
-        $professor->setNascimentoProfessor($nascimento_professor);
-        $professor->setTelefoneProfessor($telefone_professor);
-        $professor->setSexoProfessor($sexo_professor);
-        $professor->setCpfProfessor($cpf_professor);
-        $professor->setRgProfessor($rg_professor);
-        $professor->setEmailProfessor($email_professor);
-        $professor->setLoginProfessor($login_professor);
-        $professor->setSenhaProfessor($senha_professor);
-        $professor->setTipo($tipo);
+        $ie = new Ie();
+        $ie->setNomeIe($nomeIe);
+        $ie->setSerieIe($serieIe);
 
         //Validar os dados
-        $erros = $this->professorService->validarDados($professor, $confSenhaProfessor);
+        $erros = $this->ieService->validarDados($ie);
         if(empty($erros)) {
             //Persiste o objeto
             try {
                 
-                if($dados["id_professor"] == 0)  //Inserindo
-                    $this->professorDao->insert($professor);
+                if($dados["id_ie"] == 0)  //Inserindo
+                    $this->ieDao->insert($ie);
                 else { //Alterando
-                    $professor->setIdProfessor($dados["id_professor"]);
-                    $this->professorDao->update($professor);
+                    $ie->setIdIe($dados["id_ie"]);
+                    $this->ieDao->update($ie);
                 }
 
                 //TODO - Enviar mensagem de sucesso
-                $msg = "Professor salvo com sucesso.";
+                $msg = "Instituição de Ensino salvo com sucesso.";
                 $this->list("", $msg);
                 exit;
             } catch (PDOException $e) {
-                $erros = ["Erro ao salvar o professor na base de dados." . $e];                
+                $erros = ["Erro ao salvar instuição de ensino na base de dados." . $e];                
             }
         }
 
         //Se há erros, volta para o formulário
 
         //Carregar os valores recebidos por POST de volta para o formulário
-        $dados["professor"] = $professor;
-        $dados["confSenhaProfessor"] = $confSenhaProfessor;
-        $dados["tipo"] = Tipo::getAllAsArray();
-        $dados["sexo"] = Sexo::getAllAsArray();
+        $dados["ie"] = $ie;
+        $dados["serieIe"] = serieIe::getAllAsArray();
 
         $msgsErro = implode("<br>", $erros);
-        $this->loadView("professor/formProfessor.php", $dados, $msgsErro);
+        $this->loadView("ie/formIe.php", $dados, $msgsErro);
     }
     
     
     protected function delete() {
-        $professor = $this->findProfessorById();
-        if($professor) {
-            $this->professorDao->deleteById($professor->getIdProfessor());
-            $this->list("", "Professor excluído com sucesso!");
+        $ie = $this->findIeById();
+        if($ie) {
+            $this->ieDao->deleteById($ie->getIdIe());
+            $this->list("", "Instituição de Ensino excluída com sucesso!");
         } else
-            $this->list("Professor não econtrado!");
+            $this->list("Instituição de Ensino não econtrado!");
     }
 
-    private function findProfessorById() {
+    private function findIeById() {
         $id = 0;
         if(isset($_GET['id']))
             $id = $_GET['id'];
 
-        $professor = $this->professorDao->findById($id);
-        return $professor;
+        $ie = $this->ieDao->findById($id);
+        return $ie;
     }
 
 }
 
 #Criar objeto da classe
-$profCont = new ProfessorController();
+$ieCont = new IeController();

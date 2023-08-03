@@ -30,7 +30,10 @@ define('SESSAO_USUARIO_NOME', "usuarioLogadoNome");
 define('SESSAO_USUARIO_PAPEIS', "usuarioLogadoPapeis");
 
 //Diretório para fotos
-define('PATH_FOTOS', __DIR__ . '/../../fotos');
+define('PATH_FOTOS', __DIR__ . '/../../public/fotos');
+
+define('BASEURL_FOTOS', BASEURL. '/../public/fotos/');
+
 
 
 

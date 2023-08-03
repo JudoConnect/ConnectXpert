@@ -43,7 +43,7 @@ require_once(__DIR__ . "/../include/menu.php");
                         maxlength="70" placeholder="Informe o nome do responsável pelo aluno"
                         value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getNomeResponsavel() : ''); ?>" />
                 </div>
-
+ 
                 <div class="form-group">
                     <label>Sexo do Aluno:</label>
                     <?php foreach($dados["sexo"] as $sexo): ?>
@@ -150,6 +150,17 @@ require_once(__DIR__ . "/../include/menu.php");
                     <input class="form-control" type="text" id="txtEndComplemento" name="endComplemento" 
                         maxlength="100" placeholder="Complemento Opcional"
                         value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getEndComplemento() : ''); ?>" />
+                </div>
+
+                <div class="form-group">
+                    <label for="somIes">IES:</label>
+                    <select class="form-control" id="somIes" name="idIes">
+                        <option value="">----Selecione----</option>
+                        <option value="idIES">Descrição</option>
+                        <option value="idIES">Descrição</option>
+                        <option value="idIES">Descrição</option>
+                    </select>
+                   
                 </div>
                
                 <input type="hidden" id="hddId" name="id_aluno" 

@@ -2,6 +2,8 @@
 #Nome do arquivo: Ie.php
 #Objetivo: classe Model para Instituicao de Ensino
 
+require_once(__DIR__ . "/enum/SerieIe.php");
+
 class Ie {
 
     private $idIe;

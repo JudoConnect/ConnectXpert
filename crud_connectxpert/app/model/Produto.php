@@ -98,15 +98,13 @@ class Produto {
     /**
      * Get the value of situacao
      */ 
-    public function getSituacao()
+    public function getSituacao() 
     {
         return $this->situacao;
     }
 
     /**
      * Set the value of situacao
-     *
-     * @return  self
      */ 
     public function setSituacao($situacao) : self
     {

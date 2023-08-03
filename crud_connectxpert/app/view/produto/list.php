@@ -41,7 +41,7 @@ require_once(__DIR__ . "/../include/menu.php");
                             <td><?php echo $prod->getIdProduto(); ?></td>
                             <td><?= $prod->getNome(); ?></td>
                             <td><?= $prod->getDescricao(); ?></td>
-                            <td><img src="<?= $prod->getFoto(); ?>" a class="btn btn-warning"></a></td>
+                            <td><img src="<?= BASEURL_FOTOS . $prod->getFoto(); ?>" style="width: 100px; height: auto;" /></td>
                             <td><?= $prod->getSituacao(); ?></td>
 
                             <td><a class="btn btn-primary" 

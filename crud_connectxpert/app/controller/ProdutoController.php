@@ -6,12 +6,14 @@ require_once(__DIR__ . "/../service/ProdutoService.php");
 require_once(__DIR__ . "/../model/Produto.php");
 require_once(__DIR__ . "/../model/enum/UsuarioPapel.php");
 require_once(__DIR__ . "/../model/enum/Situacao.php");
+require_once(__DIR__ . "/../service/ImagemService.php");
 
 
 class ProdutoController extends Controller {
 
     private ProdutoDAO $produtoDao;
     private ProdutoService $produtoService;
+    private ImagemService $imagemService;
 
     public function __construct() {
         if(! $this->usuarioLogado())
@@ -24,6 +26,7 @@ class ProdutoController extends Controller {
 
         $this->produtoDao = new ProdutoDAO();
         $this->produtoService = new ProdutoService();
+        $this->imagemService = new ImagemService();
 
         $this->handleAction();
     }
@@ -39,9 +42,8 @@ class ProdutoController extends Controller {
 
     
     protected function create() {
-        $dados["idProduto"] = 0;
         $dados["papeis"] = UsuarioPapel::getAllAsArray();
-        $dados["situacao"] = Situacao::getAllAsArray();
+        $dados["estadosProduto"] = Situacao::getAllAsArray();
 
         $this->loadView("produto/form.php", $dados);
     }
@@ -52,7 +54,7 @@ class ProdutoController extends Controller {
         if($produto) {
             $dados["idProduto"] = $produto->getIdProduto();
             $dados['produto'] = $produto;
-            $dados["situacao"] = Situacao::getAllAsArray();
+            $dados["estadosProduto"] = Situacao::getAllAsArray();
 
 
             $this->loadView("produto/form.php", $dados);
@@ -62,11 +64,13 @@ class ProdutoController extends Controller {
     
 
     protected function save() {
+        
         //Captura os dados do formulário
         $dados["idProduto"] = isset($_POST['idProduto']) ? $_POST['idProduto'] : 0;
         $nome = isset($_POST['nome']) ? trim($_POST['nome']) : NULL;
         $descricao = isset($_POST['descricao']) ? trim($_POST['descricao']) : NULL;
         $situacao = isset($_POST['situacao']) ? trim($_POST['situacao']) : NULL;
+        $arqFotoAntiga = isset($_POST['arquivoFoto']) ? trim($_POST['arquivoFoto']) : NULL;
 
         $foto = $_FILES["foto"];
         
@@ -75,27 +79,21 @@ class ProdutoController extends Controller {
         $produto->setNome($nome);
         $produto->setDescricao($descricao);
         $produto->setSituacao($situacao);
-
-        //$produto->setFoto($foto);
-        //$produto->setFoto("foto");
+        $produto->setFoto($arqFotoAntiga);
         
         //Validar os dados
-        $erros = $this->produtoService->validarDados($produto);
+        $erros = $this->produtoService->validarDados($produto, $foto);
+        
         if(empty($erros)) {
-            //Salvar a imagem
-            //Captura o nome e a extensão do arquivo
-            $arquivoNome = explode('.', $foto['name']);
-            $arquivoExtensao = $arquivoNome[1];
-
-            //A partir da extensão, o ideal é gerar um nome único para o arquivo a fim de encontrá-lo depois
-            //Exemplo: pode-se concatenar um identificador único do tipo UUID
-            $uuid = vsprintf( '%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex(random_bytes(16)), 4) );
-            $nomeArquivoFoto = "imagem_" . $uuid . "." . $arquivoExtensao;
-            $produto->setFoto($nomeArquivoFoto);
-
-            //Salva o arquivo no diretório defindo em PATH_FOTOS
-            if(move_uploaded_file($foto["tmp_name"], PATH_FOTOS. "/" . $nomeArquivoFoto)) { 
+            $nomeArquivoFoto = "verdadeiro";
+            if($foto['size'] > 0)
+                $nomeArquivoFoto = $this->imagemService->upload($foto); //Salvar o arquivo da foto
                 
+            if($nomeArquivoFoto) {
+
+                if($nomeArquivoFoto != "verdadeiro")
+                    $produto->setFoto($nomeArquivoFoto);
+
                 //Persiste o objeto
                 try {
                     if($dados["idProduto"] == 0)  //Inserindo
@@ -105,19 +103,17 @@ class ProdutoController extends Controller {
                         $this->produtoDao->update($produto);
                     }
 
-                    
-
                     //TODO - Enviar mensagem de sucesso
                     $msg = "Produto salvo com sucesso.";
                     $this->list("", $msg);
                     exit;
                 } catch (PDOException $e) {
-                    $erros = array("[Erro ao salvar o produto na base de dados.]");
-                }
-
-            } else 
+                    $erros = array("Erro ao salvar o produto na base de dados.");
+                }    
+               
+            } else
                 //Caso não consega salvar, exibe o erro
-                $erros = ["Erro ao salvar o aquivo da foto."]; 
+                $erros = ["Erro ao salvar o aquivo da foto."];     
         }
    
     
@@ -130,7 +126,7 @@ class ProdutoController extends Controller {
         $dados["foto"] = $foto;
         */
         $dados['produto'] = $produto;
-        $dados["situacao"] = Situacao::getAllAsArray();
+        $dados["estadosProduto"] = Situacao::getAllAsArray();
 
         $_FILES["foto"] = $foto;
 
@@ -150,11 +146,11 @@ class ProdutoController extends Controller {
     
 
     private function findProdutoById() {
-        $idProduto = 0;
+        $id = 0;
         if(isset($_GET['id']))
-            $idProduto = $_GET['id'];
+            $id = $_GET['id'];
 
-        $produto = $this->produtoDao->findProdutoById($idProduto);
+        $produto = $this->produtoDao->findProdutoById($id);
         return $produto;
     }
     

@@ -7,8 +7,7 @@ require_once(__DIR__ . "/../include/menu.php");
 ?>
 
 <h3 class="text-center">
-    <?php if($dados['idProduto'] == 0) echo "Inserir"; else echo "Alterar"; ?> 
-    Produto
+    <?php if(!isset($dados['idProduto'])) echo "Inserir"; else echo "Alterar"; ?>  <span>Produto</span>
 </h3>
 
 <div class="container">
@@ -38,25 +37,41 @@ require_once(__DIR__ . "/../include/menu.php");
                     <input type="file" name="foto" id="uplImagem" accept="image/*" />  
                 </div>
 
+                <?php if(isset($dados["produto"]) && $dados["produto"]->getFoto() ):?>
+                    
+                    <img src="<?= BASEURL_FOTOS . $dados["produto"]->getFoto(); ?>" alt="" width="100px">
+                
+                <?php endif;?>
+
                 <div class="form-group">
                     <label>Situação:</label>
-                    <?php foreach($dados["situacao"] as $situacao): ?>
+                    
+                    <?php foreach($dados["estadosProduto"] as $estados): ?>
+
                         <div class="form-radio">
-                            <input type="radio" name="situacao" id="<?= 'ckb' . $situacao ?>" value="<?= $situacao ?>"
+                            <input type="radio" name="situacao" id="<?= 'ckb' . $estados ?>" value="<?= strtolower ($estados) ?>"
                                 
                                 <?php
-                                    if(isset($dados['situacao']) && 
-                                        $situacao == $dados['situacao']->getSituacao())
+
+                                    //condição quando o produto está sendo cadastrado e não existe estado
+                                    if(!isset($dados['idProduto']) && $estados == "DISPONIVEL") {
                                         echo " checked";
+                                    }
+
+                                    //condição quando o produto está sendo editadoi e existe estado
+                                    if(isset($dados['produto']) && strtolower ($estados) == $dados['produto']->getSituacao()) {
+                                        echo " checked";
+                                    }
+
                                 ?>        
                             />
-                            <label for="<?= 'ckb' . $situacao ?>"><?= $situacao ?></label>
+                            <label for="<?= 'ckb' . $estados ?>"><?= $estados ?></label>
                         </div>
                     <?php endforeach; ?>
                 </div>
 
-                <input type="hidden" id="hddId" name="idProduto" 
-                    value="<?= $dados['idProduto']; ?>" />
+                <input type="hidden" id="hddId" name="idProduto" value="<?= isset($dados['idProduto']) ? $dados['idProduto'] : 0 ; ?>" />
+                <input type="hidden" id="hddFoto" name="arquivoFoto" value="<?= isset($dados['produto']) ? $dados['produto']->getFoto() : "" ; ?>" />
 
               
 

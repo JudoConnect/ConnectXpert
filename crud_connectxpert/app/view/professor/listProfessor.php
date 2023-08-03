@@ -41,7 +41,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
                     <?php foreach($dados['lista'] as $prof): ?>
                         <tr class="listagem">
                             <td><?= $prof->getNomeProfessor(); ?></td>
-                            <td><?= $prof->getNascimentoProfessor(); ?></td>
+                            <td><?= $prof->getNascimentoProfessorFormatada(); ?></td>
                             <td><?= $prof->getTelefoneProfessor(); ?></td>
                             <td><?= $prof->getEmailProfessor(); ?></td>
                             <td><?= $prof->getTipo(); ?></td>

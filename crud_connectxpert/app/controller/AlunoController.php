@@ -7,6 +7,7 @@ require_once(__DIR__ . "/../model/Aluno.php");
 require_once(__DIR__ . "/../model/enum/Sexo.php");
 require_once(__DIR__ . "/../model/enum/UsuarioPapel.php");
 
+
 class AlunoController extends Controller {
 
     private AlunoDAO $alunoDao;
@@ -38,6 +39,7 @@ class AlunoController extends Controller {
     protected function create() {
         $dados["id_aluno"] = 0;
         $dados["sexo"] = Sexo::getAllAsArray();
+        $dados['listaIes'] = [];
 
         $this->loadView("aluno/formAluno.php", $dados);
     }
