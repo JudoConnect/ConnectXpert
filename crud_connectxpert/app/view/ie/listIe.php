@@ -28,7 +28,6 @@ require_once(__DIR__ . "/../include/menu.php");
                     <tr>
                         <th>Id</th>
                         <th>Nome</th>
-                        <th>Serie</th>
                         <th>Alterar</th>
                         <th>Excluir</th>
                     </tr>
@@ -38,7 +37,6 @@ require_once(__DIR__ . "/../include/menu.php");
                         <tr>
                             <td><?php echo $ie->getIdIe(); ?></td>
                             <td><?= $ie->getNomeIe(); ?></td>
-                            <td><?= $ie->getSerieIe(); ?></td>
 
                             <td><a class="btn btn-primary" 
                                 href="<?= BASEURL ?>/controller/IeController.php?action=edit&id=<?= $ie->getIdIe() ?>">

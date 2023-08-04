@@ -27,7 +27,7 @@ define('LOGOUT_PAGE', BASEURL . '/controller/LoginController.php?action=logout')
 //Sessão do usuário
 define('SESSAO_USUARIO_ID', "usuarioLogadoId");
 define('SESSAO_USUARIO_NOME', "usuarioLogadoNome");
-define('SESSAO_USUARIO_PAPEIS', "usuarioLogadoPapeis");
+define('SESSAO_USUARIO_PAPEL', "usuarioLogadoPapel");
 
 //Diretório para fotos
 define('PATH_FOTOS', __DIR__ . '/../../public/fotos');

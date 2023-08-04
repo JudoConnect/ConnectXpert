@@ -156,12 +156,19 @@ require_once(__DIR__ . "/../include/menu.php");
                     <label for="somIes">IES:</label>
                     <select class="form-control" id="somIes" name="idIes">
                         <option value="">----Selecione----</option>
-                        <option value="idIES">Descrição</option>
-                        <option value="idIES">Descrição</option>
-                        <option value="idIES">Descrição</option>
+                        <?php foreach($dados['listaIes'] as $ies): ?>
+                            <option value="<?= $ies->getIdIe() ?>" 
+                            
+                                <?php if(isset($dados["aluno"]) && $dados["aluno"]->getIdIe() == $ies->getIdIe())
+                                        echo 'selected';
+                                ?>    
+                            
+                            ><?= $ies->getNomeIe() ?></option>
+                        <?php endforeach; ?>
                     </select>
                    
                 </div>
+                <div class="form-group">
                
                 <input type="hidden" id="hddId" name="id_aluno" 
                     value="<?= $dados['id_aluno']; ?>" />

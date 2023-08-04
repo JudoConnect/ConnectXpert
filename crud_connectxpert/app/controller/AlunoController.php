@@ -2,6 +2,7 @@
 #Classe controller para Aluno
 require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../dao/AlunoDAO.php");
+require_once(__DIR__ . "/../dao/IeDAO.php");
 require_once(__DIR__ . "/../service/AlunoService.php");
 require_once(__DIR__ . "/../model/Aluno.php");
 require_once(__DIR__ . "/../model/enum/Sexo.php");
@@ -11,18 +12,20 @@ require_once(__DIR__ . "/../model/enum/UsuarioPapel.php");
 class AlunoController extends Controller {
 
     private AlunoDAO $alunoDao;
+    private IeDAO $iesDao;
     private AlunoService $alunoService;
 
     public function __construct() {
         if(! $this->usuarioLogado())
         exit;
 
-    if(! $this->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR])) {
-        echo "Acesso negado";
-        exit;
-    }
+        if(! $this->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR])) {
+            echo "Acesso negado";
+            exit;
+        }
 
         $this->alunoDao = new AlunoDAO();
+        $this->iesDao = new IeDAO();
         $this->alunoService = new AlunoService();
 
         $this->handleAction();
@@ -39,7 +42,7 @@ class AlunoController extends Controller {
     protected function create() {
         $dados["id_aluno"] = 0;
         $dados["sexo"] = Sexo::getAllAsArray();
-        $dados['listaIes'] = [];
+        $dados['listaIes'] = $this->iesDao->list();
 
         $this->loadView("aluno/formAluno.php", $dados);
     }
@@ -49,6 +52,8 @@ class AlunoController extends Controller {
         if($aluno) {
             $dados["id_aluno"] = $aluno->getIdAluno();
             $dados["sexo"] = Sexo::getAllAsArray();
+            $dados['listaIes'] = $this->iesDao->list();
+            
             $aluno->setSenhaAluno("");
             $dados["aluno"] = $aluno;
             //$dados["confSenhaAluno"] = $aluno->getSenhaAluno();
@@ -79,6 +84,7 @@ class AlunoController extends Controller {
         $end_estado = isset($_POST['endEstado']) ? trim($_POST['endEstado']) : NULL;
         $end_numero = isset($_POST['endNumero']) ? trim($_POST['endNumero']) : NULL;
         $end_complemento = isset($_POST['endComplemento']) ? trim($_POST['endComplemento']) : NULL;
+        $idIe = isset($_POST['idIes']) ? trim($_POST['idIes']) : NULL;
 
         //Cria objeto Aluno
         $aluno = new Aluno();
@@ -99,6 +105,7 @@ class AlunoController extends Controller {
         $aluno->setEndEstado($end_estado);
         $aluno->setEndNumero($end_numero);
         $aluno->setEndComplemento($end_complemento);
+        $aluno->setIdIe($idIe);
 
 
         //Validar os dados
@@ -130,7 +137,9 @@ class AlunoController extends Controller {
         //Carregar os valores recebidos por POST de volta para o formulário
         $dados["aluno"] = $aluno;
         $dados["confSenhaAluno"] = $confSenhaAluno;
+        
         $dados["sexo"] = Sexo::getAllAsArray();
+        $dados['listaIes'] = $this->iesDao->list();
 
         $msgsErro = implode("<br>", $erros);
         $this->loadView("aluno/formAluno.php", $dados, $msgsErro);

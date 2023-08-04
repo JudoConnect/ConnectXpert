@@ -66,8 +66,8 @@ class UsuarioDAO {
     public function insert(Usuario $usuario) {
         $conn = Connection::getConn();
 
-        $sql = "INSERT INTO usuario (nome_usuario, login, senha, papeis, rg, cpf, idade, telefone, sexo, nascimento, email)" .
-               " VALUES (:nome, :login, :senha, :papeis, :rg, :cpf, :idade, :telefone, :sexo, :nascimento, :email)";
+        $sql = "INSERT INTO usuario (nome_usuario, login, senha, papeis, rg, cpf, idade, telefone, sexo, nascimento)" .
+               " VALUES (:nome, :login, :senha, :papeis, :rg, :cpf, :idade, :telefone, :sexo, :nascimento)";
         
         $stm = $conn->prepare($sql);
         $stm->bindValue("nome", $usuario->getNome());

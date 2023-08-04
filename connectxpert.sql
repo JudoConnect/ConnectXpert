@@ -66,7 +66,6 @@ INSERT INTO `aluno` (`id_aluno`, `nome_aluno`, `nascimento_aluno`, `telefone`, `
 CREATE TABLE `ie` (
   `id_ie` int(11) NOT NULL,
   `nome_ie` varchar(70) NOT NULL,
-  `serie_ie` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -151,14 +150,13 @@ CREATE TABLE `usuario` (
   `senha` varchar(15) NOT NULL,
   `papeis` varchar(255) NOT NULL,
   `situacao` enum('disponivel','indisponivel') NOT NULL,
-  `email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `usuario`
 --
 
-INSERT INTO `usuario` (`id_usuario`, `nome_usuario`, `login`, `senha`, `papeis`, `situacao`, `email`) VALUES
+INSERT INTO `usuario` (`id_usuario`, `nome_usuario`, `login`, `senha`, `papeis`,) VALUES
 (1, 'Sr. Administrador', 'admin', 'admin', 'ADMINISTRADOR', 'disponivel', ''),
 (2, 'Sr. Root', 'root', 'root', 'ADMINISTRADOR', 'disponivel', '');
 

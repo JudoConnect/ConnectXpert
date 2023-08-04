@@ -13,6 +13,7 @@ if(isset($_SESSION[SESSAO_USUARIO_NOME]))
 //Variável para validar o acesso
 $acessoCont = new AcessoController();
 $isAdministrador = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR]);
+$isAluno = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ALUNO]);
 
 ?>
 <nav class="navbar navbar-expand-lg navbar-light"  style="background-color: #fffde7;">
@@ -29,7 +30,7 @@ $isAdministrador = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR]
                 aria-expanded="false" style="color:#ff7f32; font-style: normal; font-size: 18px; font-weight: regular;"> Cadastros </a>
                 <div class="dropdown-menu show" aria-labelledby="navbarDropdown">
                     <?php if($isAdministrador): ?>
-                    <a class="dropdown-item" href="<?= BASEURL . '/controller/UsuarioController.php?action=list' ?>" >Usuários</a>
+                        <a class="dropdown-item" href="<?= BASEURL . '/controller/UsuarioController.php?action=list' ?>" >Usuários</a>
                     <?php endif; ?>
                     <a class="dropdown-item" href="<?= BASEURL . '/controller/ProdutoController.php?action=list' ?>">Produto</a>
                     <a class="dropdown-item" href="<?= BASEURL . '/controller/ProfessorController.php?action=list' ?>">Professor</a>

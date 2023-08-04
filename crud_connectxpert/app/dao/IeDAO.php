@@ -43,12 +43,11 @@ class IeDAO {
     public function insert(Ie $ie) {
         $conn = Connection::getConn();
 
-        $sql = "INSERT INTO ie (nome_ie, serie_ie)" .
-        " VALUES (:nome_ie, :serie_ie)";
+        $sql = "INSERT INTO ie (nome_ie)" .
+        " VALUES (:nome_ie)";
         
         $stm = $conn->prepare($sql);
         $stm->bindValue("nome_ie", $ie->getNomeIe());
-        $stm->bindValue("serie_ie", $ie->getSerieIe());
 
         $stm->execute();
     }
@@ -57,13 +56,12 @@ class IeDAO {
     public function update(Ie $ie) {
         $conn = Connection::getConn();
 
-        $sql = "UPDATE ie SET nome_ie = :nome_ie, serie_ie = :serie_ie" . 
+        $sql = "UPDATE ie SET nome_ie = :nome_ie" . 
                " WHERE id_ie = :id_ie";
         
         $stm = $conn->prepare($sql);
         $stm->bindValue("id_ie", $ie->getIdIe());
         $stm->bindValue("nome_ie", $ie->getNomeIe());
-        $stm->bindValue("serie_ie", $ie->getSerieIe());
         $stm->execute();
     }
 
@@ -85,7 +83,6 @@ class IeDAO {
             $ie = new Ie();
             $ie->setIdIe($reg['id_ie']);
             $ie->setNomeIe($reg['nome_ie']);
-            $ie->setSerieIe($reg['serie_ie']);
             array_push($ies, $ie);
         }
 

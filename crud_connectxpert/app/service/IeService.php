@@ -12,8 +12,5 @@ class IeService {
         if(! $ie->getNomeIe())
             array_push($erros, "O campo Nome é obrigatório.");
         
-        if(! $ie->getSerieIe()) 
-            array_push($erros, "Selecione ao menos uma serie no campo.");   
-        return $erros;
     }
 }

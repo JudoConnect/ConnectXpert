@@ -24,24 +24,7 @@ require_once(__DIR__ . "/../include/menu.php");
                         maxlength="70" placeholder="Informe o nome da Instituição de Ensino"
                         value="<?php echo (isset($dados["ie"]) ? $dados["ie"]->getNomeIe() : ''); ?>" />
                 </div>
-
-                <div class="form-group">
-                    <label>Serie:</label>
-                    <?php foreach($dados["serieIe"] as $serieIe): ?>
-                        <div class="form-radio">
-                        <input type="radio" name="serieIe" value="<?php echo isset($dados['ie']) ? $dados['ie']->getSerieIe() : ''; ?>"
-                                
-                                <?php
-                                
-                                    if(isset($dados['ie']) && 
-                                        strtolower($serieIe) == $dados['ie']->getSerieIe())
-                                        echo " checked";
-                                ?>        
-                            />
-                            <label for="<?= 'ckb' . $serieIe ?>"><?= $serieIe ?></label>
-                        </div>
-                    <?php endforeach; ?>
-                </div>               
+             
 
                 <input type="hidden" id="hddId" name="id_ie" 
                     value="<?= $dados['id_ie']; ?>" />

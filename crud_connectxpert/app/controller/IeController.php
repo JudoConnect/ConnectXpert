@@ -37,7 +37,6 @@ class IeController extends Controller {
 
     protected function create() {
         $dados["id_ie"] = 0;
-        $dados["serieIe"] = serieIe::getAllAsArray();
 
         $this->loadView("ie/formIe.php", $dados);
     }
@@ -47,7 +46,6 @@ class IeController extends Controller {
         if($ie) {
             $dados["id_ie"] = $ie->getIdIe();
             $dados["ie"] = $ie;
-            $dados["serieIe"] = serieIe::getAllAsArray();
     
 
             $this->loadView("ie/formIe.php", $dados);
@@ -59,12 +57,10 @@ class IeController extends Controller {
         //Captura os dados do formulário
         $dados["id_ie"] = isset($_POST['id_ie']) ? $_POST['id_ie'] : 0;
         $nomeIe = isset($_POST['nomeIe']) ? trim($_POST['nomeIe']) : NULL;
-        $serieIe = isset($_POST['serieIe']) ? trim($_POST['serieIe']) : NULL;
 
         //Cria objeto Usuario
         $ie = new Ie();
         $ie->setNomeIe($nomeIe);
-        $ie->setSerieIe($serieIe);
 
         //Validar os dados
         $erros = $this->ieService->validarDados($ie);
@@ -92,7 +88,6 @@ class IeController extends Controller {
 
         //Carregar os valores recebidos por POST de volta para o formulário
         $dados["ie"] = $ie;
-        $dados["serieIe"] = serieIe::getAllAsArray();
 
         $msgsErro = implode("<br>", $erros);
         $this->loadView("ie/formIe.php", $dados, $msgsErro);

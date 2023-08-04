@@ -2,38 +2,57 @@
 #Classe controller para a Logar do sistema
 require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../dao/UsuarioDAO.php");
+require_once(__DIR__ . "/../dao/AlunoDAO.php");
 require_once(__DIR__ . "/../service/LoginService.php");
 require_once(__DIR__ . "/../model/Usuario.php");
+require_once(__DIR__ . "/../model/Aluno.php");
+require_once(__DIR__ . "/../model/Professor.php");
+require_once(__DIR__ . "/../model/enum/UsuarioPapel.php");
+
+
 
 class LoginController extends Controller {
 
     private LoginService $loginService;
     private UsuarioDAO $usuarioDao;
+    private AlunoDAO $alunoDao;
 
     public function __construct() {
         $this->loginService = new LoginService();
         $this->usuarioDao = new UsuarioDAO();
+        $this->alunoDao = new AlunoDAO();
         $this->handleAction();
     }
 
     protected function login() {
-        $this->loadView("login/login.php", []);
+        $dados['papeis'] = UsuarioPapel::getAllAsArray();
+
+        $this->loadView("login/login.php", $dados);
     }
 
     /* Método para logar um usuário a partir dos dados informados no formulário */
     protected function logon() {
         $login = isset($_POST['login']) ? trim($_POST['login']) : null;
         $senha = isset($_POST['senha']) ? trim($_POST['senha']) : null;
-        $tipo = isset($_POST['tipo']) ? trim($_POST['tipo']) : null;
+        $papel = isset($_POST['papel']) ? trim($_POST['papel']) : null;
         
         //Validar os campos
-        $erros = $this->loginService->validarCampos($login, $senha, $tipo);
+        $erros = $this->loginService->validarCampos($login, $senha, $papel);
         if(empty($erros)) {
             //Valida o login a partir do banco de dados
-            $usuario = $this->usuarioDao->findByLoginSenha($login, $senha, $tipo);
-            if($usuario) {
+            $usuario = null;
+            $aluno = null;
+            $professor = null;
+            
+            if($papel == UsuarioPapel::ADMINISTRADOR)
+                $usuario = $this->usuarioDao->findByLoginSenha($login, $senha);
+            else if($papel == UsuarioPapel::ALUNO)
+                $aluno = $this->alunoDao->findByLoginSenha($login, $senha); 
+                          
+            
+            if($usuario || $aluno || $professor) {
                 //Se encontrou o usuário, salva a sessão e redireciona para a HOME do sistema
-                $this->salvarUsuarioSessao($usuario);
+                $this->salvarUsuarioSessao($usuario, $aluno, $professor);
 
                 header("location: " . HOME_PAGE);
                 exit;
@@ -46,9 +65,9 @@ class LoginController extends Controller {
         $msg = implode("<br>", $erros);
         $dados["login"] = $login;
         $dados["senha"] = $senha;
-        $dados["tipo"] = $tipo;
+        $dados["papel"] = $papel;
 
-
+        $dados['papeis'] = UsuarioPapel::getAllAsArray();
         $this->loadView("login/login.php", $dados, $msg);
     }
 
@@ -56,17 +75,28 @@ class LoginController extends Controller {
     protected function logout() {
         $this->removerUsuarioSessao();
 
-        $this->loadView("login/login.php", [], "", "Usuário deslogado com suscesso!");
+        $dados['papeis'] = UsuarioPapel::getAllAsArray();
+        $this->loadView("login/login.php", $dados, "", "Usuário deslogado com suscesso!");
     }
 
-    private function salvarUsuarioSessao(Usuario $usuario) {
+    private function salvarUsuarioSessao(?Usuario $usuario, ?Aluno $aluno, ?Professor $professor) {
         //Habilitar o recurso de sessão no PHP nesta página
         session_start();
 
         //Setar usuário na sessão do PHP
-        $_SESSION[SESSAO_USUARIO_ID]   = $usuario->getId();
-        $_SESSION[SESSAO_USUARIO_NOME] = $usuario->getNome();
-        $_SESSION[SESSAO_USUARIO_PAPEIS] = $usuario->getPapeisAsArray();
+        if($usuario) {
+            $_SESSION[SESSAO_USUARIO_ID]   = $usuario->getId();
+            $_SESSION[SESSAO_USUARIO_NOME] = $usuario->getNome();
+            $_SESSION[SESSAO_USUARIO_PAPEL] = UsuarioPapel::ADMINISTRADOR;
+        } elseif($aluno) {
+            $_SESSION[SESSAO_USUARIO_ID]   = $aluno->getIdAluno();
+            $_SESSION[SESSAO_USUARIO_NOME] = $aluno->getNomeAluno();
+            $_SESSION[SESSAO_USUARIO_PAPEL] = UsuarioPapel::ALUNO;
+        } elseif($professor) {
+            $_SESSION[SESSAO_USUARIO_ID]   = $professor->getIdProfessor();
+            $_SESSION[SESSAO_USUARIO_NOME] = $professor->getNomeProfessor();
+            $_SESSION[SESSAO_USUARIO_PAPEL] = UsuarioPapel::PROFESSOR;
+        }
     }
 
     private function removerUsuarioSessao() {

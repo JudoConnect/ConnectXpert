@@ -16,10 +16,10 @@ class TurmaController extends Controller {
         if(! $this->usuarioLogado())
         exit;
 
-    if(! $this->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR])) {
-        echo "Acesso negado";
-        exit;
-    }
+        if(! $this->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR])) {
+            echo "Acesso negado";
+            exit;
+        }
 
         $this->turmaDao = new TurmaDAO();
         $this->turmaService = new TurmaService();

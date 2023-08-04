@@ -71,12 +71,6 @@ require_once(__DIR__ . "/../include/menu.php");
                     <?php endforeach; ?>
                 </div>
 
-                <div class="form-group">
-                    <label for="txtEmail">Email:</label>
-                    <input class="form-control" type="text" id="txtEmail" name="email" 
-                        maxlength="50" placeholder="Informe o E-mail"
-                        value="<?php echo (isset($dados["usuario"]) ? $dados["usuario"]->getEmail() : ''); ?>"/>
-                </div>
 
                 <div class="form-group">
                     <label>Papéis do usuário:</label>

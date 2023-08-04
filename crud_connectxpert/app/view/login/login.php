@@ -29,9 +29,18 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/login/loginstyle.css">';
                             </div>
                             <div class="form-group">
                                 <label>Selecione o tipo de entrada:</label> </br>
-                                <input type="radio" name="tipo" id="txtTipo">Administrador
-                                <input type="radio" name="tipo" id="txtTipo"> Aluno
-                                <input type="radio" name="tipo" id="txtTipo"> Professor
+                                <?php foreach($dados["papeis"] as $papel): ?>
+                                    <div class="form-radio">
+                                        <input type="radio" name="papel" id="<?= 'ckb' . $papel ?>" value="<?= $papel ?>"
+                                            
+                                            <?php
+                                                if(isset($dados['papel']) && $papel == $dados['papel'])
+                                                    echo " checked";
+                                            ?>        
+                                        />
+                                        <label for="<?= 'ckb' . $papel ?>"><?= $papel ?></label>
+                                    </div>
+                                <?php endforeach; ?>
                             </div>
                             <button type="submit" class="btn">Entrar </button>
                         </form>

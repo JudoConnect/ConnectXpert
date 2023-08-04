@@ -66,7 +66,7 @@ class AlunoDAO {
     public function insert(Aluno $aluno) {
         $conn = Connection::getConn();
 
-        $sql = "INSERT INTO aluno (nome_aluno,nascimento_aluno,telefone,nome_responsavel,sexo_aluno, cpf_aluno, rg_aluno, email_aluno, login_aluno, senha_aluno, historico, end_rua, end_bairro, end_cidade, end_estado, end_numero, end_complemento)" .
+        $sql = "INSERT INTO aluno (nome_aluno,nascimento_aluno,telefone,nome_responsavel,sexo_aluno, cpf_aluno, rg_aluno, email_aluno, login_aluno, senha_aluno, historico, id_ie, end_rua, end_bairro, end_cidade, end_estado, end_numero, end_complemento)" .
                " VALUES (:nome_aluno, :nascimento_aluno, :telefone, :nome_responsavel, :sexo_aluno, :cpf_aluno, :rg_aluno, :email_aluno, :login_aluno, :senha_aluno, :historico, :end_rua,:end_bairro, :end_cidade,:end_estado, :end_numero,:end_complemento)";
         
         $stm = $conn->prepare($sql);
@@ -81,6 +81,7 @@ class AlunoDAO {
         $stm->bindValue("login_aluno", $aluno->getLoginAluno());
         $stm->bindValue("senha_aluno", $aluno->getSenhaAluno());
         $stm->bindValue("historico", $aluno->getHistorico());
+        $stm->bindValue("id_ie", $aluno->getidIe());
         $stm->bindValue("end_rua", $aluno->getEndRua());
         $stm->bindValue("end_bairro", $aluno->getEndBairro());
         $stm->bindValue("end_cidade", $aluno->getEndCidade());
@@ -97,7 +98,7 @@ class AlunoDAO {
 
         $sql = "UPDATE aluno SET nome_aluno = :nome_aluno, nascimento_aluno = :nascimento_aluno," . 
         " telefone = :telefone, nome_responsavel = :nome_responsavel, sexo_aluno = :sexo_aluno, cpf_aluno = :cpf_aluno, rg_aluno = :rg_aluno," . 
-        " email_aluno = :email_aluno, login_aluno = :login_aluno, senha_aluno = :senha_aluno, historico = :historico," .   
+        " email_aluno = :email_aluno, login_aluno = :login_aluno, senha_aluno = :senha_aluno, historico = :historico, id_ie = :id_ie" .   
         " end_rua = :end_rua, end_bairro = :end_bairro, end_cidade = :end_cidade, end_estado = :end_estado, end_numero = :end_numero, end_complemento = :end_complemento" .
         " WHERE id_aluno = :id_aluno";
         

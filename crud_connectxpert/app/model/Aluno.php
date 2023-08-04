@@ -24,7 +24,7 @@ class Aluno {
     private $end_estado;
     private $end_numero;
     private $end_complemento;
-    private $ies; //Objeto do tipo Ie (modelo)
+    private $idIe;
 
     /**
      * Get the value of idAluno
@@ -399,5 +399,27 @@ class Aluno {
 
         return $this;
     }
+
+   
+
+    /**
+     * Get the value of idIe
+     */
+    public function getIdIe()
+    {
+        return $this->idIe;
+    }
+
+    /**
+     * Set the value of idIe
+     */
+    public function setIdIe($idIe): self
+    {
+        $this->idIe = $idIe;
+
+        return $this;
+    }
+
+    
 }    
     
