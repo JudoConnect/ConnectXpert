@@ -137,7 +137,6 @@ class AlunoController extends Controller {
         //Carregar os valores recebidos por POST de volta para o formulário
         $dados["aluno"] = $aluno;
         $dados["confSenhaAluno"] = $confSenhaAluno;
-        
         $dados["sexo"] = Sexo::getAllAsArray();
         $dados['listaIes'] = $this->iesDao->list();
 

@@ -30,7 +30,7 @@ $isAluno = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ALUNO]);
                 aria-expanded="false" style="color:#ff7f32; font-style: normal; font-size: 18px; font-weight: regular;"> Cadastros </a>
                 <div class="dropdown-menu show" aria-labelledby="navbarDropdown">
                     <?php if($isAdministrador): ?>
-                        <a class="dropdown-item" href="<?= BASEURL . '/controller/UsuarioController.php?action=list' ?>" >Usuários</a>
+                        <!--<a class="dropdown-item" href="<?= BASEURL . '/controller/UsuarioController.php?action=list' ?>" >Usuários</a>-->
                     <?php endif; ?>
                     <a class="dropdown-item" href="<?= BASEURL . '/controller/ProdutoController.php?action=list' ?>">Produto</a>
                     <a class="dropdown-item" href="<?= BASEURL . '/controller/ProfessorController.php?action=list' ?>">Professor</a>
@@ -38,7 +38,7 @@ $isAluno = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ALUNO]);
                     <a class="dropdown-item" href="<?= BASEURL . '/controller/TurmaController.php?action=list' ?>">Turma</a>
                     <a class="dropdown-item" href="<?= BASEURL . '/controller/IeController.php?action=list' ?>">Ie</a>
 
-                    <a class="dropdown-item" href="#">Outro cadastro</a>
+
                 </div>
             </li>
 
