@@ -7,6 +7,8 @@ require_once(__DIR__ . "/../service/AlunoService.php");
 require_once(__DIR__ . "/../model/Aluno.php");
 require_once(__DIR__ . "/../model/enum/Sexo.php");
 require_once(__DIR__ . "/../model/enum/UsuarioPapel.php");
+require_once(__DIR__ . "/../model/enum/Situacao.php");
+require_once(__DIR__ . "/../service/ImagemService.php");
 
 
 class AlunoController extends Controller {
@@ -14,6 +16,7 @@ class AlunoController extends Controller {
     private AlunoDAO $alunoDao;
     private IeDAO $iesDao;
     private AlunoService $alunoService;
+    private ImagemService $imagemService;
 
     public function __construct() {
         if(! $this->usuarioLogado())
@@ -27,6 +30,7 @@ class AlunoController extends Controller {
         $this->alunoDao = new AlunoDAO();
         $this->iesDao = new IeDAO();
         $this->alunoService = new AlunoService();
+        $this->imagemService = new ImagemService();
 
         $this->handleAction();
     }
@@ -43,6 +47,7 @@ class AlunoController extends Controller {
         $dados["id_aluno"] = 0;
         $dados["sexo"] = Sexo::getAllAsArray();
         $dados['listaIes'] = $this->iesDao->list();
+        $dados["estadosProduto"] = Situacao::getAllAsArray();
 
         $this->loadView("aluno/formAluno.php", $dados);
     }
@@ -53,10 +58,11 @@ class AlunoController extends Controller {
             $dados["id_aluno"] = $aluno->getIdAluno();
             $dados["sexo"] = Sexo::getAllAsArray();
             $dados['listaIes'] = $this->iesDao->list();
+            $dados["estadosProduto"] = Situacao::getAllAsArray();
             
-            $aluno->setSenhaAluno("");
+            //$aluno->setSenhaAluno("");
             $dados["aluno"] = $aluno;
-            //$dados["confSenhaAluno"] = $aluno->getSenhaAluno();
+            $dados["confSenhaAluno"] = $aluno->getSenhaAluno();
 
             $this->loadView("aluno/formAluno.php", $dados);
         } else
@@ -85,6 +91,10 @@ class AlunoController extends Controller {
         $end_numero = isset($_POST['endNumero']) ? trim($_POST['endNumero']) : NULL;
         $end_complemento = isset($_POST['endComplemento']) ? trim($_POST['endComplemento']) : NULL;
         $idIe = isset($_POST['idIes']) ? trim($_POST['idIes']) : NULL;
+        $situacao = isset($_POST['situacao']) ? trim($_POST['situacao']) : NULL;
+        $arqFotoAntiga = isset($_POST['arquivoFoto']) ? trim($_POST['arquivoFoto']) : NULL;
+
+        $foto = $_FILES["foto"];
 
         //Cria objeto Aluno
         $aluno = new Aluno();
@@ -106,12 +116,23 @@ class AlunoController extends Controller {
         $aluno->setEndNumero($end_numero);
         $aluno->setEndComplemento($end_complemento);
         $aluno->setIdIe($idIe);
-
+        $aluno->setSituacao($situacao);
+        $aluno->setFoto($arqFotoAntiga);
+    
 
         //Validar os dados
-        $erros = $this->alunoService->validarDados($aluno, $confSenhaAluno);
+        $erros = $this->alunoService->validarDados($aluno, $confSenhaAluno, $foto);
 
         if(empty($erros)) {
+            $nomeArquivoFoto = "verdadeiro";
+            if($foto['size'] > 0)
+                $nomeArquivoFoto = $this->imagemService->upload($foto); //Salvar o arquivo da foto
+                
+            if($nomeArquivoFoto) {
+
+                if($nomeArquivoFoto != "verdadeiro")
+                    $aluno->setFoto($nomeArquivoFoto);
+
             //Persiste o objeto
             try {
                 
@@ -130,7 +151,11 @@ class AlunoController extends Controller {
                 $erros = ["Erro ao salvar o aluno na base de dados." . $e]; 
 
             }
-        }
+        } else
+            //Caso não consega salvar, exibe o erro
+            $erros = ["Erro ao salvar o aquivo da foto."];   
+        
+    }
 
         //Se há erros, volta para o formulário
         
@@ -139,7 +164,10 @@ class AlunoController extends Controller {
         $dados["confSenhaAluno"] = $confSenhaAluno;
         $dados["sexo"] = Sexo::getAllAsArray();
         $dados['listaIes'] = $this->iesDao->list();
+        $dados["estadosProduto"] = Situacao::getAllAsArray();
 
+        $_FILES["foto"] = $foto;
+        
         $msgsErro = implode("<br>", $erros);
         $this->loadView("aluno/formAluno.php", $dados, $msgsErro);
     }

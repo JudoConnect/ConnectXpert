@@ -5,7 +5,7 @@ require_once(__DIR__ . "/../model/Aluno.php");
 class AlunoService {
 
     /* Método para validar os dados do aluno que vem do formulário */
-    public function validarDados(Aluno $aluno, string $confSenhaAluno) {
+    public function validarDados(Aluno $aluno, string $confSenhaAluno, $foto) {
         $erros = array();
 
         //Validar campos vazios
@@ -33,6 +33,9 @@ class AlunoService {
         if(! $aluno->getEmailAluno()) 
             array_push($erros, "O campo Email do Aluno é obrigatório.");
 
+        if((! $aluno->getFoto()) && $foto['size'] <= 0)
+            array_push($erros, "O campo Foto é obrigatório.");
+
         if(! $aluno->getLoginAluno())
             array_push($erros, "O campo Login é obrigatório.");
 
@@ -43,7 +46,7 @@ class AlunoService {
             array_push($erros, "O campo Confirmação da senha é obrigatório.");
         
         if(! $aluno->getEndRua()) 
-            array_push($erros,  "O campo Rua é obrigatório.");
+            array_push($erros,  "O campo Rua é obrigatório."); 
 
         if(! $aluno->getEndBairro()) 
             array_push($erros,  "O campo Bairro é obrigatório.");
@@ -57,6 +60,8 @@ class AlunoService {
         if(! $aluno->getEndNumero()) 
             array_push($erros,  "O campo Número  é obrigatório.");    
 
+        if(! $aluno->getSituacao()) 
+            array_push($erros, "Selecione ao menos uma situação no campo.");
     
 
         //Validar se a senha é igual a contra senha

@@ -66,8 +66,8 @@ class ProfessorDAO {
     public function insert(Professor $professor) {
         $conn = Connection::getConn();
 
-        $sql = "INSERT INTO professor (nome_professor, nascimento_professor, telefone_professor, sexo_professor, cpf_professor, rg_professor, email_professor, login_professor, senha_professor, tipo)" .
-        " VALUES (:nome_professor, :nascimento_professor, :telefone_professor, :sexo_professor, :cpf_professor, :rg_professor, :email_professor, :login_professor, :senha_professor, :tipo)";
+        $sql = "INSERT INTO professor (nome_professor, nascimento_professor, telefone_professor, sexo_professor, cpf_professor, rg_professor, email_professor, login_professor, senha_professor, tipo, foto)" .
+        " VALUES (:nome_professor, :nascimento_professor, :telefone_professor, :sexo_professor, :cpf_professor, :rg_professor, :email_professor, :login_professor, :senha_professor, :tipo, :foto)";
         
         $stm = $conn->prepare($sql);
         $stm->bindValue("nome_professor", $professor->getNomeProfessor());
@@ -80,6 +80,7 @@ class ProfessorDAO {
         $stm->bindValue("login_professor", $professor->getLoginProfessor());
         $stm->bindValue("senha_professor", $professor->getSenhaProfessor());
         $stm->bindValue("tipo", $professor->getTipo());
+        $stm->bindValue("foto", $professor->getFotoProfessor());
 
         $stm->execute();
     }
@@ -91,7 +92,7 @@ class ProfessorDAO {
         $sql = "UPDATE professor SET nome_professor = :nome_professor, nascimento_professor = :nascimento_professor," . 
                " telefone_professor = :telefone_professor, sexo_professor = :sexo_professor, cpf_professor = :cpf_professor," .   
                " rg_professor = :rg_professor, email_professor = :email_professor, login_professor = :login_professor, senha_professor = :senha_professor," .
-               " tipo = :tipo" .
+               " tipo = :tipo, foto = :foto" .
                " WHERE id_professor = :id_professor";
         
         $stm = $conn->prepare($sql);
@@ -106,6 +107,8 @@ class ProfessorDAO {
         $stm->bindValue("login_professor", $professor->getLoginProfessor());
         $stm->bindValue("senha_professor", $professor->getSenhaProfessor());
         $stm->bindValue("tipo", $professor->getTipo());
+        $stm->bindValue("foto", $professor->getFotoProfessor());
+
         $stm->execute();
     }
 
@@ -136,6 +139,8 @@ class ProfessorDAO {
             $professor->setLoginProfessor($reg['login_professor']);
             $professor->setSenhaProfessor($reg['senha_professor']);
             $professor->setTipo($reg['tipo']);
+            $professor->setFotoProfessor($reg['foto']);
+
             array_push($professores, $professor);
         }
 

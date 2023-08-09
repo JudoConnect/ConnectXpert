@@ -5,7 +5,7 @@
 require_once(__DIR__ . "/../include/header.php");
 require_once(__DIR__ . "/../include/menu.php");
 ?>
-
+ 
 <h3 class="text-center">
     <?php if(!isset($dados['idProduto'])) echo "Inserir"; else echo "Alterar"; ?>  <span>Produto</span>
 </h3>

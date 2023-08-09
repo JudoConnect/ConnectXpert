@@ -17,6 +17,7 @@ class Professor {
     private $loginProfessor;
     private $senhaProfessor;
     private $tipo;
+    private $fotoProfessor;
 
     /**
      * Get the value of idProfessor
@@ -201,7 +202,7 @@ class Professor {
 
     public function setTipoAsArray($array) {
         if($array)
-            $this->tipo = implode(PTipo::$SEPARADOR, $array);
+            $this->tipo = implode(Tipo::$SEPARADOR, $array);
         else
             $this->tipo = NULL;
     }
@@ -260,6 +261,28 @@ class Professor {
     public function setEmailProfessor($emailProfessor)
     {
         $this->emailProfessor = $emailProfessor;
+
+        return $this;
+    }
+
+
+
+    /**
+     * Get the value of fotoProfessor
+     */ 
+    public function getFotoProfessor()
+    {
+        return $this->fotoProfessor;
+    }
+
+    /**
+     * Set the value of fotoProfessor
+     *
+     * @return  self
+     */ 
+    public function setFotoProfessor($fotoProfessor)
+    {
+        $this->fotoProfessor = $fotoProfessor;
 
         return $this;
     }

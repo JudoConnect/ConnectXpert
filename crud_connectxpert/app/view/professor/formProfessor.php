@@ -17,7 +17,8 @@ require_once(__DIR__ . "/../include/menu.php");
     <div class="row" style="margin-top: 10px;">
         <div class="col-6">
             <form id="frmProfessor" method="POST" 
-                action="<?= BASEURL ?>/controller/ProfessorController.php?action=save" >
+                action="<?= BASEURL ?>/controller/ProfessorController.php?action=save" 
+                enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="txtNomeProfessor">Nome do Professor:</label>
                     <input class="form-control" type="text" id="txtNomeProfessor" name="nomeProfessor" 
@@ -75,6 +76,17 @@ require_once(__DIR__ . "/../include/menu.php");
                         maxlength="100" placeholder="Informe o email"
                         value="<?php echo (isset($dados["professor"]) ? $dados["professor"]->getEmailProfessor() : ''); ?>"/>
                 </div>
+
+                <div class="form-group">
+                    <label for="uplImagem">Foto:</label>
+                    <input type="file" name="foto" id="uplImagem" accept="image/*" />  
+                </div>
+
+                <?php if(isset($dados["professor"]) && $dados["professor"]->getFotoProfessor() ):?>
+                    
+                    <img src="<?= BASEURL_FOTOS . $dados["professor"]->getFotoProfessor(); ?>" alt="" width="100px">
+                
+                <?php endif;?>
 
                 <div class="form-group">
                     <label>Tipo Professor:</label>

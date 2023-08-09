@@ -22,7 +22,7 @@ class UsuarioService {
             array_push($erros, "O campo Confirmação da senha é obrigatório.");
 
         if(! $usuario->getPapeis()) 
-            array_push($erros, "Selecione ao menos um papel no campo [Papéis do usuário].");
+            array_push($erros, "Selecione ao menos um papel no campo Papéis do usuário.");
 
 
         //Validar se a senha é igual a contra senha

@@ -16,7 +16,9 @@ require_once(__DIR__ . "/../include/menu.php");
     <div class="row" style="margin-top: 10px;">
         <div class="col-6">
             <form id="frmAluno" method="POST" 
-                action="<?= BASEURL ?>/controller/AlunoController.php?action=save" >
+                action="<?= BASEURL ?>/controller/AlunoController.php?action=save"
+                enctype="multipart/form-data" >
+
                 <div class="form-group">
                     <label for="txtNomeAluno">Nome do Aluno:</label>
                     <input class="form-control" type="text" id="txtNomeAluno" name="nomeAluno" 
@@ -81,6 +83,17 @@ require_once(__DIR__ . "/../include/menu.php");
                         maxlength="100" placeholder="Informe o email"
                         value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getEmailAluno() : ''); ?>"/>
                 </div>
+
+                <div class="form-group">
+                    <label for="uplImagem">Foto:</label>
+                    <input type="file" name="foto" id="uplImagem" accept="image/*" />  
+                </div>
+
+                <?php if(isset($dados["aluno"]) && $dados["aluno"]->getFoto() ):?>
+                    
+                    <img src="<?= BASEURL_FOTOS . $dados["aluno"]->getFoto(); ?>" alt="" width="100px">
+                
+                <?php endif;?>
 
                 <div class="form-group">
                     <label for="txtLoginALuno">Login:</label>
@@ -168,6 +181,35 @@ require_once(__DIR__ . "/../include/menu.php");
                     </select>
                    
                 </div>
+
+
+                <div class="form-group">
+                    <label>Situação:</label>
+                    
+                    <?php foreach($dados["estadosProduto"] as $estados): ?>
+
+                        <div class="form-radio">
+                            <input type="radio" name="situacao" id="<?= 'ckb' . $estados ?>" value="<?= strtolower ($estados) ?>"
+                                
+                                <?php
+
+                                    //condição quando o produto está sendo cadastrado e não existe estado
+                                    if(!isset($dados['idAluno']) && $estados == "DISPONIVEL") {
+                                        echo " checked";
+                                    }
+
+                                    //condição quando o produto está sendo editadoi e existe estado
+                                    if(isset($dados['alun0']) && strtolower ($estados) == $dados['aluno']->getSituacao()) {
+                                        echo " checked";
+                                    }
+
+                                ?>        
+                            />
+                            <label for="<?= 'ckb' . $estados ?>"><?= $estados ?></label>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+
                 <div class="form-group">
                
                 <input type="hidden" id="hddId" name="id_aluno" 

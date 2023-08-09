@@ -3,24 +3,26 @@
 require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../dao/UsuarioDAO.php");
 require_once(__DIR__ . "/../dao/AlunoDAO.php");
+require_once(__DIR__ . "/../dao/ProfessorDAO.php");
 require_once(__DIR__ . "/../service/LoginService.php");
 require_once(__DIR__ . "/../model/Usuario.php");
 require_once(__DIR__ . "/../model/Aluno.php");
 require_once(__DIR__ . "/../model/Professor.php");
 require_once(__DIR__ . "/../model/enum/UsuarioPapel.php");
 
-
-
 class LoginController extends Controller {
 
     private LoginService $loginService;
     private UsuarioDAO $usuarioDao;
     private AlunoDAO $alunoDao;
+    private ProfessorDAO $professorDao;
+
 
     public function __construct() {
         $this->loginService = new LoginService();
         $this->usuarioDao = new UsuarioDAO();
         $this->alunoDao = new AlunoDAO();
+        $this->professorDao = new ProfessorDAO();
         $this->handleAction();
     }
 
@@ -48,8 +50,9 @@ class LoginController extends Controller {
                 $usuario = $this->usuarioDao->findByLoginSenha($login, $senha);
             else if($papel == UsuarioPapel::ALUNO)
                 $aluno = $this->alunoDao->findByLoginSenha($login, $senha); 
+            else if($papel == UsuarioPapel::PROFESSOR)
+                $professor = $this->professorDao->findByLoginSenha($login, $senha);     
                           
-            
             if($usuario || $aluno || $professor) {
                 //Se encontrou o usuário, salva a sessão e redireciona para a HOME do sistema
                 $this->salvarUsuarioSessao($usuario, $aluno, $professor);

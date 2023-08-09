@@ -5,7 +5,7 @@ require_once(__DIR__ . "/../model/Professor.php");
 class ProfessorService {
 
     /* Método para validar os dados do professor que vem do formulário */
-    public function validarDados(Professor $professor, string $confSenhaProfessor) {
+    public function validarDados(Professor $professor, string $confSenhaProfessor, $foto) {
         $erros = array();
 
         //Validar campos vazios

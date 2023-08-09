@@ -28,11 +28,12 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
             <table id="tabProfessores" class='table table-striped'>
                 <thead>
                     <tr class="topicos">
+                        <th>Foto</th>
                         <th>Nome Professor</th>
                         <th>Data de Nascimento</th>
-                        <th>Telefone</th>
                         <th>Email</th>
                         <th>Tipo</th>
+                        
                         <th>Alterar</th>
                         <th>Excluir</th>
                     </tr>
@@ -40,11 +41,13 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
                 <tbody>
                     <?php foreach($dados['lista'] as $prof): ?>
                         <tr class="listagem">
+                            <td><img src="<?= BASEURL_FOTOS . $prof->getFotoProfessor(); ?>" style="width: 100px; height: auto;" /></td>
                             <td><?= $prof->getNomeProfessor(); ?></td>
                             <td><?= $prof->getNascimentoProfessorFormatada(); ?></td>
-                            <td><?= $prof->getTelefoneProfessor(); ?></td>
                             <td><?= $prof->getEmailProfessor(); ?></td>
                             <td><?= $prof->getTipo(); ?></td>
+                            
+                           
                             <td><a class="btn btn-primary" 
                                 href="<?= BASEURL ?>/controller/ProfessorController.php?action=edit&id=<?= $prof->getIdProfessor() ?>">
                                 Alterar</a> 

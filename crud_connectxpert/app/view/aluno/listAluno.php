@@ -5,7 +5,7 @@
 require_once(__DIR__ . "/../include/header.php");
 require_once(__DIR__ . "/../include/menu.php");
 ?>
-
+ 
 <h3 class="text-center">Alunos</h3>
 
 <div class="container">
@@ -25,14 +25,12 @@ require_once(__DIR__ . "/../include/menu.php");
             <table id="tabAlunos" class='table table-striped table-bordered'>
                 <thead>
                     <tr>
+                        <th>Foto Aluno</th>
                         <th>Nome Aluno</th>
                         <th>Data de Nascimento</th>
-                        <th>Telefone</th>
                         <th>Sexo </th>
                         <th>Email </th>
-                        <th>Histórico</th>
-                        <th>Rua </th>
-                        <th>Bairro </th>
+                        <th>Situação</th>
                         <th>Alterar</th>
                         <th>Excluir</th>
                     </tr>
@@ -40,14 +38,13 @@ require_once(__DIR__ . "/../include/menu.php");
                 <tbody>
                     <?php foreach($dados['lista'] as $aln): ?>
                         <tr>
+                            <td><img src="<?= BASEURL_FOTOS . $aln->getFoto(); ?>" style="width: 100px; height: auto;" /></td>
                             <td><?= $aln->getNomeAluno(); ?></td>
                             <td><?= $aln->getNascimentoAlunoFormatada(); ?></td>
-                            <td><?= $aln->getTelefone(); ?></td>
                             <td><?= $aln->getSexoAluno(); ?></td>
                             <td><?= $aln->getEmailAluno(); ?></td>
-                            <td><?= $aln->getHistorico(); ?></td>
-                            <td><?= $aln->getEndRua(); ?></td>
-                            <td><?= $aln->getEndBairro(); ?></td>
+                            <td><?= $aln->getSituacao(); ?></td>
+
                         
                             <td><a class="btn btn-primary" 
                                 href="<?= BASEURL ?>/controller/AlunoController.php?action=edit&id=<?= $aln->getIdAluno() ?>">

@@ -3,6 +3,7 @@
 #Objetivo: classe Model para Aluno
 
 require_once(__DIR__ . "/enum/Sexo.php");
+require_once(__DIR__ . "/enum/Situacao.php");
 
 class Aluno {
 
@@ -25,6 +26,9 @@ class Aluno {
     private $end_numero;
     private $end_complemento;
     private $idIe;
+    private $situacao;
+    private $foto;
+
 
     /**
      * Get the value of idAluno
@@ -419,7 +423,63 @@ class Aluno {
 
         return $this;
     }
+    
+    /**
+     * Get the value of situacao
+     */ 
+    public function getSituacao() 
+    {
+        return $this->situacao;
+    }
 
+    /**
+     * Set the value of situacao
+     */ 
+    public function setSituacao($situacao) : self
+    {
+        $this->situacao = $situacao;
+
+        return $this;
+    }
+
+    public function getSituacaoAsArray() {
+        if($this->situacao) 
+            return explode(Situacao::$SEPARADOR, $this->situacao);
+        
+        return array();    
+    }
+
+    public function setSituacaoAsArray($array) {
+        if($array)
+            $this->situacao = implode(Situacao::$SEPARADOR, $array);
+        else
+            $this->situacao = NULL;
+    }
+
+    public function getSituacaoStr() {
+        return str_replace(Situacao::$SEPARADOR, ", ", $this->situacao);
+    }
+
+
+    /**
+     * Get the value of foto
+     */ 
+    public function getFoto()
+    {
+        return $this->foto;
+    }
+
+    /**
+     * Set the value of foto
+     *
+     * @return  self
+     */ 
+    public function setFoto($foto)
+    {
+        $this->foto = $foto;
+
+        return $this;
+    }
+}
     
-}    
-    
+

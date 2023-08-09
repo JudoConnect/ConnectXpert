@@ -78,7 +78,7 @@ class ProdutoController extends Controller {
         $produto = new Produto();
         $produto->setNome($nome);
         $produto->setDescricao($descricao);
-        $produto->setSituacao($situacao);
+        $produto->setSituacao($situacao); 
         $produto->setFoto($arqFotoAntiga);
         
         //Validar os dados

@@ -7,12 +7,13 @@ require_once(__DIR__ . "/../model/Professor.php");
 require_once(__DIR__ . "/../model/enum/Tipo.php");
 require_once(__DIR__ . "/../model/enum/Sexo.php");
 require_once(__DIR__ . "/../model/enum/UsuarioPapel.php");
-
+require_once(__DIR__ . "/../service/ImagemService.php");
 
 class ProfessorController extends Controller {
 
     private ProfessorDAO $professorDao;
     private ProfessorService $professorService;
+    private ImagemService $imagemService;
 
     public function __construct() {
         if(! $this->usuarioLogado())
@@ -25,6 +26,7 @@ class ProfessorController extends Controller {
 
         $this->professorDao = new ProfessorDAO();
         $this->professorService = new ProfessorService();
+        $this->imagemService = new ImagemService();
 
         $this->handleAction();
     }
@@ -49,9 +51,9 @@ class ProfessorController extends Controller {
         $professor = $this->findProfessorById();
         if($professor) {
             $dados["id_professor"] = $professor->getIdProfessor();
-            $professor->setSenhaProfessor("");
+            //$professor->setSenhaProfessor("");
             $dados["professor"] = $professor;
-            //$dados["confSenha"] = $usuario->getSenha();
+            $dados["confSenhaProfessor"] = $professor->getSenhaProfessor();
             $dados["sexo"] = Sexo::getAllAsArray();
             $dados["tipo"] = Tipo::getAllAsArray();
     
@@ -75,6 +77,8 @@ class ProfessorController extends Controller {
         $senha_professor = isset($_POST['senhaProfessor']) ? trim($_POST['senhaProfessor']) : NULL;
         $confSenhaProfessor = isset($_POST['confSenhaProfessor']) ? trim($_POST['confSenhaProfessor']) : "";
         $tipo = isset($_POST['tipo']) ? trim($_POST['tipo']) : NULL;
+        $arqFotoAntiga = isset($_POST['arquivoFoto']) ? trim($_POST['arquivoFoto']) : NULL;
+        $foto = $_FILES["foto"];
 
         //Cria objeto Usuario
         $professor = new Professor();
@@ -88,15 +92,31 @@ class ProfessorController extends Controller {
         $professor->setLoginProfessor($login_professor);
         $professor->setSenhaProfessor($senha_professor);
         $professor->setTipo($tipo);
+        $professor->setFotoProfessor($arqFotoAntiga);
 
         //Validar os dados
-        $erros = $this->professorService->validarDados($professor, $confSenhaProfessor);
+        $erros = $this->professorService->validarDados($professor, $confSenhaProfessor, $foto);
+        
         if(empty($erros)) {
+            $nomeArquivoFoto = "verdadeiro";
+            if($foto['size'] > 0)
+                $nomeArquivoFoto = $this->imagemService->upload($foto); //Salvar o arquivo da foto
+                
+            if($nomeArquivoFoto) {
+
+                if($nomeArquivoFoto != "verdadeiro")
+                    $professor->setFotoProfessor($nomeArquivoFoto);
+
             //Persiste o objeto
             try {
+                //echo $nomeArquivoFoto;
+                //print_r($professor);
+               // print_r($foto);
+               //                                                    exit;
                 
                 if($dados["id_professor"] == 0)  //Inserindo
                     $this->professorDao->insert($professor);
+
                 else { //Alterando
                     $professor->setIdProfessor($dados["id_professor"]);
                     $this->professorDao->update($professor);
@@ -109,7 +129,11 @@ class ProfessorController extends Controller {
             } catch (PDOException $e) {
                 $erros = ["Erro ao salvar o professor na base de dados." . $e];                
             }
-        }
+
+        } else
+                //Caso não consega salvar, exibe o erro
+                $erros = ["Erro ao salvar o aquivo da foto."];     
+    }
 
         //Se há erros, volta para o formulário
 
@@ -118,6 +142,7 @@ class ProfessorController extends Controller {
         $dados["confSenhaProfessor"] = $confSenhaProfessor;
         $dados["tipo"] = Tipo::getAllAsArray();
         $dados["sexo"] = Sexo::getAllAsArray();
+        $_FILES["foto"] = $foto;
 
         $msgsErro = implode("<br>", $erros);
         $this->loadView("professor/formProfessor.php", $dados, $msgsErro);
