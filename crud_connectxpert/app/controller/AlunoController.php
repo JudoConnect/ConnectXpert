@@ -18,6 +18,7 @@ class AlunoController extends Controller {
     private AlunoService $alunoService;
     private ImagemService $imagemService;
 
+
     public function __construct() {
         if(! $this->usuarioLogado())
         exit;

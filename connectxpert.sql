@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 31/07/2023 às 14:47
+-- Tempo de geração: 10/08/2023 às 13:30
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.0.28
 
@@ -31,14 +31,14 @@ CREATE TABLE `aluno` (
   `id_aluno` int(11) NOT NULL,
   `nome_aluno` varchar(100) DEFAULT NULL,
   `nascimento_aluno` date DEFAULT NULL,
-  `telefone` char(10) DEFAULT NULL,
+  `telefone` varchar(20) DEFAULT NULL,
   `nome_responsavel` varchar(60) DEFAULT NULL,
   `sexo_aluno` enum('feminino','masculino','outros') DEFAULT NULL,
   `login_aluno` varchar(15) DEFAULT NULL,
   `senha_aluno` varchar(15) DEFAULT NULL,
-  `historico` varchar(230) DEFAULT NULL,
-  `cpf_aluno` int(11) DEFAULT NULL,
-  `rg_aluno` int(11) DEFAULT NULL,
+  `historico` text NOT NULL,
+  `cpf_aluno` varchar(11) DEFAULT NULL,
+  `rg_aluno` varchar(11) DEFAULT NULL,
   `email_aluno` varchar(100) DEFAULT NULL,
   `end_rua` varchar(95) NOT NULL,
   `end_bairro` varchar(95) DEFAULT NULL,
@@ -46,16 +46,17 @@ CREATE TABLE `aluno` (
   `end_estado` varchar(95) NOT NULL,
   `end_numero` int(11) NOT NULL,
   `end_complemento` varchar(100) DEFAULT NULL,
-  `id_ie` int(11) DEFAULT NULL
+  `id_ie` int(11) DEFAULT NULL,
+  `situacao` enum('disponivel','indisponivel') NOT NULL,
+  `foto` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `aluno`
 --
 
-INSERT INTO `aluno` (`id_aluno`, `nome_aluno`, `nascimento_aluno`, `telefone`, `nome_responsavel`, `sexo_aluno`, `login_aluno`, `senha_aluno`, `historico`, `cpf_aluno`, `rg_aluno`, `email_aluno`, `end_rua`, `end_bairro`, `end_cidade`, `end_estado`, `end_numero`, `end_complemento`, `id_ie`) VALUES
-(8, 'Anee', '2023-05-30', '4324234234', 'Marcia', 'feminino', 'ludimila', '890', '', 34567890, 2147483647, 'ludmila.maoli@gmail.com', '', NULL, '', '', 0, NULL, NULL),
-(11, 'Graci', '2005-01-16', '(45)999347', 'Adriana', 'feminino', 'Graci', '123', '', 479730, 234532, 'graci.demitrovich@gmail.com', 'Rua Quatro Barras', 'Jardim Dona Fatima', 'Foz do Iguaçu', 'Parana', 399, 'casa', NULL);
+INSERT INTO `aluno` (`id_aluno`, `nome_aluno`, `nascimento_aluno`, `telefone`, `nome_responsavel`, `sexo_aluno`, `login_aluno`, `senha_aluno`, `historico`, `cpf_aluno`, `rg_aluno`, `email_aluno`, `end_rua`, `end_bairro`, `end_cidade`, `end_estado`, `end_numero`, `end_complemento`, `id_ie`, `situacao`, `foto`) VALUES
+(20, 'Ludmila Martins Oliveira', '2017-04-10', '+55 (45) 99990-1376', 'Elaine Martins Oliveira', 'feminino', 'Lud', '123', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '140.998.869', '56789009876', 'ludmila.maoli@gmail.com', 'Girassol', 'Jardim Das Flores', 'Foz do Iguaçu', 'Parana', 589, 'casa', 6, 'disponivel', 'imagem_da1e6c88-523d-da46-98a2-01638eada908.jpg');
 
 -- --------------------------------------------------------
 
@@ -65,15 +66,17 @@ INSERT INTO `aluno` (`id_aluno`, `nome_aluno`, `nascimento_aluno`, `telefone`, `
 
 CREATE TABLE `ie` (
   `id_ie` int(11) NOT NULL,
-  `nome_ie` varchar(70) NOT NULL
+  `nome_ie` varchar(70) NOT NULL,
+  `serie_ie` enum('Ensino Fundamental ( 1º ao 5º)','Ensino Fundamental II ( 6º ao 9º)','Ensino Médio ( 1º ao 3º)','Graduação') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `ie`
 --
 
-INSERT INTO `ie` (`id_ie`, `nome_ie`) VALUES
-(6, 'IFPR');
+INSERT INTO `ie` (`id_ie`, `nome_ie`, `serie_ie`) VALUES
+(6, 'IFPR', ''),
+(10, 'Dom Pedro III', 'Ensino Fundamental ( 1º ao 5º)');
 
 -- --------------------------------------------------------
 
@@ -94,7 +97,7 @@ CREATE TABLE `produto` (
 --
 
 INSERT INTO `produto` (`id_produto`, `nome`, `descricao`, `foto`, `situacao`) VALUES
-(4, 'Broche', 'rosa', 'imagem_4f7fb4be-0967-2457-60ea-56ddb5b0f838.jpg', '');
+(11, 'Kimono', 'Rosa', 'imagem_3b7a6334-4dca-f606-b0e7-aa0f3b9a843d.webp', 'disponivel');
 
 -- --------------------------------------------------------
 
@@ -113,8 +116,17 @@ CREATE TABLE `professor` (
   `tipo` enum('PROFESSOR','ESTAGIARIO','SECRETARIO','SOCIO','PROPRIETARIO') NOT NULL,
   `cpf_professor` int(11) NOT NULL,
   `rg_professor` int(11) NOT NULL,
-  `email_professor` varchar(100) NOT NULL
+  `email_professor` varchar(100) NOT NULL,
+  `foto` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `professor`
+--
+
+INSERT INTO `professor` (`id_professor`, `nome_professor`, `nascimento_professor`, `telefone_professor`, `sexo_professor`, `login_professor`, `senha_professor`, `tipo`, `cpf_professor`, `rg_professor`, `email_professor`, `foto`) VALUES
+(8, 'Daniel Di Dommenico', '1988-09-12', '3577-7777', 'masculino', 'Daniel', '123', 'PROFESSOR', 12345678, 34567832, 'daniel.ifpr@gmail.com', ''),
+(9, 'Luciana', '2023-08-09', '34567890', 'masculino', 'luciana', '123', 'PROFESSOR', 76659, 98234, 'luciana@gmail.com', 'imagem_a303ed4c-bcf9-980f-d64a-2b279988f6e9.jpg');
 
 -- --------------------------------------------------------
 
@@ -127,7 +139,7 @@ CREATE TABLE `turma` (
   `nome_turma` varchar(60) NOT NULL,
   `num_alunos` int(11) NOT NULL,
   `horario` varchar(45) NOT NULL,
-  `dia_semana` date NOT NULL
+  `dia_semana` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -135,7 +147,7 @@ CREATE TABLE `turma` (
 --
 
 INSERT INTO `turma` (`id_turma`, `nome_turma`, `num_alunos`, `horario`, `dia_semana`) VALUES
-(1, 'Meio Ambiente', 41, '7:30', '2023-07-24');
+(4, 'Meio Ambiente', 45, '7:30', 'Segunda-Feira');
 
 -- --------------------------------------------------------
 
@@ -148,15 +160,14 @@ CREATE TABLE `usuario` (
   `nome_usuario` varchar(70) NOT NULL,
   `login` varchar(15) NOT NULL,
   `senha` varchar(15) NOT NULL,
-  `papeis` varchar(255) NOT NULL,
-  `situacao` enum('disponivel','indisponivel') NOT NULL
+  `papeis` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `usuario`
 --
 
-INSERT INTO `usuario` (`id_usuario`, `nome_usuario`, `login`, `senha`, `papeis`,) VALUES
+INSERT INTO `usuario` (`id_usuario`, `nome_usuario`, `login`, `senha`, `papeis`) VALUES
 (1, 'Sr. Administrador', 'admin', 'admin', 'ADMINISTRADOR'),
 (2, 'Sr. Root', 'root', 'root', 'ADMINISTRADOR');
 
@@ -210,31 +221,31 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `aluno`
 --
 ALTER TABLE `aluno`
-  MODIFY `id_aluno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_aluno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de tabela `ie`
 --
 ALTER TABLE `ie`
-  MODIFY `id_ie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_ie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `produto`
 --
 ALTER TABLE `produto`
-  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de tabela `professor`
 --
 ALTER TABLE `professor`
-  MODIFY `id_professor` int(60) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_professor` int(60) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `turma`
 --
 ALTER TABLE `turma`
-  MODIFY `id_turma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_turma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
