@@ -23,26 +23,42 @@ $isAluno = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ALUNO]);
                 <a class="nav-link" href="<?= HOME_PAGE ?>" 
                 style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;">Home</a>
             </li>
-
-            <li class="nav-item dropdown show">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-                role="button" data-toggle="dropdown" aria-haspopup="true" 
-                aria-expanded="false" style="color:#ff7f32; font-style: normal; font-size: 18px; font-weight: regular;"> Cadastros </a>
-                <div class="dropdown-menu show" aria-labelledby="navbarDropdown">
+            <li class="nav-item" >
                     <?php if($isAdministrador): ?>
-                        <!--<a class="dropdown-item" href="<?= BASEURL . '/controller/UsuarioController.php?action=list' ?>" >Usuários</a>-->
+                        <a class="nav-link" href="<?= BASEURL . '/controller/ProdutoController.php?action=list' ?>"
+                        style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;">Produto</a>
                     <?php endif; ?>
-                    <a class="dropdown-item" href="<?= BASEURL . '/controller/ProdutoController.php?action=list' ?>">Produto</a>
-                    <a class="dropdown-item" href="<?= BASEURL . '/controller/ProfessorController.php?action=list' ?>">Professor</a>
-                    <a class="dropdown-item" href="<?= BASEURL . '/controller/AlunoController.php?action=list' ?>">Aluno</a>
-                    <a class="dropdown-item" href="<?= BASEURL . '/controller/TurmaController.php?action=list' ?>">Turma</a>
-                    <a class="dropdown-item" href="<?= BASEURL . '/controller/IeController.php?action=list' ?>">Ie</a>
-
-
                 </div>
             </li>
-
-            <li class="nav-item active">
+            <li class="nav-item" style=" list-style: none;">
+                    <?php if($isAdministrador): ?>
+                        <a class="nav-link" href="<?= BASEURL . '/controller/ProfessorController.php?action=list' ?>"
+                        style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;">Professor</a>
+                    <?php endif; ?>
+                </div>
+            </li>
+            <li class="nav-item" style=" list-style: none;">
+                    <?php if($isAdministrador): ?>
+                        <a class="nav-link" href="<?= BASEURL . '/controller/AlunoController.php?action=list' ?>"
+                        style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;">Aluno</a>
+                    <?php endif; ?>
+                </div>
+            </li>
+            <li class="nav-item"style=" list-style: none;" >
+                    <?php if($isAdministrador): ?>
+                        <a class="nav-link" href="<?= BASEURL . '/controller/TurmaController.php?action=list' ?>"
+                        style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;">Turma</a>
+                    <?php endif; ?>
+                </div>
+            </li>
+            <li class="nav-item" style=" list-style: none;">
+                    <?php if($isAdministrador): ?>
+                        <a class="nav-link" href="<?= BASEURL . '/controller/IeController.php?action=list' ?>"
+                         style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;">Ie</a>
+                    <?php endif; ?>
+                </div>
+            </li>
+            <li class="nav-item active" style=" list-style: none;">
                 <a class="nav-link" href="<?= LOGOUT_PAGE ?>" 
                 style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;">Sair</a>
             </li>
