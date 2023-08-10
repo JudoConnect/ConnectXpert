@@ -35,7 +35,7 @@ require_once(__DIR__ . "/../include/menu.php");
                 <div class="form-group">
                     <label for="txtTelefoneProfessor">Telefone:</label>
                     <input class="form-control" type="text" id="txtTelefoneProfessor" name="telefoneProfessor" 
-                        maxlength="14" placeholder="Informe número de telefone do professor"
+                        maxlength="20" placeholder="Informe número de telefone do professor"
                         value="<?php echo (isset($dados["professor"]) ? $dados["professor"]->getTelefoneProfessor() : ''); ?>" />
                 </div>
 

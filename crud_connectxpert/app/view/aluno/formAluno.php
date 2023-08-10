@@ -35,7 +35,7 @@ require_once(__DIR__ . "/../include/menu.php");
                 <div class="form-group">
                     <label for="txtTelefoneAluno">Telefone:</label>
                     <input class="form-control" type="text" id="txtTelefoneAluno" name="telefoneAluno" 
-                        maxlength="14" placeholder="Informe número de telefone do aluno"
+                        maxlength="20" placeholder="Informe número de telefone do aluno"
                         value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getTelefone() : ''); ?>" />
                 </div>
 
@@ -117,10 +117,10 @@ require_once(__DIR__ . "/../include/menu.php");
                 </div>
 
                 <div class="form-group">
-                <label>Histórico:</label>
-                <input  class="form-control" type="textarea" id="txtHistorico" name="historicoAluno" 
-                 minlength="20" maxlength="50" placeholder="Digite o histórico do aluno caso deseje" 
-                 value="<?php echo isset($dados["historico"]) ? $dados["historico"] : '';?>"/>
+                <label for="txtHistorico">Histórico:</label>
+                <br>
+                <textarea id="txtHistorico" name="historico" rows="10" cols="30"></textarea>
+               <?php echo (isset ($dados["aluno"]) ? $dados["aluno"]->getHistorico() : '');?>
                 </div>
 
                 <div class="form-group">
