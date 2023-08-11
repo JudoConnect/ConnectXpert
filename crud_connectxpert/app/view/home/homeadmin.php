@@ -1,9 +1,10 @@
 <?php
-#Nome do arquivo: home/homeadmin.php
+#Nome do arquivo: home/index.php
 #Objetivo: interface com a página inicial do sistema
 
 require_once(__DIR__ . "/../include/header.php");
 require_once(__DIR__ . "/../include/menu.php");
+echo '<link rel="stylesheet" href="' . BASEURL . '/view/include/indexstyle.css">';
 ?>
 
 <div class="container">
@@ -19,3 +20,4 @@ require_once(__DIR__ . "/../include/menu.php");
         <div>
     </div>
 </div>
+

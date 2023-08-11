@@ -44,6 +44,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
                             <td><img src="<?= BASEURL_FOTOS . $prof->getFotoProfessor(); ?>" style="width: 100px; height: auto;" /></td>
                             <td><?= $prof->getNomeProfessor(); ?></td>
                             <td><?= $prof->getNascimentoProfessorFormatada(); ?></td>
+                            <td><?= $prof->getTelefoneProfessor(); ?></td>
                             <td style="text-transform: none;"><?= $prof->getEmailProfessor(); ?></td>
                             <td style="text-transform: lowercase;"><?= $prof->getTipo(); ?></td>
                             
