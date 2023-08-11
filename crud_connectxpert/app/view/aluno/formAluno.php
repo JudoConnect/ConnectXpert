@@ -4,6 +4,7 @@
 
 require_once(__DIR__ . "/../include/header.php");
 require_once(__DIR__ . "/../include/menu.php");
+
 ?>
 
 <h3 class="text-center">
@@ -98,7 +99,7 @@ require_once(__DIR__ . "/../include/menu.php");
                 <div class="form-group">
                     <label for="txtLoginALuno">Login:</label>
                     <input class="form-control" type="text" id="txtLoginAluno" name="loginAluno" 
-                        maxlength="15" placeholder="Informe o login"
+                        maxlength="15" placeholder="Informe o login"  
                         value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getLoginAluno() : ''); ?>"/>
                 </div>
 
@@ -117,10 +118,10 @@ require_once(__DIR__ . "/../include/menu.php");
                 </div>
 
                 <div class="form-group">
-                <label for="txtHistorico">Histórico:</label>
-                <br>
-                <textarea id="txtHistorico" name="historico" rows="10" cols="30"></textarea>
-               <?php echo (isset ($dados["aluno"]) ? $dados["aluno"]->getHistorico() : '');?>
+                    <label for="txtHistorico">Histórico:</label>
+                    <br>
+                    <textarea id="txtHistorico" name="historico" rows="10" cols="30"></textarea>
+                    <?php echo (isset ($dados["aluno"]) ? $dados["aluno"]->getHistorico() : '');?>
                 </div>
 
                 <div class="form-group">

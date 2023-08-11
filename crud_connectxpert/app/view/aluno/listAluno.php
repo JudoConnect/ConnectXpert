@@ -28,6 +28,7 @@ require_once(__DIR__ . "/../include/menu.php");
                         <th>Foto Aluno</th>
                         <th>Nome Aluno</th>
                         <th>Data de Nascimento</th>
+                        <th>Cpf</th>
                         <th>Sexo </th>
                         <th>Email </th>
                         <th>Situação</th>

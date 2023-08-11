@@ -35,20 +35,20 @@ require_once(__DIR__ . "/../include/menu.php");
                 <div class="form-group">
                     <label for="txtHorario">Horário:</label>
                     <input class="form-control" type="text" id="txtHorario" name="horario" 
-                        maxlength="9" placeholder="Informe o horário"
+                        maxlength="20" placeholder="Informe o horário"
                         value="<?php echo (isset($dados["turma"]) ? $dados["turma"]->getHorario() : ''); ?>"/>
                 </div>
 
                 <div class="form-group">
                     <label for="txtDiaSemana">Dia da Semana:</label>
                     <input class="form-control" type="text" id="txtDiaSemana" name="diaSemana" 
-                        maxlength="15" placeholder="Informe o dia da semana"
+                        maxlength="60" placeholder="Informe o dia da semana"
                         value="<?php echo (isset($dados["turma"]) ? $dados["turma"]->getDiaSemana() : ''); ?>"/>
                         <fieldset>
 
 
                 <input type="hidden" id="hddId" name="id_turma" 
-                    value="<?= $dados['id_turma']; ?>" />
+                    value="<?= $dados['id_turma']; ?>" /><br>
 
                 <button type="submit" class="btn btn-success">Gravar</button>
                 <button type="reset" class="btn btn-danger">Limpar</button>
