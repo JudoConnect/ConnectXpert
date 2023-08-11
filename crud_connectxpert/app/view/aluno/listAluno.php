@@ -24,10 +24,11 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
         <div class="col-12">
             <table id="tabAlunos" class='table table-striped'>
                 <thead>
-                    <tr>
-                        <th>Foto Aluno</th>
-                        <th>Nome Aluno</th>
-                        <th>Data de Nascimento</th>
+                    <tr class="topicos">
+                        <th>Foto</th>
+                        <th>Nome</th>
+                        <th>Nascimento</th>
+                        <th>Telefone</th>
                         <th>Sexo </th>
                         <th>Email </th>
                         <th>Situação</th>
