@@ -4,6 +4,7 @@
 
 require_once(__DIR__ . "/../include/header.php");
 require_once(__DIR__ . "/../include/menu.php");
+echo '<link rel="stylesheet" href="' . BASEURL . '/view/include/indexstyle.css">';
 ?>
 
 <div class="container">
