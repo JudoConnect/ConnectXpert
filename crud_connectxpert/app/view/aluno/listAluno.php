@@ -28,7 +28,6 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
                         <th>Foto</th>
                         <th>Nome</th>
                         <th>Nascimento</th>
-                        <th>Telefone</th>
                         <th>Sexo </th>
                         <th>Email </th>
                         <th>Situação</th>
@@ -43,7 +42,6 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
                         <td><img src="<?= BASEURL_FOTOS . $aln->getFoto(); ?>" style="width: 100px; height: auto;" /></td>
                             <td><?= $aln->getNomeAluno(); ?></td>
                             <td><?= $aln->getNascimentoAlunoFormatada(); ?></td>
-                            <td><?= $aln->getTelefone(); ?></td>
                             <td><?= $aln->getSexoAluno(); ?></td>
                             <td><?= $aln->getEmailAluno(); ?></td>
                             <td><?= $aln->getSituacao(); ?></td>
