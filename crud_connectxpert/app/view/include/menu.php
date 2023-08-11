@@ -16,7 +16,7 @@ $isAdministrador = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR]
 $isAluno = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ALUNO]);
 
 ?>
-<nav class="navbar navbar-expand-lg navbar-light"  style="background-color: #fffde7;">
+<nav class="navbar navbar-expand-lg"  style="background-color: #fffde7;">
     <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
@@ -30,7 +30,7 @@ $isAluno = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ALUNO]);
                     <?php endif; ?>
                 </div>
             </li>
-            <li class="nav-item" style=" list-style: none;">
+            <li class="nav-item" style=" list-style:none;">
                     <?php if($isAdministrador): ?>
                         <a class="nav-link" href="<?= BASEURL . '/controller/ProfessorController.php?action=list' ?>"
                         style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;">Professor</a>

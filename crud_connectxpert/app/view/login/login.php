@@ -7,11 +7,12 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/login/loginstyle.css">';
 ?>
 <div class="container" style="background-color: #ff7f32;">
     <div class="row">
-        <div class="col-6">Connect Xpert
+        <div class="col-6"><img class="foto" style=" width: 500px; height: 500px; left: 736px; top: 108px;" 
+            src="<?= BASEURL . "/view/img/alunologin.png" ?>" />
         </div>
         <div class="col-6" style="height: 100vh;">
             <div class="row">
-                <div class="col-12">
+                <div class="col-12" style="height: 100vh;">
                     <div class="Regular shadow p-3 mb-2 bg-white text-dark rounded " style="height: 100vh;">
                         <h4>LOGIN</h4>
                         <br>
@@ -48,7 +49,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/login/loginstyle.css">';
                 </div>
             </div>
             <div class="row">
-                <div class="">
+                <div class="col">
                     <?php include_once(__DIR__ . "/../include/msg.php") ?>
                 </div>
             </div>

@@ -119,7 +119,7 @@ require_once(__DIR__ . "/../include/menu.php");
                 <div class="form-group">
                 <label for="txtHistorico">Histórico:</label>
                 <br>
-                <textarea id="txtHistorico" name="historico" rows="10" cols="30"></textarea>
+                <textarea class="form-control" id="txtHistorico" name="historico" rows="10" cols="30"></textarea>
                <?php echo (isset ($dados["aluno"]) ? $dados["aluno"]->getHistorico() : '');?>
                 </div>
 
