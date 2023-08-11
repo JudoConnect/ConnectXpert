@@ -11,7 +11,8 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/login/loginstyle.css">';
     </div>
 
     <div class="form-holder">
-        <h4>LOGIN</h4>
+    <img class="foto" style=" width: 200px; height: 50px; " 
+            src="<?= BASEURL . "/view/img/login.png" ?>" />
         <br>
         <!-- Formulário de login -->
         <form id="frmLogin" action="./LoginController.php?action=logon" method="POST">

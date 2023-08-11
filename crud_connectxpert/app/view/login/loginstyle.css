@@ -19,11 +19,6 @@ body {
     height: 40px;
     border-radius: 30px;
 }
-.col-6{
-    background-color: #ff7f32;
-    background-image: url('/crud_aij/ConnectXpert/view/img/alunologin.png');
-    background-size: cover;
-}
 .form-control{
   width: 360px;
   height: 40px;
