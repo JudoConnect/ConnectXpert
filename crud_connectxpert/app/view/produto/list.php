@@ -26,20 +26,18 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/produto/produtostyle.css
             <table id="tabProdutos" class='table table-striped'>
                 <thead>
                     <tr class="topicos">
-                        <th>ID</th>
+                        <th>Foto</th>
                         <th>Nome</th>
                         <th>Descrição</th>
-                        <th>Foto</th>
                         <th>Situação</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach($dados['lista'] as $prod): ?>
                         <tr class="listagem">
-                            <td><?php echo $prod->getIdProduto(); ?></td>
+                            <td><img src="<?= BASEURL_FOTOS . $prod->getFoto(); ?>" style="width: auto; height: 100px;" /></td>
                             <td><?= $prod->getNome(); ?></td>
                             <td><?= $prod->getDescricao(); ?></td>
-                            <td><img src="<?= BASEURL_FOTOS . $prod->getFoto(); ?>" style="width: auto; height: 100px;" /></td>
                             <td><?= $prod->getSituacao(); ?></td>
 
                             <td><a class="btn-alterar" 
