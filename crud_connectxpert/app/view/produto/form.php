@@ -4,11 +4,13 @@
 
 require_once(__DIR__ . "/../include/header.php");
 require_once(__DIR__ . "/../include/menu.php");
+echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css">';
 ?>
- 
-<h3 class="text-center">
+ <div class="container">
+    <div class="row">
+<h3 class="col-4">
     <?php if(!isset($dados['idProduto'])) echo "Inserir"; else echo "Alterar"; ?>  <span>Produto</span>
-</h3>
+</h3></div></div>
 
 <div class="container">
     

@@ -6,7 +6,7 @@ require_once(__DIR__ . "/../include/header.php");
 echo '<link rel="stylesheet" href="' . BASEURL . '/view/login/loginstyle.css">';
 ?>
 <div class="pseudo-body">
-    <div class="col-6"><img class="foto" style=" width: 500px; height: 500px; left: 736px; top: 108px;"
+    <div class="col-6"><img class="foto1" style=" width: 500px; height: 500px; left: 736px; top: 108px;"
         src="<?= BASEURL . "/view/img/alunologin.png" ?>" />
     </div>
 
@@ -16,12 +16,11 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/login/loginstyle.css">';
         <br>
         <!-- Formulário de login -->
         <form id="frmLogin" action="./LoginController.php?action=logon" method="POST">
-
             <input type="text" class="form-control" name="login" id="txtLogin" maxlength="15"
                 placeholder="Login"
                 value="<?php echo isset($dados['login']) ? $dados['login'] : '' ?>"
             />
-
+        
             <input type="password" class="form-control" name="senha" id="txtSenha" maxlength="15"
                 placeholder="Senha"
                 value="<?php echo isset($dados['senha']) ? $dados['senha'] : '' ?>"

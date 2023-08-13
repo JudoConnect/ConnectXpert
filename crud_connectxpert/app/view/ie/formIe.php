@@ -4,13 +4,16 @@
 
 require_once(__DIR__ . "/../include/header.php");
 require_once(__DIR__ . "/../include/menu.php");
+echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
 
 ?>
 
-<h3 class="text-center">
+<div class="container">
+    <div class="row">
+<h3 class="col-4">
     <?php if($dados['id_ie'] == 0) echo "Inserir"; else echo "Alterar"; ?> 
-    Instituição de Ensino
-</h3>
+    Instituição 
+</h3></div></div>
 
 <div class="container">
     

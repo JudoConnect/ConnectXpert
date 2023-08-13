@@ -6,18 +6,19 @@ body {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #212529;
+    color: rgba(255, 127, 50, 1);
     text-align: left;
     /* background-color:rgba(255, 127, 50, 1); */
 }
 
 .btn{
-    margin: 30px 0;
+    margin: 30px 135px;
     color: white;
     background-color: hsl(166, 100%, 34%);
     width: 360px;
     height: 40px;
     border-radius: 30px;
+    align-self: center;
 }
 .form-control{
   width: 360px;
@@ -25,8 +26,12 @@ body {
   left: 746px;
   top: 299px;
   border-radius: 30px;
-  background-color: rgba(253, 251, 235, 1);
+  background-color:  #fffde7;
   border: 1px solid rgba(255, 127, 50, 1);
+  color: #ff7f32;
+  background-clip: padding-box;
+    border: 1px solid #ff7f32;
+    border-radius: 0.2rgb(255, 127, 50,)
 }
 
 .pseudo-body{
@@ -46,9 +51,8 @@ body {
     position: absolute;
     right: 0;
     top: 0;
-    background-color: #FFF;
+    background-color:  #fffde7;
 }
-
 .form-holder h4{
     width: 100%;
     color: rgba(255, 127, 50, 1) #00ab84;
@@ -74,4 +78,7 @@ body {
 
 .form-holder .form-group{
     margin-bottom: 0;
+}
+img.foto{
+    margin: 0px 220px;
 }
