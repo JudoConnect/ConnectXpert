@@ -14,6 +14,7 @@ if(isset($_SESSION[SESSAO_USUARIO_NOME]))
 $acessoCont = new AcessoController();
 $isAdministrador = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR]);
 $isAluno = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ALUNO]);
+$isProf = $acessoCont->usuarioPossuiPapel([UsuarioPapel::PROFESSOR]);
 
 ?>
 <div class="col-xs-12" id="nav-container">
@@ -26,11 +27,6 @@ $isAluno = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ALUNO]);
   <a class="navbar-brand" href=""><img class="img-responsive" style="  width: 40px; height: 40px; " 
             src="<?= BASEURL . "/view/img/logocx.png" ?>" /></a>
             </div>
-
-
-
-
-
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
@@ -54,6 +50,11 @@ $isAluno = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ALUNO]);
 
                         <a class="nav-link" href="<?= BASEURL . '/controller/IeController.php?action=list' ?>"
                          style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;">Ie</a>
+                <?php endif; ?>
+
+                <?php if($isProf): ?>
+                    <a class="nav-link" href="<?= BASEURL . '/controller/TurmaController.php?action=listProfessor' ?>"
+                        style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;">Turma</a>
                 <?php endif; ?>
 
                 <a class="nav-link" href="<?= LOGOUT_PAGE ?>" 

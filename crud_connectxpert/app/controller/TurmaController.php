@@ -14,9 +14,9 @@ class TurmaController extends Controller {
 
     public function __construct() {
         if(! $this->usuarioLogado())
-        exit;
+            exit;
 
-        if(! $this->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR])) {
+        if(! $this->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR, UsuarioPapel::PROFESSOR])) {
             echo "Acesso negado";
             exit;
         }
@@ -27,9 +27,16 @@ class TurmaController extends Controller {
         $this->handleAction();
     }
         
-
+    protected function listProfessor() {
+        echo 'testando';
+    }
 
     protected function list(string $msgErro = "", string $msgSucesso = "") {
+        if(! $this->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR])) {
+            echo "Acesso negado";
+            exit;
+        }
+        
         $turmas = $this->turmaDao->list();
         $dados["lista"] = $turmas;
 

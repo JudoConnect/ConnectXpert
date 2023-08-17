@@ -1,3 +1,4 @@
 <?php
-//Redirecionar para a página inicial do sistema
-header("location: ./app/controller/HomeController.php?action=home");
+
+require (__DIR__ . "/app/util/config.php");
+header("location: ".BASEURL."/controller/HomeVisitanteController.php?action=home");
