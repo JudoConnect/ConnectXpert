@@ -41,6 +41,7 @@ class TurmaProfessorController extends Controller {
             echo "Turma não encontrada.";
     }
 
+
     private function findTurmaById() {
         $id = 0;
         if(isset($_GET['id']))
