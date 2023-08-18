@@ -1,7 +1,7 @@
 body {
-    width: 100vw;
+    /* width: 100vw;
     margin: 0;
-    padding: 0;
+    padding: 0; */
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
     font-size: 1rem;
     font-weight: 400;
@@ -9,16 +9,25 @@ body {
     color: rgba(255, 127, 50, 1);
     text-align: left;
     /* background-color:rgba(255, 127, 50, 1); */
+    background-color: #ff7f32;
+
 }
 
 .btn{
-    margin: 30px 135px;
+    display: block;
+    margin: 30px auto;
     color: white;
     background-color: hsl(166, 100%, 34%);
     width: 360px;
     height: 40px;
     border-radius: 30px;
     align-self: center;
+}
+
+.form-column{
+    background-color: #fffde7;
+    height: 100vh;
+
 }
 .form-control{
   width: 360px;
@@ -34,38 +43,29 @@ body {
     border-radius: 0.2rgb(255, 127, 50,)
 }
 
-.pseudo-body{
+/* .pseudo-body{
     width: 100vw;
     height: 100vh !important;
     margin: 0;
     padding: 0;
     background-color: #ff7f32;
     position: relative;
-}
+} */
 
 .form-holder{
-    width: 800px;
+    /* width: 800px;
     height: 100vh;
     margin: 0;
     padding: 5vh 5vw;
     position: absolute;
     right: 0;
     top: 0;
-    background-color:  #fffde7;
+   */
+
+   background-color:  #fffde7; 
+    
 }
-.form-holder h4{
-    width: 100%;
-    color: rgba(255, 127, 50, 1) #00ab84;
-    font-family: 'sourcesanspro';
-    font-style: normal;
-    font-size: 48px;
-    font-weight: bold;
-    line-height: 1.2;
-    letter-spacing: 0px;
-    text-decoration: none;
-    text-transform: none;
-    text-align: center;
-}
+
 
 .form-holder form{
     margin-top: 40px;
@@ -79,6 +79,16 @@ body {
 .form-holder .form-group{
     margin-bottom: 0;
 }
-img.foto{
-    margin: 0px 220px;
+.login-img{
+    display: block;
+    margin: 0px auto;
+    width: 40%;
+
+}
+
+.destaque-img{
+    display: block;
+    margin: 0px auto;
+    width: 60%;
+
 }
