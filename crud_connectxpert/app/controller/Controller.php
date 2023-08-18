@@ -6,6 +6,7 @@ ini_set('display_startup_erros',1);
 error_reporting(E_ALL);
   
 require_once(__DIR__ . "/../util/config.php");
+require_once(__DIR__ . "/../model/enum/UsuarioPapel.php");
 
 class Controller {
 

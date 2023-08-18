@@ -2,6 +2,7 @@
 #Classe controller para Aluno
 require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../dao/TurmaDAO.php");
+require_once(__DIR__ . "/../dao/ProfessorDAO.php");
 require_once(__DIR__ . "/../service/TurmaService.php");
 require_once(__DIR__ . "/../model/Turma.php");
 require_once(__DIR__ . "/../model/enum/UsuarioPapel.php");
@@ -10,6 +11,7 @@ require_once(__DIR__ . "/../model/enum/UsuarioPapel.php");
 class TurmaController extends Controller {
 
     private TurmaDAO $turmaDao;
+    private ProfessorDAO $professorDao;
     private TurmaService $turmaService;
 
     public function __construct() {
@@ -23,6 +25,7 @@ class TurmaController extends Controller {
 
         $this->turmaDao = new TurmaDAO();
         $this->turmaService = new TurmaService();
+        $this->professorDao = new ProfessorDAO();
 
         $this->handleAction();
     }
@@ -45,6 +48,7 @@ class TurmaController extends Controller {
 
     protected function create() {
         $dados["id_turma"] = 0;
+        $dados['listaProfessores'] = $this->professorDao->list();
 
         $this->loadView("turma/formTurma.php", $dados);
     }

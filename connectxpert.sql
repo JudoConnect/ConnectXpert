@@ -267,3 +267,16 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+/* Tabela turma_professor */
+CREATE TABLE turma_professor (
+  id_turma_professor INT NOT NULL AUTO_INCREMENT,
+  id_turma INT NOT NULL,
+  id_professor INT NOT NULL,
+  CONSTRAINT pk_turma_professor PRIMARY KEY (id_turma_professor)
+);
+ALTER TABLE turma_professor ADD CONSTRAINT fk_turma_professor_turma FOREIGN KEY (id_turma) REFERENCES turma (id_turma);
+ALTER TABLE turma_professor ADD CONSTRAINT fk_turma_professor_professor FOREIGN KEY (id_professor) REFERENCES professor (id_professor);
+
+ALTER TABLE turma_professor ADD CONSTRAINT uk_turma_professor UNIQUE (id_turma, id_professor);

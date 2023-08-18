@@ -47,7 +47,18 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
                         maxlength="60" placeholder="Informe o dia da semana"
                         value="<?php echo (isset($dados["turma"]) ? $dados["turma"]->getDiaSemana() : ''); ?>"/>
                         <fieldset>
+                </div>
 
+                <div class="form-group">
+                    <label for="somProfessor">Professores:</label>
+                    <select class="form-control" id="somProfessor" name="idProfessor">
+                        <option value="">----Selecione----</option>
+                        <?php foreach($dados['listaProfessores'] as $prof): ?>
+                            <option value="<?= $prof->getIdProfessor() ?>" ><?= $prof->getNomeProfessor() ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                   
+                </div>
 
                 <input type="hidden" id="hddId" name="id_turma" 
                     value="<?= $dados['id_turma']; ?>" /><br>
