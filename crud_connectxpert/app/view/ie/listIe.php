@@ -26,7 +26,6 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
             <table id="tabIe" class='table table-striped'>
                 <thead>
                     <tr class="topicos">
-                        <th>Id</th>
                         <th>Nome</th>
                         <th>Alterar</th>
                         <th>Excluir</th>
@@ -35,7 +34,6 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
                 <tbody>
                     <?php foreach($dados['lista'] as $ie): ?>
                         <tr class="listagem">
-                            <td><?php echo $ie->getIdIe(); ?></td>
                             <td><?= $ie->getNomeIe(); ?></td>
 
                             <td><a class="btn-alterar" 

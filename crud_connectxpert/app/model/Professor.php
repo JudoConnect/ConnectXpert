@@ -3,6 +3,7 @@
 #Objetivo: classe Model para Professor
 
 require_once(__DIR__ . "/enum/Tipo.php");
+require_once(__DIR__ . "/enum/Sexo.php");
 
 class Professor {
 
@@ -121,20 +122,20 @@ class Professor {
     
     public function getSexoProfessorAsArray() {
         if($this->sexoProfessor) 
-            return explode(ProfessorSexo::$SEPARADOR, $this->sexoProfessor);
+            return explode(Sexo::$SEPARADOR, $this->sexoProfessor);
         
         return array();    
     }
 
     public function setSexoProfessorAsArray($array) {
         if($array)
-            $this->sexoProfessor = implode(ProfessorSexo::$SEPARADOR, $array);
+            $this->sexoProfessor = implode(Sexo::$SEPARADOR, $array);
         else
             $this->sexoProfessor = NULL;
     }
 
     public function getSexoProfessorStr() {
-        return str_replace(ProfessorSexo::$SEPARADOR, ", ", $this->sexoProfessor);
+        return str_replace(Sexo::$SEPARADOR, ", ", $this->sexoProfessor);
     }
 
     /**
