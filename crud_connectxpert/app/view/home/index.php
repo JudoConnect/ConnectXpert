@@ -9,7 +9,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/home/indexstyle.css">';
 
 <div class="container">
     <div class="row">
-        <div class="col-6"> 
+        <div class="col-xs-12 col-md-6"> 
             <img class="foto" style=" width: 500px; height: 500px; left: 736px; top: 108px;" 
             src="<?= BASEURL . "/view/img/corpointeiro.lindas.semfundo.png" ?>" />
         </div>

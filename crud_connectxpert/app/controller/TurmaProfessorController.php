@@ -41,6 +41,7 @@ class TurmaProfessorController extends Controller {
             echo "Turma não encontrada.";
     }
 
+
     public function add() {
         $turma = $this->findTurmaById();
         if($turma) {
