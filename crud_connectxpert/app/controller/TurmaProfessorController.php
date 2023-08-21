@@ -41,6 +41,20 @@ class TurmaProfessorController extends Controller {
             echo "Turma não encontrada.";
     }
 
+    public function add() {
+        $turma = $this->findTurmaById();
+        if($turma) {
+            $dados["id_turma"] = $turma->getIdTurma();
+            $dados["turma"] = $turma;
+
+            $dados['listaProfessores'] = $this->professorDao->list();
+
+            $this->loadView("turma_professor/turmaProfessor.php", $dados);
+        } else
+            echo "Turma não encontrada.";
+
+    }
+
     private function findTurmaById() {
         $id = 0;
         if(isset($_GET['id']))
