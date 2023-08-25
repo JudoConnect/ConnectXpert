@@ -21,6 +21,9 @@ class TurmaService {
         if(! $turma->getDiaSemana()) 
         array_push($erros, "O campo Dia da Semana é obrigatório.");
 
+       
+        
+
         return $erros;
     }
 

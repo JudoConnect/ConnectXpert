@@ -40,34 +40,22 @@ class ProfessorDAO {
             " - Erro: mais de um professor encontrado.");
     }
 
-        //Método para buscar um professor por seu ID
-        public function findByTurma(int $id) {
-            $conn = Connection::getConn();
+    //Método para buscar os professores da turma;
+    public function listByTurma(int $idTurma) {
+        $conn = Connection::getConn();
 
-            /*SELECT * FROM `turma`
-            JOIN `turma_professor`
-            ON turma.id_turma = turma_professor.id_turma
-            JOIN `professor`
-            ON professor.id_professor = turma_professor.id_professor
+        $sql = "SELECT p.* 
+                FROM turma_professor tp
+                JOIN professor p ON (p.id_professor = tp.id_professor)
+                WHERE tp.id_turma = ?";
+        $stm = $conn->prepare($sql);    
+        $stm->execute([$idTurma]);
+        $result = $stm->fetchAll();           
 
-            WHERE turma.id_turma = ?*/
-    
-            $sql = "SELECT * FROM professor p" .
-                   " WHERE p.id_professor = ?";
-            $stm = $conn->prepare($sql);    
-            $stm->execute([$id]);
-            $result = $stm->fetchAll();
-    
-            $professores = $this->mapProfessores($result);
-    
-            if(count($professores) == 1)
-                return $professores[0];
-            elseif(count($professores) == 0)
-                return null;
-    
-            die("ProfessorDAO.findById()" . 
-                " - Erro: mais de um professor encontrado.");
-        }
+        $professores = $this->mapProfessores($result);
+
+        return $professores;
+    }
 
 
     //Método para buscar um professor por seu login e senha
