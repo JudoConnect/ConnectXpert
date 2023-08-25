@@ -36,6 +36,9 @@ class TurmaProfessorController extends Controller {
 
             $dados['listaProfessores'] = $this->professorDao->list();
 
+            $dados['listaProfessoresturma'] = $this->professorDao->findByTurma($turma->getIdTurma());
+
+
             $this->loadView("turma_professor/turmaProfessor.php", $dados);
         } else
             echo "Turma não encontrada.";
