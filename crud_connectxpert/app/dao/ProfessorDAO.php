@@ -44,7 +44,7 @@ class ProfessorDAO {
     public function listByTurma(int $idTurma) {
         $conn = Connection::getConn();
 
-        $sql = "SELECT p.* 
+        $sql = "SELECT p.*, tp.id_turma_professor 
                 FROM turma_professor tp
                 JOIN professor p ON (p.id_professor = tp.id_professor)
                 WHERE tp.id_turma = ?";
@@ -157,6 +157,9 @@ class ProfessorDAO {
             $professor->setSenhaProfessor($reg['senha_professor']);
             $professor->setTipo($reg['tipo']);
             $professor->setFotoProfessor($reg['foto']);
+
+            if(isset($reg['id_turma_professor']))
+                $professor->setIdTurmaProfessor($reg['id_turma_professor']);
 
             array_push($professores, $professor);
         }

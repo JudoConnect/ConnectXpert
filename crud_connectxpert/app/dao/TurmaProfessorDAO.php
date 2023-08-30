@@ -25,11 +25,30 @@ class TurmaProfessorDAO {
     public function deleteById(int $id) {
         $conn = Connection::getConn();
 
-        $sql = "DELETE FROM turma WHERE id_turma = :id_turma";
+        $sql = "DELETE FROM turma_professor WHERE id_turma_professor = :id_turma_professor";
         
         $stm = $conn->prepare($sql);
-        $stm->bindValue("id_turma", $id);
+        $stm->bindValue("id_turma_professor", $id);
         $stm->execute();
     }
+
+    public function findProfessorTurma(int $idTurma, int $idProfessor) {
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM turma_professor WHERE id_turma = :id_turma AND id_professor = :id_prof";
+        
+        $stm = $conn->prepare($sql);
+        $stm->bindValue("id_turma", $idTurma);
+        $stm->bindValue("id_prof", $idProfessor);
+        $stm->execute();
+        $result = $stm->fetchAll();
+
+        if(count($result) > 0)
+            return true;
+
+        return false;
+    }
+
+
 
 }

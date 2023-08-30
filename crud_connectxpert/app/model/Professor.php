@@ -20,6 +20,9 @@ class Professor {
     private $tipo;
     private $fotoProfessor;
 
+    //Campo para armazenar o ID do professor em uma turma
+    private $idTurmaProfessor;
+
     /**
      * Get the value of idProfessor
      */
@@ -284,6 +287,26 @@ class Professor {
     public function setFotoProfessor($fotoProfessor)
     {
         $this->fotoProfessor = $fotoProfessor;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of idTurmaProfessor
+     */ 
+    public function getIdTurmaProfessor()
+    {
+        return $this->idTurmaProfessor;
+    }
+
+    /**
+     * Set the value of idTurmaProfessor
+     *
+     * @return  self
+     */ 
+    public function setIdTurmaProfessor($idTurmaProfessor)
+    {
+        $this->idTurmaProfessor = $idTurmaProfessor;
 
         return $this;
     }
