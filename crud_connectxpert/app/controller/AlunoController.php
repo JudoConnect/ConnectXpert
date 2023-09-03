@@ -4,11 +4,11 @@ require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../dao/AlunoDAO.php");
 require_once(__DIR__ . "/../dao/IeDAO.php");
 require_once(__DIR__ . "/../service/AlunoService.php");
+require_once(__DIR__ . "/../service/ImagemService.php");
 require_once(__DIR__ . "/../model/Aluno.php");
 require_once(__DIR__ . "/../model/enum/Sexo.php");
 require_once(__DIR__ . "/../model/enum/UsuarioPapel.php");
 require_once(__DIR__ . "/../model/enum/Situacao.php");
-require_once(__DIR__ . "/../service/ImagemService.php");
 
 
 class AlunoController extends Controller {

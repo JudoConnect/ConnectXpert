@@ -280,3 +280,16 @@ ALTER TABLE turma_professor ADD CONSTRAINT fk_turma_professor_turma FOREIGN KEY 
 ALTER TABLE turma_professor ADD CONSTRAINT fk_turma_professor_professor FOREIGN KEY (id_professor) REFERENCES professor (id_professor);
 
 ALTER TABLE turma_professor ADD CONSTRAINT uk_turma_professor UNIQUE (id_turma, id_professor);
+
+/* Tabela turma_aluno */
+CREATE TABLE turma_aluno (
+  id_turma_aluno INT NOT NULL AUTO_INCREMENT,
+  id_turma INT NOT NULL,
+  id_aluno INT NOT NULL,
+  CONSTRAINT pk_turma_aluno PRIMARY KEY (id_turma_aluno)
+);
+
+ALTER TABLE turma_aluno ADD CONSTRAINT fk_turma_aluno_turma FOREIGN KEY (id_turma) REFERENCES turma (id_turma);
+ALTER TABLE turma_aluno ADD CONSTRAINT fk_turma_aluno_aluno FOREIGN KEY (id_aluno) REFERENCES aluno (id_aluno);
+
+ALTER TABLE turma_aluno ADD CONSTRAINT uk_turma_aluno UNIQUE (id_turma, id_aluno);

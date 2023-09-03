@@ -40,6 +40,24 @@ class AlunoDAO {
             " - Erro: mais de um aluno encontrado.");
     }
 
+      //Método para buscar os alunos da turma;
+      public function listByTurma(int $idTurma) {
+        $conn = Connection::getConn();
+
+        $sql = "SELECT a.*, ta.id_turma_aluno
+                FROM turma_aluno ta
+                JOIN aluno a ON (a.id_aluno = ta.id_aluno)
+                WHERE ta.id_turma = ?";
+        $stm = $conn->prepare($sql);    
+        $stm->execute([$idTurma]);
+        $result = $stm->fetchAll();           
+
+        $alunos = $this->mapAlunos($result);
+
+        return $alunos;
+    }
+
+
 
     //Método para buscar um aluno por seu login e senha
     public function findByLoginSenha(string $login_aluno, string $senha_aluno) {
@@ -167,6 +185,9 @@ class AlunoDAO {
             $aluno->setSituacao($reg['situacao']);
             $aluno->setFoto($reg['foto']);
             $aluno->setIdIe($reg['id_ie']);
+
+            if(isset($reg['id_turma_aluno']))
+            $aluno->setIdTurmaAluno($reg['id_turma_aluno']);
 
             array_push($alunos, $aluno);
         }

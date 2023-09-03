@@ -57,6 +57,15 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
                             <option value="<?= $prof->getIdProfessor() ?>" ><?= $prof->getNomeProfessor() ?></option>
                         <?php endforeach; ?>
                     </select>
+
+                    <div class="form-group">
+                    <label for="somAluno">Alunos:</label>
+                    <select class="form-control" id="somAluno" name="idAluno">
+                        <option value="">----Selecione----</option>
+                        <?php foreach($dados['listaAlunos'] as $aln): ?>
+                            <option value="<?= $aln->getIdAluno() ?>" ><?= $aln->getNomeAluno() ?></option>
+                        <?php endforeach; ?>
+                    </select>
                    
                 </div>
 

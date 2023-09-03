@@ -1,18 +1,18 @@
 <?php
-#Classe controller para Professor
+#Classe controller para TurmaAluno
 require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../dao/TurmaDAO.php");
-require_once(__DIR__ . "/../dao/TurmaProfessorDAO.php");
-require_once(__DIR__ . "/../dao/ProfessorDAO.php");
-require_once(__DIR__ . "/../service/TurmaProfessorService.php");
+require_once(__DIR__ . "/../dao/TurmaAlunoDAO.php");
+require_once(__DIR__ . "/../dao/AlunoDAO.php");
+require_once(__DIR__ . "/../service/TurmaAlunoService.php");
 require_once(__DIR__ . "/../model/Turma.php");
 
-class TurmaProfessorController extends Controller {
+class TurmaAlunoController extends Controller {
 
     private TurmaDAO $turmaDao;
-    private ProfessorDAO $professorDao;
-    private TurmaProfessorService $turmaProfService;
-    private TurmaProfessorDAO $turmaProfDao;
+    private AlunoDAO $alunoDao;
+    private TurmaAlunoService $turmaAlunoService;
+    private TurmaAlunoDAO $turmaAlunoDao;
     
 
     public function __construct() {
@@ -25,9 +25,9 @@ class TurmaProfessorController extends Controller {
         }
 
         $this->turmaDao = new TurmaDAO();
-        $this->turmaProfService = new TurmaProfessorService();
-        $this->professorDao = new ProfessorDAO();
-        $this->turmaProfDao = new TurmaProfessorDAO();
+        $this->turmaAlunoService = new TurmaAlunoService();
+        $this->alunoDao = new AlunoDAO();
+        $this->turmaAlunoDao = new TurmaAlunoDAO();
        
 
         $this->handleAction();
@@ -39,9 +39,9 @@ class TurmaProfessorController extends Controller {
             $dados["id_turma"] = $turma->getIdTurma();
             $dados["turma"] = $turma;
 
-            $dados['listaProfessores'] = $this->professorDao->list();
+            $dados['listaAlunos'] = $this->alunoDao->list();
 
-            $dados['listaProfessoresturma'] = $this->professorDao->listByTurma($turma->getIdTurma());
+            $dados['listaAlunosturma'] = $this->alunoDao->listByTurma($turma->getIdTurma());
 
             //Recupera as mensages que vieram por meio de parâmetro GET
             $msgErro = '';
@@ -51,26 +51,26 @@ class TurmaProfessorController extends Controller {
             if(isset($_GET['msgSucesso']))
                 $msgSucesso = $_GET['msgSucesso'];
            
-            $this->loadView("turma_professor/turmaProfessor.php", $dados, $msgErro, $msgSucesso);
+            $this->loadView("turma_aluno/turmaAluno.php", $dados, $msgErro, $msgSucesso);
         } else
             echo "Turma não encontrada.";
     }
 
     public function add(){
-        $idProf = isset($_POST['idProfessor']) && is_numeric($_POST['idProfessor']) ? $_POST['idProfessor'] : 0;
+        $idAluno = isset($_POST['idAluno']) && is_numeric($_POST['idAluno']) ? $_POST['idAluno'] : 0;
         $idTurma = isset($_POST['idTurma']) ? $_POST['idTurma'] : 0;
 
-        //Validar se o professor foi selecionado
-        $erros = $this->turmaProfService->validarDados($idProf);    
+        //Validar se o aluno foi selecionado
+        $erros = $this->turmaAlunoService->validarDados($idAluno);    
 
-        if(!$erros && $this->turmaProfService->professorExisteTurma($idTurma, $idProf))
-            array_push($erros, 'Este professor já foi adicionado na turma.');
+        if(!$erros && $this->turmaAlunoService->alunoExisteTurma($idTurma, $idAluno))
+            array_push($erros, 'Este aluno já foi adicionado na turma.');
         
         $msgErro = '';
         $msgSucesso = '';
         if(!$erros) {
-            $this->turmaProfDao->insert($idTurma, $idProf);
-            $msgSucesso = 'Professor inserido na turma com sucesso.';
+            $this->turmaAlunoDao->insert($idTurma, $idAluno);
+            $msgSucesso = 'Aluno inserido na turma com sucesso.';
         } else {
             $msgErro = implode('<br>', $erros);    
         }
@@ -81,23 +81,23 @@ class TurmaProfessorController extends Controller {
         else if($msgSucesso)
             $parMsg = '&msgSucesso=' . $msgSucesso;
 
-        header("location: TurmaProfessorController.php?action=list&id=" . $idTurma . $parMsg);
+        header("location: TurmaAlunoController.php?action=list&id=" . $idTurma . $parMsg);
     }
 
     public function delete(){
-        $idTurmaProf = 0;
-        if(isset($_GET['idTurmaProf']))
-            $idTurmaProf = $_GET['idTurmaProf'];
+        $idTurmaAluno = 0;
+        if(isset($_GET['idTurmaAluno']))
+            $idTurmaAluno = $_GET['idTurmaAluno'];
 
         $idTurma = 0;
         if(isset($_GET['idTurma']))
             $idTurma = $_GET['idTurma'];
 
-        if($idTurmaProf && $idTurma) {    
-            $this->turmaProfDao->deleteById($idTurmaProf);
+        if($idTurmaAluno && $idTurma) {    
+            $this->turmaAlunoDao->deleteById($idTurmaAluno);
 
-            $parMsg = '&msgSucesso=' . "Professor excluido com sucesso.";
-            header("location: TurmaProfessorController.php?action=list&id=" . $idTurma . $parMsg);
+            $parMsg = '&msgSucesso=' . "Aluno excluido com sucesso.";
+            header("location: TurmaAlunoController.php?action=list&id=" . $idTurma . $parMsg);
         } else
             echo "IDs não encontrados!";
     }
@@ -115,4 +115,4 @@ class TurmaProfessorController extends Controller {
 
 }
 
-new TurmaProfessorController();
+new TurmaAlunoController();

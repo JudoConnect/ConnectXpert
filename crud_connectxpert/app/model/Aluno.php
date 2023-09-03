@@ -29,6 +29,10 @@ class Aluno {
     private $situacao;
     private $foto;
 
+    //Campo para armazenar o ID do aluno em uma turma
+    private $idTurmaAluno;
+
+
 
     /**
      * Get the value of idAluno
@@ -477,6 +481,26 @@ class Aluno {
     public function setFoto($foto)
     {
         $this->foto = $foto;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of idTurmaAluno
+     */ 
+    public function getIdTurmaAluno()
+    {
+        return $this->idTurmaAluno;
+    }
+
+    /**
+     * Set the value of idTurmaAluno
+     *
+     * @return  self
+     */ 
+    public function setIdTurmaAluno($idTurmaAluno)
+    {
+        $this->idTurmaAluno = $idTurmaAluno;
 
         return $this;
     }
