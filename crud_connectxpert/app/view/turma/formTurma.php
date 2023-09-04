@@ -49,26 +49,6 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
                         <fieldset>
                 </div>
 
-                <div class="form-group">
-                    <label for="somProfessor">Professores:</label>
-                    <select class="form-control" id="somProfessor" name="idProfessor">
-                        <option value="">----Selecione----</option>
-                        <?php foreach($dados['listaProfessores'] as $prof): ?>
-                            <option value="<?= $prof->getIdProfessor() ?>" ><?= $prof->getNomeProfessor() ?></option>
-                        <?php endforeach; ?>
-                    </select>
-
-                    <div class="form-group">
-                    <label for="somAluno">Alunos:</label>
-                    <select class="form-control" id="somAluno" name="idAluno">
-                        <option value="">----Selecione----</option>
-                        <?php foreach($dados['listaAlunos'] as $aln): ?>
-                            <option value="<?= $aln->getIdAluno() ?>" ><?= $aln->getNomeAluno() ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                   
-                </div>
-
                 <input type="hidden" id="hddId" name="id_turma" 
                     value="<?= $dados['id_turma']; ?>" /><br>
 

@@ -293,3 +293,12 @@ ALTER TABLE turma_aluno ADD CONSTRAINT fk_turma_aluno_turma FOREIGN KEY (id_turm
 ALTER TABLE turma_aluno ADD CONSTRAINT fk_turma_aluno_aluno FOREIGN KEY (id_aluno) REFERENCES aluno (id_aluno);
 
 ALTER TABLE turma_aluno ADD CONSTRAINT uk_turma_aluno UNIQUE (id_turma, id_aluno);
+
+CREATE TABLE `encontro` (
+  `id_encontro` int(11) NOT NULL,
+  `nome_encontro` varchar(100) NOT NULL,
+  `dia_encontro` date NOT NULL,
+    ADD PRIMARY KEY (`id_encontro`);
+
+) 
+ALTER TABLE `turma` ADD CONSTRAINT `fk_turma` FOREIGN KEY (`id_encontro`) REFERENCES `encontro`(`id_encontro`) ON DELETE RESTRICT ON UPDATE RESTRICT;
