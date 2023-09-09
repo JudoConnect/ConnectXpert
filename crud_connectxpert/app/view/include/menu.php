@@ -48,6 +48,9 @@ $isProf = $acessoCont->usuarioPossuiPapel([UsuarioPapel::PROFESSOR]);
                         <a class="nav-link" href="<?= BASEURL . '/controller/TurmaController.php?action=list' ?>"
                         style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;">Turma</a>
 
+                        <a class="nav-link" href="<?= BASEURL . '/controller/EncontroController.php?action=list' ?>"
+                         style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;">Encontro</a>
+
                         <a class="nav-link" href="<?= BASEURL . '/controller/IeController.php?action=list' ?>"
                          style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;">Ie</a>
                 <?php endif; ?>

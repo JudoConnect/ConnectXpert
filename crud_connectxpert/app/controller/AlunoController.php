@@ -60,8 +60,6 @@ class AlunoController extends Controller {
             $dados["sexo"] = Sexo::getAllAsArray();
             $dados['listaIes'] = $this->iesDao->list();
             $dados["estadosProduto"] = Situacao::getAllAsArray();
-            
-            //$aluno->setSenhaAluno("");
             $dados["aluno"] = $aluno;
             $dados["confSenhaAluno"] = $aluno->getSenhaAluno();
 
