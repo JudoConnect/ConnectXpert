@@ -19,6 +19,21 @@ class TurmaDAO {
         return $this->mapTurmas($result);
     }
 
+    //Método para listar as turmas a partir da base de dados
+    public function listByProfessor(int $idProfessor) {
+        $conn = Connection::getConn();
+
+        $sql = "SELECT t.* FROM turma_professor tp" . 
+                " JOIN turma t ON (t.id_turma = tp.id_turma)" . 
+                " WHERE tp.id_professor = ?" .
+                " ORDER BY t.nome_turma";
+        $stm = $conn->prepare($sql);    
+        $stm->execute([$idProfessor]);
+        $result = $stm->fetchAll();
+        
+        return $this->mapTurmas($result);
+    }
+
     //Método para buscar uma turma por seu ID
     public function findById(int $id) {
         $conn = Connection::getConn();

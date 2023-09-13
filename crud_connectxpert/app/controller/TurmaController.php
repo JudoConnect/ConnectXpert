@@ -35,7 +35,17 @@ class TurmaController extends Controller {
     }
         
     protected function listProfessor() {
-        echo 'testando';
+        if(! $this->usuarioPossuiPapel([UsuarioPapel::PROFESSOR])) {
+            echo "Acesso negado";
+            exit;
+        }
+
+        $idProfessor = $_SESSION[SESSAO_USUARIO_ID];
+        
+        $turmas = $this->turmaDao->listByProfessor($idProfessor);
+        $dados["lista"] = $turmas;
+
+        $this->loadView("turma/listTurmaProfessor.php", $dados);
     }
 
     protected function listaAlunos() {

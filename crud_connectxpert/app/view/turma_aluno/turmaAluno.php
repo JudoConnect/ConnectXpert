@@ -5,6 +5,7 @@
 require_once(__DIR__ . "/../include/header.php");
 require_once(__DIR__ . "/../include/menu.php");
 echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css">';
+echo '<link rel="stylesheet" href="' . BASEURL . '/view/utils/busca_select/buscaSelect.css">';
 ?>
 
 <div class="container">
@@ -36,7 +37,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
  
                 <div class="form-group">
                     <label for="somAluno">Alunos:</label>
-                    <select class="form-control" id="somAluno" name="idAluno">
+                    <select class="form-control select-busca" id="somAluno" name="idAluno">
                         <option value="">----Selecione----</option>
                         <?php foreach($dados['listaAlunos'] as $aln): ?>
                             <option value="<?= $aln->getIdAluno() ?>" ><?= $aln->getNomeAluno() ?></option>
@@ -47,7 +48,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
 
                 <input type="hidden" name="idTurma" value="<?= $dados["turma"]->getIdTurma() ?>" />
 
-                <button type="submit" class="btn btn-success">Adicionar</button>
+                <button type="submit" class="btn btn-success mt-3">Adicionar</button>
             </form>            
         </div>
 
@@ -100,6 +101,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
         </div>
     </div>
 </div>
+
 
 <?php  
 require_once(__DIR__ . "/../include/footer.php");
