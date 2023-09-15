@@ -44,12 +44,15 @@ class EncontroDAO {
     public function insert(Encontro $encontro) {
         $conn = Connection::getConn();
 
-        $sql = "INSERT INTO encontro (nome_encontro, dia_encontro)" .
-               " VALUES (:nome_encontro, :dia_encontro)";
+        $sql = "INSERT INTO encontro (id_encontro,id_turma, nome_encontro, dia_encontro, qtd_periodos)" .
+               " VALUES (:id_encontro, :id_turma, :nome_encontro, :dia_encontro, :qtd_periodos)";
         
         $stm = $conn->prepare($sql);
+        $stm->bindValue("id_encontro", $encontro->getIdEncontro());
+        $stm->bindValue("id_turma", $encontro->getIdTurma());
         $stm->bindValue("nome_encontro", $encontro->getNomeEncontro());
         $stm->bindValue("dia_encontro", $encontro->getDiaEncontro());
+        $stm->bindValue("qtd_periodos", $encontro->getQtdPeriodos());
         $stm->execute();
     }
 
@@ -57,13 +60,15 @@ class EncontroDAO {
     public function update(Encontro $encontro) {
         $conn = Connection::getConn();
 
-        $sql = "UPDATE encontro SET nome_encontro = :nome_encontro, dia_encontro = :dia_encontro" .  
+        $sql = "UPDATE encontro SET id_encontro = :id_encontro, nome_encontro = :nome_encontro, dia_encontro = :dia_encontro, qtd_periodos = :qtd_periodos" .  
                " WHERE id_encontro = :id_encontro";
         
         $stm = $conn->prepare($sql);
         $stm->bindValue("id_encontro", $encontro->getIdEncontro());
+        $stm->bindValue("id_turma", $encontro->getIdTurma());
         $stm->bindValue("nome_encontro", $encontro->getNomeEncontro());
         $stm->bindValue("dia_encontro", $encontro->getDiaEncontro());
+        $stm->bindValue("qtd_periodos", $encontro->getQtdPeriodos());
         $stm->execute();
     }
     

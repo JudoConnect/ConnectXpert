@@ -8,6 +8,8 @@ class Encontro {
     private $idEncontro;
     private $nomeEncontro;
     private $diaEncontro;
+    private $idTurma;
+    private $qtdPeriodos;
 
 
     /**
@@ -66,6 +68,46 @@ class Encontro {
     public function setDiaEncontro($diaEncontro)
     {
         $this->diaEncontro = $diaEncontro;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of idTurma
+     */ 
+    public function getIdTurma()
+    {
+        return $this->idTurma;
+    }
+
+    /**
+     * Set the value of idTurma
+     *
+     * @return  self
+     */ 
+    public function setIdTurma($idTurma)
+    {
+        $this->idTurma = $idTurma;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of qtdPeriodos
+     */ 
+    public function getQtdPeriodos()
+    {
+        return $this->qtdPeriodos;
+    }
+
+    /**
+     * Set the value of qtdPeriodos
+     *
+     * @return  self
+     */ 
+    public function setQtdPeriodos($qtdPeriodos)
+    {
+        $this->qtdPeriodos = $qtdPeriodos;
 
         return $this;
     }

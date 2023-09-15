@@ -6,6 +6,7 @@ require_once(__DIR__ . "/../service/EncontroService.php");
 require_once(__DIR__ . "/../model/Encontro.php");
 require_once(__DIR__ . "/../model/enum/UsuarioPapel.php");
 
+
 class EncontroController extends Controller {
 
     private EncontroDAO $encontroDao;
@@ -15,7 +16,7 @@ class EncontroController extends Controller {
         if(! $this->usuarioLogado())
             exit;
 
-        if(! $this->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR])) {
+        if(! $this->usuarioPossuiPapel([UsuarioPapel::PROFESSOR])) {
             echo "Acesso negado";
             exit;
         }
@@ -60,12 +61,16 @@ class EncontroController extends Controller {
         $dados["id_encontro"] = isset($_POST['id_encontro']) ? $_POST['id_encontro'] : 0;
         $nomeEncontro = isset($_POST['nomeEncontro']) ? trim($_POST['nomeEncontro']) : NULL;
         $diaEncontro = isset($_POST['diaEncontro']) ? trim($_POST['diaEncontro']) : NULL;
+        $qtdPeriodos = isset($_POST['qtdPeriodos']) ? trim($_POST['qtdPeriodos']) : NULL;
+        $idTurma = isset($_POST['id_turma']) ? trim($_POST['id_turma']) : NULL;
  
         //Cria objeto Encontro
         $encontro = new Encontro();
         $encontro->setNomeEncontro($nomeEncontro);
         $encontro->setDiaEncontro($diaEncontro);
-        
+        $encontro->setQtdPeriodos($qtdPeriodos);  
+        $encontro->setIdTurma($idTurma);
+
         //Validar os dados
         $erros = $this->encontroService->validarDados($encontro);
         if(empty($erros)) {

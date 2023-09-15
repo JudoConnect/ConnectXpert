@@ -53,7 +53,6 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
   <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
 </svg> Alunos</a>
 
-
                             <td><a class="btn-alterar" 
                                 href="<?= BASEURL ?>/controller/TurmaController.php?action=edit&id=<?= $tur->getIdTurma() ?>">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16" style="color: rgba(10, 174, 148, 1);">
