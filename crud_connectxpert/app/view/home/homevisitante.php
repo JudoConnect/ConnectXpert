@@ -21,9 +21,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/home/indexstyle.css">';
       <li class="nav-item active">
                 <div class="navbar-nav">
                 <a class="nav-item nav-link" href="<?= HOME_PAGE ?>" 
-                style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;">Home</a>
-                <a class="nav-link" href="<?= LOGOUT_PAGE ?>" 
-                style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;">Sair</a>
+                style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;">Login</a>
 
                 </div>
             </div>
