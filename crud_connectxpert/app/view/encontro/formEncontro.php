@@ -1,5 +1,5 @@
 <?php
-#Nome do arquivo: encontro/listEncontro.php
+#Nome do arquivo: encontro/formEncontro.php
 #Objetivo: interface para listagem dos encontros do sistema
 
 require_once(__DIR__ . "/../include/header.php");
@@ -33,10 +33,13 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
                     <input class="form-control" type="date" id="txtDiaEncontro" name="diaEncontro" 
                         value="<?php echo (isset($dados["encontro"]) ? $dados["encontro"]->getDiaEncontro() : ''); ?>" />
                 </div>
+
+                
              
 
                 <input type="hidden" id="hddEncontro" name="id_encontro" 
                     value="<?= $dados['id_encontro']; ?>" />
+
 
                 <button type="submit" class="btn btn-success">Gravar</button>
                 <button type="reset" class="btn btn-danger">Limpar</button>

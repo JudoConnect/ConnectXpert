@@ -9,7 +9,6 @@ class Encontro {
     private $nomeEncontro;
     private $diaEncontro;
     private $idTurma;
-    private $qtdPeriodos;
 
 
     /**
@@ -92,23 +91,4 @@ class Encontro {
         return $this;
     }
 
-    /**
-     * Get the value of qtdPeriodos
-     */ 
-    public function getQtdPeriodos()
-    {
-        return $this->qtdPeriodos;
-    }
-
-    /**
-     * Set the value of qtdPeriodos
-     *
-     * @return  self
-     */ 
-    public function setQtdPeriodos($qtdPeriodos)
-    {
-        $this->qtdPeriodos = $qtdPeriodos;
-
-        return $this;
-    }
 } 

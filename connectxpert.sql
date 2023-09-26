@@ -299,7 +299,6 @@ CREATE TABLE encontro (
   id_turma INT NOT NULL,
   nome_encontro VARCHAR(100) NOT NULL,
   dia_encontro DATE NOT NULL,
-  qtd_periodos INT NOT NULL,
   CONSTRAINT pk_encontro PRIMARY KEY (`id_encontro`)
 ); 
 ALTER TABLE encontro ADD CONSTRAINT fk_encontro_turma FOREIGN KEY (id_turma) REFERENCES turma (id_turma);
