@@ -13,7 +13,9 @@ class EncontroService {
             array_push($erros, "O campo Nome é obrigatório.");
 
         if(! $encontro->getDiaEncontro())
-            array_push($erros, "O campo Dia Encontro é obrigatório.");    
+            array_push($erros, "O campo Dia Encontro é obrigatório."); 
+            
+        return $erros;
         
     }
 }

@@ -34,9 +34,9 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
                         value="<?php echo (isset($dados["encontro"]) ? $dados["encontro"]->getDiaEncontro() : ''); ?>" />
                 </div>
 
+                <input type="hidden" id="hddTurma" name="id_turma" 
+                    value="<?= $dados["idTurma"]; ?>" />
                 
-             
-
                 <input type="hidden" id="hddEncontro" name="id_encontro" 
                     value="<?= $dados['id_encontro']; ?>" />
 
@@ -54,7 +54,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
     <div class="row" style="margin-top: 30px;">
         <div class="col-12">
         <a class="btn btn-secondary" 
-                href="<?= BASEURL ?>/controller/EncontroController.php?action=list">Voltar</a>
+                href="<?= BASEURL ?>/controller/EncontroController.php?action=list&id=<?= $dados["idTurma"] ?>">Voltar</a>
         </div>
     </div>
 </div>

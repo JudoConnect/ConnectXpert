@@ -302,3 +302,14 @@ CREATE TABLE encontro (
   CONSTRAINT pk_encontro PRIMARY KEY (`id_encontro`)
 ); 
 ALTER TABLE encontro ADD CONSTRAINT fk_encontro_turma FOREIGN KEY (id_turma) REFERENCES turma (id_turma);
+
+CREATE TABLE frequencia (
+  id_frequencia INT NOT NULL AUTO_INCREMENT,
+  id_encontro INT NOT NULL,
+  id_turma_aluno INT NOT NULL,
+  condicao enum('presente','ausente') DEFAULT 'presente' NOT NULL,
+  CONSTRAINT pk_frequencia PRIMARY KEY (id_frequencia)
+); 
+ALTER TABLE frequencia ADD CONSTRAINT fk_frequencia_encontro FOREIGN KEY (id_encontro) REFERENCES encontro (id_encontro);
+ALTER TABLE frequencia ADD CONSTRAINT fk_frequencia_turma_aluno FOREIGN KEY (id_turma_aluno) REFERENCES turma_aluno (id_turma_aluno);
+ALTER TABLE frequencia ADD CONSTRAINT uk_encontro_turma_aluno UNIQUE (id_encontro, id_turma_aluno);
