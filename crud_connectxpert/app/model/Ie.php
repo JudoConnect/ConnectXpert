@@ -2,7 +2,6 @@
 #Nome do arquivo: Ie.php
 #Objetivo: classe Model para Instituicao de Ensino
 
-
 class Ie {
 
     private $idIe;

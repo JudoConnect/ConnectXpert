@@ -29,9 +29,9 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/login/loginstyle.css">';
                         <?php foreach ($dados["papeis"] as $papel) : ?>
                             <div class="form-radio">
                                 <input type="radio" name="papel" id="<?= 'ckb' . $papel ?>" value="<?= $papel ?>" <?php
-                                                                                                                    if (isset($dados['papel']) && $papel == $dados['papel'])
-                                                                                                                        echo " checked";
-                                                                                                                    ?> />
+                                   if (isset($dados['papel']) && $papel == $dados['papel'])
+                                   echo " checked";
+                                    ?> />
                                 <label for="<?= 'ckb' . $papel ?>"><?= $papel ?></label>
                             </div>
                         <?php endforeach; ?>

@@ -28,6 +28,7 @@ class EncontroController extends Controller {
     }
 
     protected function list(string $msgErro = "", string $msgSucesso = "", int $idTurmaPar = 0) {
+       
         $idTurma = 0;
         if($idTurmaPar)
             $idTurma = $idTurmaPar;
@@ -36,7 +37,6 @@ class EncontroController extends Controller {
 
         $encontros = $this->encontroDao->list($idTurma);
         
-
         $dados["idTurma"] = $idTurma;
         $dados["lista"] = $encontros;
 

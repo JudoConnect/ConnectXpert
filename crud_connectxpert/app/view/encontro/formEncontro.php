@@ -7,13 +7,27 @@ require_once(__DIR__ . "/../include/menu.php");
 echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
 
 ?>
+<div class="container">
+    <div class="row" style="margin-top: 10px;">
+        <h3 class="col-4">Dados da Turma</h3>
+    </div>
+    <div class="row" style="margin-top: 10px;">
+        <div class="col-12">
+            <span style="font-weight: bold;">Nome: </span> <?= $dados["encontro"]->getNomeTurma() ?>
+        </div>
+        <div class="col-12">
+            <span style="font-weight: bold;">Horário: </span> <?= $dados["encontro"]->getHorario() ?>
+        </div>
+    </div>
+</div>
+
 
 <div class="container">
-    <div class="row">
-<h3 class="col-4">
-    <?php if($dados['id_encontro'] == 0) echo "Inserir"; else echo "Alterar"; ?> 
-    Encontro 
-</h3></div></div>
+        <div class="row">
+    <h3 class="col-4">
+        <?php if($dados['id_encontro'] == 0) echo "Inserir"; else echo "Alterar"; ?> 
+        Encontro 
+    </h3></div></div>
 
 <div class="container">
     
