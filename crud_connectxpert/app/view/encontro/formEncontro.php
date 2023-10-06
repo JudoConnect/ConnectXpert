@@ -13,10 +13,10 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
     </div>
     <div class="row" style="margin-top: 10px;">
         <div class="col-12">
-            <span style="font-weight: bold;">Nome: </span> <?= $dados["encontro"]->getNomeTurma() ?>
+            <span style="font-weight: bold;">Nome: </span> <?= $dados["turma"]->getNomeTurma() ?>
         </div>
         <div class="col-12">
-            <span style="font-weight: bold;">Horário: </span> <?= $dados["encontro"]->getHorario() ?>
+            <span style="font-weight: bold;">Horário: </span> <?= $dados["turma"]->getHorario() ?>
         </div>
     </div>
 </div>

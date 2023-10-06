@@ -19,7 +19,7 @@ class FrequenciaDAO {
     }
 
     //Método para buscar uma frequencia por seu ID
-    public function findById(int $idFrequencia) {
+    public function findFrequenciaById(int $idFrequencia) {
         $conn = Connection::getConn();
 
         $sql = "SELECT * FROM frequencia f" .

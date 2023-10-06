@@ -2,15 +2,16 @@
 #Classe controller para Encontro
 require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../dao/EncontroDAO.php");
+require_once(__DIR__ . "/../dao/TurmaDAO.php");
 require_once(__DIR__ . "/../service/EncontroService.php");
 require_once(__DIR__ . "/../model/Encontro.php");
 require_once(__DIR__ . "/../model/enum/UsuarioPapel.php");
-
 
 class EncontroController extends Controller {
 
     private EncontroDAO $encontroDao;
     private EncontroService $encontroService;
+    private TurmaDAO $turmaDao;
 
     public function __construct() {
         if(! $this->usuarioLogado())
@@ -23,6 +24,7 @@ class EncontroController extends Controller {
 
         $this->encontroDao = new EncontroDAO();
         $this->encontroService = new EncontroService();
+        $this->turmaDao = new TurmaDAO();
 
         $this->handleAction();
     }
@@ -50,6 +52,8 @@ class EncontroController extends Controller {
 
         $dados["idTurma"] = $idTurma;
         $dados["id_encontro"] = 0;
+        $dados["turma"] = $this->turmaDao->findById($idTurma);
+        
 
         $this->loadView("encontro/formEncontro.php", $dados);
     }
@@ -60,6 +64,8 @@ class EncontroController extends Controller {
             $dados["id_encontro"] = $encontro->getIdEncontro();
             $dados['encontro'] = $encontro;
             $dados["idTurma"] = $encontro->getIdTurma();
+            $dados["turma"] = $this->turmaDao->findById($encontro->getIdTurma());
+
 
             $this->loadView("encontro/formEncontro.php", $dados);
         } else
@@ -109,6 +115,7 @@ class EncontroController extends Controller {
         $dados["encontro"] = $encontro;
         $dados["idTurma"] = $idTurma;
         $dados["id_encontro"] = $idEncontro;
+        $dados["turma"] = $this->turmaDao->findById($idTurma);
 
         $msgsErro = implode("<br>", $erros);
         $this->loadView("encontro/formEncontro.php", $dados, $msgsErro);

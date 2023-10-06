@@ -5,49 +5,36 @@ require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../dao/FrequenciaDAO.php");
 require_once(__DIR__ . "/../model/Frequencia.php");
 require_once(__DIR__ . "/../model/enum/UsuarioPapel.php");
+require_once(__DIR__ . "/../dao/EncontroDAO.php");
 
 class FrequenciaController extends Controller {
 
-    private FrequenciaDAO $frequenciaDAO;
+    private FrequenciaDAO $frequenciaDao;
+    private EncontroDAO   $encontroDao;
 
     public function __construct() {
         if(! $this->usuarioLogado())
             exit;
 
-        if(! $this->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR, UsuarioPapel::PROFESSOR])) {
+        if(! $this->usuarioPossuiPapel([UsuarioPapel::PROFESSOR])) {
             echo "Acesso negado";
             exit;
         }
 
-        $this->frequenciaDAO = new FrequenciaDAO();
+        $this->frequenciaDao = new FrequenciaDAO();
+        $this->encontroDao = new EncontroDAO ();
 
         $this->handleAction();
     }
 
     protected function list(string $msgErro = "", string $msgSucesso = "") {
-        $frequencias = $this->frequenciaDAO->list();
+        $idEncontro = $this->getIdEncontro();
+
+        $frequencias = $this->frequenciaDao->list();
         $dados["lista"] = $frequencias;
+        $dados["encontro"] = $this->encontroDao->findById($idTurma);
 
         $this->loadView("frequencia/listFrequencia.php", $dados,  $msgErro, $msgSucesso);
-    }
-
-    protected function create() {
-        $dados["id_frequencia"] = 0;
-        $dados["condicao"] = Condicao::getAllAsArray();
-
-        $this->loadView("frequencia/listFrequencia.php", $dados);
-    }
-
-    protected function edit() {
-        $frequencia = $this->findFrequenciaById();
-        if($frequencia) {
-            $dados["id_frequencia"] = $frequencia->getIdFrequencia();
-            $dados["frequencia"] = $frequencia;
-    
-
-            $this->loadView("frequencia/listFrequencia.php", $dados);
-        } else
-            $this->list("Frequencia não encontrada.");
     }
 
     protected function save() {
@@ -64,7 +51,7 @@ class FrequenciaController extends Controller {
         if(isset($_GET['id']))
             $id = $_GET['id'];
 
-        $frequencia = $this->frequenciaDAO->findById($id);
+        $frequencia = $this->frequenciaDao->findFrequenciaById($id);
         return $frequencia;
     }
 

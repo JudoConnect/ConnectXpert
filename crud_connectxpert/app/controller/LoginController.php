@@ -1,5 +1,5 @@
 <?php 
-#Classe controller para a Logar do sistema
+#Classe controller para o login do sistema
 require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../dao/UsuarioDAO.php");
 require_once(__DIR__ . "/../dao/AlunoDAO.php");
