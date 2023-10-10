@@ -6,7 +6,7 @@ require_once(__DIR__ . "/../dao/TurmaProfessorDAO.php");
 require_once(__DIR__ . "/../dao/ProfessorDAO.php");
 require_once(__DIR__ . "/../service/TurmaProfessorService.php");
 require_once(__DIR__ . "/../model/Turma.php");
-
+ 
 class TurmaProfessorController extends Controller {
  
     private TurmaDAO $turmaDao;

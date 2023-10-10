@@ -51,8 +51,7 @@ class TurmaDAO {
         elseif(count($turmas) == 0)
             return null;
 
-        die("TurmaDAO.findById()" . 
-            " - Erro: mais de uma turma encontrada.");
+        die("TurmaDAO.findById()" . " - Erro: mais de uma turma encontrada.");
     }
 
     //Método para inserir uma Turma

@@ -6,12 +6,16 @@ require_once(__DIR__ . "/../dao/FrequenciaDAO.php");
 require_once(__DIR__ . "/../model/Frequencia.php");
 require_once(__DIR__ . "/../model/enum/UsuarioPapel.php");
 require_once(__DIR__ . "/../dao/EncontroDAO.php");
+require_once(__DIR__ . "/../dao/TurmaDAO.php");
+require_once(__DIR__ . "/../dao/AlunoDAO.php");
 
 class FrequenciaController extends Controller {
 
     private FrequenciaDAO $frequenciaDao;
     private EncontroDAO   $encontroDao;
-
+    private TurmaDAO      $turmaDao;  
+    private AlunoDAO      $alunoDao;
+     
     public function __construct() {
         if(! $this->usuarioLogado())
             exit;
@@ -23,16 +27,25 @@ class FrequenciaController extends Controller {
 
         $this->frequenciaDao = new FrequenciaDAO();
         $this->encontroDao = new EncontroDAO ();
+        $this->turmaDao = new TurmaDAO ();
+        $this->alunoDao = new AlunoDAO ();
 
         $this->handleAction();
     }
 
     protected function list(string $msgErro = "", string $msgSucesso = "") {
-        $idEncontro = $this->getIdEncontro();
+        
+        $encontro = $this->findEncontroById();
+        
+        if (!$encontro) {
+            echo "Encontro Invalido";
+            exit;
+        }
+        
+        $dados["encontro"] = $encontro;
+        $dados["turma"] = $this->turmaDao->findById($encontro->getIdTurma());
 
-        $frequencias = $this->frequenciaDao->list();
-        $dados["lista"] = $frequencias;
-        $dados["encontro"] = $this->encontroDao->findById($idTurma);
+        $dados["lista"] = $this->alunoDao->listByTurma($encontro->getIdTurma());
 
         $this->loadView("frequencia/listFrequencia.php", $dados,  $msgErro, $msgSucesso);
     }
@@ -46,13 +59,13 @@ class FrequenciaController extends Controller {
         $frequencia = new Frequencia();
         $frequencia->setCondicao($condicao);
     }
-    private function findFrequenciaById() {
+    private function findEncontroById() {
         $id = 0;
         if(isset($_GET['id']))
             $id = $_GET['id'];
 
-        $frequencia = $this->frequenciaDao->findFrequenciaById($id);
-        return $frequencia;
+        $encontro = $this->encontroDao->findEncontroById($id);
+        return $encontro;
     }
 
 }

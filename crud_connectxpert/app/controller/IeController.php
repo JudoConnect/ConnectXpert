@@ -31,7 +31,7 @@ class IeController extends Controller {
         $ies = $this->ieDao->list();
         //print_r($ies);
         $dados["lista"] = $ies;
-
+ 
         $this->loadView("ie/listIe.php", $dados,  $msgErro, $msgSucesso);
     }
 
