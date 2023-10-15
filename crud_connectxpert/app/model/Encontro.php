@@ -2,7 +2,6 @@
 #Nome do arquivo: Encontro.php
 #Objetivo: classe Model para Instituicao de Ensino
 
-
 class Encontro {
 
     private $idEncontro;
@@ -57,6 +56,16 @@ class Encontro {
     public function getDiaEncontro()
     {
         return $this->diaEncontro;
+    }
+
+    public function getDiaEncontroFormatada()
+    {
+        if($this->diaEncontro) {
+            $data = date_create($this->diaEncontro);
+            return date_format($data,"d/m/Y");
+        }
+
+        return '';
     }
 
     /**

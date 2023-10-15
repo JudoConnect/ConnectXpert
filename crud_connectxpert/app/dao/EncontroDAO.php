@@ -8,10 +8,10 @@ include_once(__DIR__ . "/../model/Encontro.php");
 class EncontroDAO {
 
     //Método para listar os encontros a partir da base de dados
-    public function list() {
+    public function list($id) {
         $conn = Connection::getConn();
 
-        $sql = "SELECT * FROM encontro e ORDER BY e.nome_encontro";
+        $sql = "SELECT * FROM encontro e where id_turma = ".$id." ORDER BY e.nome_encontro";
         $stm = $conn->prepare($sql);    
         $stm->execute();
         $result = $stm->fetchAll();
@@ -46,14 +46,16 @@ class EncontroDAO {
 
         $sql = "INSERT INTO encontro (id_encontro,id_turma, nome_encontro, dia_encontro)" .
                " VALUES (:id_encontro, :id_turma, :nome_encontro, :dia_encontro)";
-        
-        $stm = $conn->prepare($sql);
+              $stm = $conn->prepare($sql);
         $stm->bindValue("id_encontro", $encontro->getIdEncontro());
         $stm->bindValue("id_turma", $encontro->getIdTurma());
         $stm->bindValue("nome_encontro", $encontro->getNomeEncontro());
         $stm->bindValue("dia_encontro", $encontro->getDiaEncontro());
+        
         $stm->execute();
+     
     }
+
 
     //Método para atualizar um Encontro
     public function update(Encontro $encontro) {
@@ -73,7 +75,6 @@ class EncontroDAO {
     //Método para deletar um Encontro pelo seu ID
     public function deleteById(int $idEncontro) {
         $conn = Connection::getConn();
-
         $sql = "DELETE FROM encontro WHERE id_encontro = :id";
         
         $stm = $conn->prepare($sql);

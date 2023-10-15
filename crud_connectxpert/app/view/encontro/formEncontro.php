@@ -7,6 +7,20 @@ require_once(__DIR__ . "/../include/menu.php");
 echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
 
 ?>
+<div class="container">
+    <div class="row" style="margin-top: 10px;">
+        <h3 class="col-4">Dados da Turma</h3>
+    </div>
+    <div class="row" style="margin-top: 10px;">
+        <div class="col-12">
+            <span style="font-weight: bold;">Nome: </span> <?= $dados["turma"]->getNomeTurma() ?>
+        </div>
+        <div class="col-12">
+            <span style="font-weight: bold;">Horário: </span> <?= $dados["turma"]->getHorario() ?>
+        </div>
+    </div>
+</div>
+
 
 <div class="container">
     <div class="row">
@@ -34,7 +48,6 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
                     <input class="form-control" type="date" id="txtDiaEncontro" name="diaEncontro" 
                         value="<?php echo (isset($dados["encontro"]) ? $dados["encontro"]->getDiaEncontro() : ''); ?>" />
                 </div>
-
                 <input type="hidden" id="hddEncontro" name="id_encontro" 
                     value="<?= $dados['id_encontro']; ?>" />
 

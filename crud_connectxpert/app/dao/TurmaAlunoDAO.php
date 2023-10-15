@@ -6,7 +6,7 @@ include_once(__DIR__ . "/../connection/Connection.php");
 include_once(__DIR__ . "/../model/Turma.php");
 
 class TurmaAlunoDAO {
-
+ 
     //Método para inserir uma TurmaAluno
     public function insert(int $idTurma, int $idAluno) {
         $conn = Connection::getConn();
