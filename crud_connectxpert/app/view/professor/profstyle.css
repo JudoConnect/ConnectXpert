@@ -1,19 +1,20 @@
+
+h3 {
+  width: 100px;
+  height: 45px;
+  top: 30px;
+  color: rgba(255, 127, 50, 1);
+  font-style: normal;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-transform: none;
+}
 body{
   background-color: #fffde7;
 }
-h3 {
-    width: 100px;
-    height: 45px;
-    top: 30px;
-    color: rgba(255, 127, 50, 1);
-    font-style: normal;
-    font-size: 24px;
-    font-weight: 800;
-    line-height: 1.2;
-    letter-spacing: 1px;
-    text-decoration: none;
-    text-transform: none;
-  }
   
   .topicos {
     width: 102.5px;
@@ -41,9 +42,7 @@ h3 {
     text-decoration: none;
     text-transform: capitalize;
   }
-  .btn-inserir{
-    
-  }
+  
   .btn-alterar{
     color: rgb(10, 174, 148, 1);
   }

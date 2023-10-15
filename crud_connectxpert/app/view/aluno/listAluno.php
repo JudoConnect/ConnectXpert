@@ -4,7 +4,7 @@
 
 require_once(__DIR__ . "/../include/header.php");
 require_once(__DIR__ . "/../include/menu.php");
-echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css">';
+echo '<link rel="stylesheet" href="' . BASEURL . '/view/aluno/alunostyle.css">';
 ?>
 
 <div class="container">
