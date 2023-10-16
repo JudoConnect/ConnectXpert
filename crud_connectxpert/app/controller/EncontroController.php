@@ -41,6 +41,8 @@ class EncontroController extends Controller {
         
         $dados["idTurma"] = $idTurma;
         $dados["lista"] = $encontros;
+        $dados["turma"] = $this->turmaDao->findById($idTurma);
+
 
         $this->loadView("encontro/listEncontro.php", $dados,  $msgErro, $msgSucesso);
     }

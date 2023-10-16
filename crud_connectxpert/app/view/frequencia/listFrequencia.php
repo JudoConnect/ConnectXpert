@@ -33,14 +33,28 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
     </div>  
  
 
-        <div class="row">
-        <h3 class="col-4">
-        Frequência
-        <?php print_r($dados["lista"]);?> 
+    <div class="row">
+        <h3 class="col-4"> Frequência  </h3>
+        <div class="row" style="margin-top: 10px;">
+        <div class="col-12">
+            <table id="tabFrequencia" class='table table-striped'>
+                <thead>
+                    <tr class="topicos">
+                        <th>Foto</th>
+                        <th>Nome</th>
+                        <th>Frequência</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach($dados['lista'] as $frequencia): ?>
+                        <tr class="listagem">
+                        <td><img src="<?= BASEURL_FOTOS . $frequencia->getFoto(); ?>" style="width: 100px; height: auto;" /></td>
+                            <td><?= $frequencia->getNomeAluno(); ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
     
-        </h3></div></div>    </div>
-
-
 <?php  
 require_once(__DIR__ . "/../include/footer.php");
 ?>
