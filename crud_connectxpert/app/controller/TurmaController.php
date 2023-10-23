@@ -65,6 +65,11 @@ class TurmaController extends Controller {
     }
 
     protected function create() {
+        if(! $this->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR])) {
+            echo "Acesso negado";
+            exit;
+        }
+
         $dados["id_turma"] = 0;
         //$dados['listaProfessores'] = $this->professorDao->list();
 
