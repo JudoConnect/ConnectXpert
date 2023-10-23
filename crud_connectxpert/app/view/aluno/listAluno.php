@@ -41,7 +41,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/aluno/alunostyle.css">';
                             <td><?= $aln->getNomeAluno(); ?></td>
                             <td><?= $aln->getNascimentoAlunoFormatada(); ?></td>
                             <td><?= $aln->getSexoAluno(); ?></td>
-                            <td><?= $aln->getEmailAluno(); ?></td>
+                            <td style="text-transform: none;"><?= $aln->getEmailAluno(); ?></td>
                             <td><?= $aln->getSituacao(); ?></td>
 
                         

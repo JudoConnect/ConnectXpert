@@ -64,17 +64,8 @@ h3 {
     border-bottom: 0px solid transparent !important;
   }
   
-  ::-webkit-input-placeholder .form-control {
-    display: block;
-    width: 100%;
-    height: calc(2.25rem + 2px);
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #ff8a41 !important;
-    background-color: #ffc39e !important;
-    background-clip: padding-box;
-    border: 1px solid #fdaa7a;
-    border-radius: 0.25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
+  .form-control{
+    background-color: #ffc39e; 
+    border: 1px solid #ffc39e;
+  }
+  

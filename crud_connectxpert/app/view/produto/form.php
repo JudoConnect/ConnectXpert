@@ -26,21 +26,23 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/produto/produtostyle.css
                 <div class="form-group">
                     <label for="txtNome">Nome:</label>
                     <input class="form-control" type="text" id="txtNome" name="nome" 
-                        maxlength="70" placeholder="Informe o nome"
+                        maxlength="70"  style="background-color: #ffc39e; border: 1px solid #ffc39e;"
                         value="<?php echo (isset($dados["produto"]) ? $dados["produto"]->getNome() : ''); ?>" />
                 </div>
                 
                 <div class="form-group">
                     <label for="txtDescricao">Descrição:</label>
                     <input class="form-control" type="text" id="txtdescricao" name="descricao" 
-                        maxlength="3000" placeholder="Informe a descricao"
+                        maxlength="3000" style="background-color: #ffc39e; border: 1px solid #ffc39e;"
                         value="<?php echo (isset($dados["produto"]) ? $dados["produto"]->getDescricao() : ''); ?>"/>
                 </div>
 
                 <div class="form-group">
-                    <label for="uplImagem">Foto:</label>
-                    <input type="file" name="foto" id="uplImagem" accept="image/*" />  
+                    <label for="uplImagem" img="upload.png">Foto:</label>
+                    <input type="file" name="foto" id="uplImagem" accept="image/*" hidden/>  
+
                 </div>
+                <div img="upload.png"></div>
 
                 <?php if(isset($dados["produto"]) && $dados["produto"]->getFoto() ):?>
                     
@@ -80,8 +82,8 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/produto/produtostyle.css
 
               
 
-                <button type="submit" class="btn btn-success">Gravar</button>
-                <button type="reset" class="btn btn-danger">Limpar</button>
+                <button type="submit" class="btn" style="background-color: #ff7f32; border-radius: 16px;"><a style="color:#fdfbeb;"> Cadastrar</a></button>
+                <button type="reset" class="btn" style="background-color: #fdfbeb; border-radius: 16px; border-color: #ff7f32;"><a style="color: #ff7f32;"> Cancelar </a></button>
             </form>            
         </div>
 
