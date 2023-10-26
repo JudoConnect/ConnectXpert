@@ -22,7 +22,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
 
     <div class="row" style="margin-top: 10px;">
         <h3 class="col-4">Dados do Encontro</h3>
-        </div>
+    </div>
         <div class="row" style="margin-top: 10px;">
         <div class="col-12">
             <span style="font-weight: bold;">Nome: </span> <?= $dados["encontro"]->getNomeEncontro() ?>
@@ -31,11 +31,13 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
             <span style="font-weight: bold;">Data: </span> <?= $dados["encontro"]->getDiaEncontroFormatada() ?>
         </div>
     </div>  
- 
+        
+    <!--div class="container"-->
 
     <div class="row">
         <h3 class="col-4"> Frequência  </h3>
-        <div class="row" style="margin-top: 10px;">
+    </div>
+    <div class="row" style="margin-top: 10px;" >
         <div class="col-12">
             <table id="tabFrequencia" class='table table-striped'>
                 <thead>
@@ -43,18 +45,29 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
                         <th>Foto</th>
                         <th>Nome</th>
                         <th>Frequência</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach($dados['lista'] as $frequencia): ?>
+                    <?php foreach($dados['listaAlunos'] as $aluno): ?>
                         <tr class="listagem">
-                        <td><img src="<?= BASEURL_FOTOS . $frequencia->getFoto(); ?>" style="width: 100px; height: auto;" /></td>
-                            <td><?= $frequencia->getNomeAluno(); ?></td>
+                        <td><img src="<?= BASEURL_FOTOS . $aluno->getFoto(); ?>" style="width: 100px; height: auto;" /></td>
+                            <td><?= $aluno->getNomeAluno(); ?></td>
+                            <td>Presente</td>
+                            <td>
+                                <button type="button" class="btn btn-outline-danger" 
+                                    onclick="registrarFalta(<?= $dados['encontro']->getIdEncontro() ?>, <?= $aluno->getIdTurmaAluno() ?>)">Lançar falta</button>
+                                <button type="button" class="btn btn-outline-success" 
+                                    onclick="registrarPresenca(1)">Lançar presença</button>
+                            </td>
                         </tr>
-                    <?php endforeach; ?>
+                    <?php endforeach ?>
                 </tbody>
             </table>
-    
+        </div>
+    </div>
+
+    <script src="<?= BASEURL  ?>/view/frequencia/utils/resgistrarFreq.js"></script>
 <?php  
-require_once(__DIR__ . "/../include/footer.php");
+require_once(__DIR__ . "/../include/footer.php")
 ?>

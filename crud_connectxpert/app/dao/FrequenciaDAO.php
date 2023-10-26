@@ -18,6 +18,20 @@ class FrequenciaDAO {
         return $this->mapFrequencias($result);
     }
 
+    //Método para atualizar uma Frequencia
+    public function insert(Frequencia $frequencia) {
+        $conn = Connection::getConn();
+
+        $sql = "INSERT INTO frequencia (id_encontro, id_turma_aluno, condicao)" . 
+               " VALUES (:id_encontro, :id_turma_aluno, :condicao)";
+        
+        $stm = $conn->prepare($sql);
+        $stm->bindValue("id_encontro", $frequencia->getIdEncontro());
+        $stm->bindValue("id_turma_aluno", $frequencia->getIdTurmaAluno());
+        $stm->bindValue("condicao", $frequencia->getCondicao());
+        $stm->execute();
+    }
+
     //Método para buscar uma frequencia por seu ID
     public function findFrequenciaById(int $idFrequencia) {
         $conn = Connection::getConn();

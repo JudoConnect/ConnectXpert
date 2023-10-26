@@ -48,6 +48,10 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
                     <input class="form-control" type="date" id="txtDiaEncontro" name="diaEncontro" 
                         value="<?php echo (isset($dados["encontro"]) ? $dados["encontro"]->getDiaEncontro() : ''); ?>" />
                 </div>
+
+                <input type="hidden" id="hddTurma" name="id_turma" 
+                    value="<?= $dados['idTurma']; ?>" />
+
                 <input type="hidden" id="hddEncontro" name="id_encontro" 
                     value="<?= $dados['id_encontro']; ?>" />
 

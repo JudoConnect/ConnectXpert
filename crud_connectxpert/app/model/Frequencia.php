@@ -5,6 +5,8 @@
 class Frequencia {
 
     private $idFrequencia;
+    private $idEncontro;
+    private $idTurmaAluno;
     private $condicao;
 
     /**
@@ -26,6 +28,47 @@ class Frequencia {
 
         return $this;
     }
+
+    /**
+     * Get the value of idEncontro
+     */ 
+    public function getIdEncontro()
+    {
+        return $this->idEncontro;
+    }
+
+    /**
+     * Set the value of idEncontro
+     *
+     * @return  self
+     */ 
+    public function setIdEncontro($idEncontro)
+    {
+        $this->idEncontro = $idEncontro;
+
+        return $this;
+    }
+
+     /**
+     * Get the value of idTurmaAluno
+     */ 
+    public function getIdTurmaAluno()
+    {
+        return $this->idTurmaAluno;
+    }
+
+    /**
+     * Set the value of idTurmaAluno
+     *
+     * @return  self
+     */ 
+    public function setIdTurmaAluno($idTurmaAluno)
+    {
+        $this->idTurmaAluno = $idTurmaAluno;
+
+        return $this;
+    }
+
 
     /**
      * Get the value of condicao

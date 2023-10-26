@@ -6,8 +6,8 @@ class Condicao {
 
     public static string $SEPARADOR = "|";
 
-    const PRESENTE = "PRESENTE";
-    const AUSENTE = "AUSENTE";
+    const PRESENTE = "presente";
+    const AUSENTE = "ausente";
 
     public static function getAllAsArray() {
         return [Condicao::PRESENTE, Condicao::AUSENTE];
