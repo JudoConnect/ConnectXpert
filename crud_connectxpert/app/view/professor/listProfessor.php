@@ -8,8 +8,6 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
 ?>
 
 
-
-
 <div class="container">
     <div class="row">
     <h3 class="col-4">Professores <a class="btn-inserir" 

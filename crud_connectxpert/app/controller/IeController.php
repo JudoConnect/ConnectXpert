@@ -8,7 +8,7 @@ require_once(__DIR__ . "/../model/Ie.php");
 require_once(__DIR__ . "/../model/enum/UsuarioPapel.php");
 
 class IeController extends Controller {
-
+ 
     private IeDAO $ieDao;
     private IeService $ieService;
 

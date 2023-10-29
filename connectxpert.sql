@@ -313,3 +313,9 @@ CREATE TABLE frequencia (
 ALTER TABLE frequencia ADD CONSTRAINT fk_frequencia_encontro FOREIGN KEY (id_encontro) REFERENCES encontro (id_encontro);
 ALTER TABLE frequencia ADD CONSTRAINT fk_frequencia_turma_aluno FOREIGN KEY (id_turma_aluno) REFERENCES turma_aluno (id_turma_aluno);
 ALTER TABLE frequencia ADD CONSTRAINT uk_encontro_turma_aluno UNIQUE (id_encontro, id_turma_aluno);
+
+CREATE TABLE `video_aula` (
+  `id_video_aula` int(11) NOT NULL,
+  `nome_video_aula` varchar(95) NOT NULL,  
+  `link_video_aula` varchar(1000) NOT NULL
+)
