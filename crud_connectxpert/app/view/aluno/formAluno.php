@@ -18,9 +18,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/aluno/alunostyle.css">';
 <div class="container">
     <div class="row">
         <div class="col-6">
-            <form id="frmAluno" method="POST" 
-                action="<?= BASEURL ?>/controller/AlunoController.php?action=save"
-                enctype="multipart/form-data" >
+            <form id="frmAluno" method="POST" action="<?= BASEURL ?>/controller/AlunoController.php?action=save" enctype="multipart/form-data" >
 
                 <div class="form-group">
                     <label for="txtNomeAluno"><br>Nome do Aluno:</label>
