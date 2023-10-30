@@ -40,3 +40,8 @@ top: 30px;
     text-transform: capitalize
 
 }
+.form-control{
+  background-color: #ffc39e; 
+  border: 1px solid #ffc39e;
+ }
+ 
