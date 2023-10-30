@@ -11,6 +11,7 @@ class IeService {
         //Validar campos vazios
         if(! $ie->getNomeIe())
             array_push($erros, "O campo Nome é obrigatório.");
-        
+
+        return $erros;              
     }
 }

@@ -16,7 +16,7 @@ class VideoAulaController extends Controller {
         if(! $this->usuarioLogado())
             exit;
 
-    if(! $this->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR])) {
+    if(! $this->usuarioPossuiPapel([UsuarioPapel::PROFESSOR])) {
         echo "Acesso negado";
         exit;
     }
@@ -32,21 +32,20 @@ class VideoAulaController extends Controller {
         //print_r($video_aulas);
         $dados["lista"] = $video_aulas;
  
-        $this->loadView("ie/listVideoAula.php", $dados,  $msgErro, $msgSucesso);
+        $this->loadView("video_aula/listVideoAula.php", $dados,  $msgErro, $msgSucesso);
     }
 
     protected function create() {
-        $dados["id_video_aula"] = 0;
+        $dados["papeis"] = UsuarioPapel::getAllAsArray();
 
         $this->loadView("video_aula/formVideoAula.php", $dados);
     }
 
     protected function edit() {
-        $video_aula = $this->findIeById();
+        $video_aula = $this->findVideoAulaById();
         if($video_aula) {
             $dados["id_video_aula"] = $video_aula->getIdVideoAula();
             $dados["video_aula"] = $video_aula;
-    
 
             $this->loadView("video_aula/formVideoAula.php", $dados);
         } else
@@ -62,6 +61,7 @@ class VideoAulaController extends Controller {
         //Cria objeto Usuario
         $video_aula = new VideoAula();
         $video_aula->setNomeVideoAula($nomeVideoAula);
+        $video_aula->setLinkVideoAula($linkVideoAula);
 
         //Validar os dados
         $erros = $this->videoAulaService->validarDados($video_aula);
@@ -96,15 +96,15 @@ class VideoAulaController extends Controller {
     
     
     protected function delete() {
-        $video_aula = $this->findIeById();
+        $video_aula = $this->findVideoAulaById();
         if($video_aula) {
-            $this->videoAulaDao->deleteById($video_aula->getIdIe());
+            $this->videoAulaDao->deleteById($video_aula->getIdVideoAula());
             $this->list("", "Vídeo Aula excluída com sucesso!");
         } else
             $this->list("Vídeo Aula não econtrado!");
     }
 
-    private function findIeById() {
+    private function findVideoAulaById() {
         $id = 0;
         if(isset($_GET['id']))
             $id = $_GET['id'];

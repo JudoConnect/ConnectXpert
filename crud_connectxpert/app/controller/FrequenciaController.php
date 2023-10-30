@@ -9,7 +9,7 @@ require_once(__DIR__ . "/../model/enum/UsuarioPapel.php");
 require_once(__DIR__ . "/../dao/EncontroDAO.php");
 require_once(__DIR__ . "/../dao/TurmaDAO.php");
 require_once(__DIR__ . "/../dao/AlunoDAO.php");
-
+ 
 class FrequenciaController extends Controller {
 
     private FrequenciaDAO $frequenciaDao;
@@ -34,6 +34,28 @@ class FrequenciaController extends Controller {
         $this->handleAction();
     }
 
+    protected  function createFrequencia() {
+        $frequenciasASerCreadas = array();
+       $frequencias = $this->frequenciaDao->listByEncontro($_GET['id']);
+        if($frequencias != null) {
+            $this->list();
+        }
+        else {
+            $alunos = $this->alunoDao->listByTurma($_GET['idTurma']);
+
+            foreach($alunos as $aluno):
+                $frequencia = new Frequencia();
+                $frequencia->setCondicao("presente");
+                $frequencia->setIdEncontro($_GET['id']);
+                $frequencia->setIdTurmaAluno($aluno->getIdTurmaAluno());
+                array_push($frequenciasASerCreadas, $frequencia);
+            endforeach;
+
+            $this->frequenciaDao->insert($frequenciasASerCreadas);
+            $this->list();
+        }
+    }
+
     protected function list(string $msgErro = "", string $msgSucesso = "") {
         
         $encontro = $this->findEncontroById();
@@ -45,31 +67,32 @@ class FrequenciaController extends Controller {
         
         $dados["encontro"] = $encontro;
         $dados["turma"] = $this->turmaDao->findById($encontro->getIdTurma());
-
-        $dados["listaAlunos"] = $this->alunoDao->listByTurma($encontro->getIdTurma());
+        $dados["frequencia"] = $this->frequenciaDao->list($_GET['id']);
+        // $dados["listaAlunos"] = $this->alunoDao->listByTurma($encontro->getIdTurma());
 
         $this->loadView("frequencia/listFrequencia.php", $dados,  $msgErro, $msgSucesso);
     }
 
-    protected function salvarFalta() {
+    protected function mudarEstado() {
         //Captura os dados do formulário
-        $idEncontro = isset($_POST['id_encontro']) ? $_POST['id_encontro'] : NULL;
-        $idTurmaAluno = isset($_POST['id_turma_aluno']) ? $_POST['id_turma_aluno'] : NULL;
+        $idFrequencia = isset($_POST['idFrequencia']) ? $_POST['idFrequencia'] : NULL;
+        $frequenciaAtual = isset($_POST['frequencia']) ? $_POST['frequencia'] : NULL;
 
         //echo $idEncontro . " - PHP " . $idTurmaAluno;
         //exit;
 
-        //Cria objeto Usuario
-        $frequencia = new Frequencia();
-        $frequencia->setIdEncontro($idEncontro);
-        $frequencia->setIdTurmaAluno($idTurmaAluno);
-        $frequencia->setCondicao(Condicao::AUSENTE);
+        if($frequenciaAtual == "ausente") {
+            $frequenciaAtual = "presente";
+        }
+        else {
+            $frequenciaAtual = "ausente";
+        }
+        $this->frequenciaDao->alterarEstadoFalta($frequenciaAtual, $idFrequencia);
+        return;
 
-        $this->frequenciaDao->insert($frequencia);
-
-        echo "Sucesso";
+        echo $frequenciaAtual;
     }
-
+    
     private function findEncontroById() {
         $id = 0;
         if(isset($_GET['id']))

@@ -49,7 +49,6 @@ class VideoAulaDAO {
         $stm = $conn->prepare($sql);
         $stm->bindValue("nome_video_aula", $video_aula->getNomeVideoAula());
         $stm->bindValue("link_video_aula", $video_aula->getLinkVideoAula());
-
         $stm->execute();
     }
 
@@ -64,7 +63,6 @@ class VideoAulaDAO {
         $stm->bindValue("id_video_aula", $video_aula->getIdVideoAula());
         $stm->bindValue("nome_video_aula", $video_aula->getNomeVideoAula());
         $stm->bindValue("link_video_aula", $video_aula->getLinkVideoAula());
-
         $stm->execute();
     }
 
@@ -87,6 +85,7 @@ class VideoAulaDAO {
             $video_aula->setIdVideoAula($reg['id_video_aula']);
             $video_aula->setNomeVideoAula($reg['nome_video_aula']);
             $video_aula->setLinkVideoAula($reg['link_video_aula']);
+            
             array_push($video_aulas, $video_aula);
         }
 

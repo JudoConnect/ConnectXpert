@@ -13,7 +13,8 @@ class VideoAulaService {
             array_push($erros, "O campo Nome é obrigatório.");
         
         if(! $video_aula->getLinkVideoAula())
-        array_push($erros, "O campo Link é obrigatório.");
-        
+            array_push($erros, "O campo Link é obrigatório.");
+
+        return $erros;      
     }
 }

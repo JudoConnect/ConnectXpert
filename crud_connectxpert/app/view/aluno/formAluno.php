@@ -202,7 +202,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/aluno/alunostyle.css">';
                                     }
 
                                     //condição quando o produto está sendo editadoi e existe estado
-                                    if(isset($dados['alun0']) && strtolower ($estados) == $dados['aluno']->getSituacao()) {
+                                    if(isset($dados['aluno']) && strtolower ($estados) == $dados['aluno']->getSituacao()) {
                                         echo " checked";
                                     }
 

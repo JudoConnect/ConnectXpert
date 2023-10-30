@@ -1,7 +1,7 @@
 <?php
 #Nome do arquivo: frequencia/listFrequencia.php
 #Objetivo: interface para listagem de frequencia do sistema
-
+ 
 require_once(__DIR__ . "/../include/header.php");
 require_once(__DIR__ . "/../include/menu.php");
 echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
@@ -49,16 +49,30 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach($dados['listaAlunos'] as $aluno): ?>
+                    <?php foreach($dados['frequencia'] as $aluno): ?>
+
                         <tr class="listagem">
-                        <td><img src="<?= BASEURL_FOTOS . $aluno->getFoto(); ?>" style="width: 100px; height: auto;" /></td>
-                            <td><?= $aluno->getNomeAluno(); ?></td>
+                        <td><img src="<?= BASEURL_FOTOS . $aluno->getAluno()->getFoto(); ?>" style="width: 100px; height: auto;" /></td>
+                            <td><?= $aluno->getAluno()->getNomeAluno(); ?></td>
                             <td>Presente</td>
                             <td>
-                                <button type="button" class="btn btn-outline-danger" 
-                                    onclick="registrarFalta(<?= $dados['encontro']->getIdEncontro() ?>, <?= $aluno->getIdTurmaAluno() ?>)">Lançar falta</button>
-                                <button type="button" class="btn btn-outline-success" 
-                                    onclick="registrarPresenca(1)">Lançar presença</button>
+                                <?php 
+                                if($aluno->getCondicao() == "presente") {
+                                    echo '
+                                    <button type="button" id="frequencia'.$aluno->getIdFrequencia().'" class="btn btn-outline-success" 
+                                    onclick="registrarFalta('. $aluno->getIdFrequencia() .') "> presente </button>
+                                    ';
+                                }
+                                else {
+                                    echo '
+                                    <button type="button" id="frequencia'.$aluno->getIdFrequencia().'" class="btn btn-outline-danger" 
+                                    onclick="registrarFalta('. $aluno->getIdFrequencia() .') "> ausente </button>
+                                    ';
+                                }
+                            ?>
+                                
+                                <!-- <button type="button" class="btn btn-outline-success" 
+                                    onclick="registrarPresenca(1)">Lançar presença</button> -->
                             </td>
                         </tr>
                     <?php endforeach ?>

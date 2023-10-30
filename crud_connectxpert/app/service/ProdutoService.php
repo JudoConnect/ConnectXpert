@@ -19,8 +19,7 @@ class ProdutoService {
             array_push($erros, "O campo Foto é obrigatório.");
 
         if(! $produto->getSituacao()) 
-        array_push($erros, "Selecione ao menos uma situação no campo.");
-
+            array_push($erros, "Selecione ao menos uma situação no campo.");
       
         return $erros;
     }

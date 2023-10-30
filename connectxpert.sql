@@ -307,7 +307,7 @@ CREATE TABLE frequencia (
   id_frequencia INT NOT NULL AUTO_INCREMENT,
   id_encontro INT NOT NULL,
   id_turma_aluno INT NOT NULL,
-  condicao enum('presente','ausente') DEFAULT 'presente' NOT NULL,
+  condicao enum('presente','ausente') NOT NULL DEFAULT 'presente',
   CONSTRAINT pk_frequencia PRIMARY KEY (id_frequencia)
 ); 
 ALTER TABLE frequencia ADD CONSTRAINT fk_frequencia_encontro FOREIGN KEY (id_encontro) REFERENCES encontro (id_encontro);

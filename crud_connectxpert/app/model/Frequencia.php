@@ -9,6 +9,8 @@ class Frequencia {
     private $idTurmaAluno;
     private $condicao;
 
+    private $turmaaluno;
+    private $aluno;
     /**
      * Get the value of idFrequencia
      */ 
@@ -86,6 +88,46 @@ class Frequencia {
     public function setCondicao($condicao)
     {
         $this->condicao = $condicao;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of turmaaluno
+     */ 
+    public function getTurmaaluno()
+    {
+        return $this->turmaaluno;
+    }
+
+    /**
+     * Set the value of turmaaluno
+     *
+     * @return  self
+     */ 
+    public function setTurmaaluno($turmaaluno)
+    {
+        $this->turmaaluno = $turmaaluno;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of aluno
+     */ 
+    public function getAluno()
+    {
+        return $this->aluno;
+    }
+
+    /**
+     * Set the value of aluno
+     *
+     * @return  self
+     */ 
+    public function setAluno($aluno)
+    {
+        $this->aluno = $aluno;
 
         return $this;
     }

@@ -55,6 +55,9 @@ $isProf = $acessoCont->usuarioPossuiPapel([UsuarioPapel::PROFESSOR]);
                 <?php if($isProf): ?>
                     <a class="nav-link" href="<?= BASEURL . '/controller/TurmaController.php?action=listProfessor' ?>"
                         style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;">Turma</a>
+
+                        <a class="nav-link" href="<?= BASEURL . '/controller/VideoAulaController.php?action=list' ?>"
+                        style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;">  Vídeo Aula</a>
                 <?php endif; ?>
 
                 <a class="nav-link" href="<?= LOGOUT_PAGE ?>" 
