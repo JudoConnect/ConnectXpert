@@ -65,4 +65,9 @@ body{
     .table thead th {
       border-bottom: 0px solid transparent !important;
     }
+    .form-control{
+      background-color: #ffc39e; 
+      border: 1px solid #ffc39e;
+     }
+     
     

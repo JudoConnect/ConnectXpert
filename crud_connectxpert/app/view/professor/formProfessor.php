@@ -25,7 +25,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
                 <div class="form-group">
                     <label for="txtNomeProfessor">Nome:</label>
                     <input class="form-control" type="text" id="txtNomeProfessor" name="nomeProfessor" 
-                        maxlength="70" placeholder="Informe o nome do professor"
+                        maxlength="70"
                         value="<?php echo (isset($dados["professor"]) ? $dados["professor"]->getNomeProfessor() : ''); ?>" />
                 </div>
 
@@ -38,7 +38,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
                 <div class="form-group">
                     <label for="txtTelefoneProfessor">Telefone:</label>
                     <input class="form-control" type="text" id="txtTelefoneProfessor" name="telefoneProfessor" 
-                        maxlength="20" placeholder="Informe número de telefone do professor"
+                        maxlength="20" 
                         value="<?php echo (isset($dados["professor"]) ? $dados["professor"]->getTelefoneProfessor() : ''); ?>" />
                 </div>
 
@@ -62,21 +62,21 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
                 <div class="form-group">
                     <label for="txtCpfProfessor">CPF:</label>
                     <input class="form-control" type="text" id="txtCpfProfessor" name="cpfProfessor" 
-                        maxlength="15" placeholder="Informe o cpf"
+                        maxlength="15"
                         value="<?php echo (isset($dados["professor"]) ? $dados["professor"]->getCpfProfessor() : ''); ?>"/>
                 </div>
 
                 <div class="form-group">
                     <label for="txtRgProfessor">RG:</label>
                     <input class="form-control" type="text" id="txtRgProfessor" name="rgProfessor" 
-                        maxlength="15" placeholder="Informe o rg"
+                        maxlength="15"
                         value="<?php echo (isset($dados["professor"]) ? $dados["professor"]->getRgProfessor() : ''); ?>"/>
                 </div>
 
                 <div class="form-group">
                     <label for="txtEmailProfessor">Email:</label>
                     <input class="form-control" type="email" id="txtEmailProfessor" name="emailProfessor" 
-                        maxlength="100" placeholder="Informe o email"
+                        maxlength="100" 
                         value="<?php echo (isset($dados["professor"]) ? $dados["professor"]->getEmailProfessor() : ''); ?>"/>
                 </div>
 
@@ -111,21 +111,21 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
                 <div class="form-group">
                     <label for="txtLoginProfessor">Login:</label>
                     <input class="form-control" type="text" id="txtLoginProfessor" name="loginProfessor" 
-                        maxlength="15" placeholder="Informe o login"
+                        maxlength="15" 
                         value="<?php echo (isset($dados["professor"]) ? $dados["professor"]->getLoginProfessor() : ''); ?>"/>
                 </div>
 
                 <div class="form-group">
                     <label for="txtSenha">Senha:</label>
                     <input class="form-control" type="password" id="txtPasswordProfessor" name="senhaProfessor" 
-                        maxlength="15" placeholder="Informe a senha"
+                        maxlength="15"
                         value="<?php echo (isset($dados["professor"]) ? $dados["professor"]->getSenhaProfessor() : ''); ?>"/>
                 </div>
 
                 <div class="form-group">
                     <label for="txtConfSenhaProfessor">Confirmação da senha:</label>
                     <input class="form-control" type="password" id="txtConfSenhaProfessor" name="confSenhaProfessor" 
-                        maxlength="15" placeholder="Informe a confirmação da senha"
+                        maxlength="15"
                         value="<?php echo isset($dados['confSenhaProfessor']) ? $dados['confSenhaProfessor'] : '';?>"/>
                 </div>
 
