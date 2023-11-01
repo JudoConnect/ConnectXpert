@@ -13,7 +13,8 @@ class FrequenciaDAO {
 
         $sql = "SELECT * FROM frequencia f" .
         " INNER JOIN turma_aluno ta ON f.id_turma_aluno = ta.id_turma_aluno" .
-        " INNER JOIN aluno a ON ta.id_aluno = a.id_aluno WHERE f.id_encontro = ?";
+        " INNER JOIN aluno a ON ta.id_aluno = a.id_aluno" . 
+        " WHERE f.id_encontro = ?";
 
         $stm = $conn->prepare($sql);    
         $stm->execute([$id]);
@@ -91,6 +92,7 @@ class FrequenciaDAO {
             $frequencia = new Frequencia();
             $frequencia->setIdFrequencia($reg['id_frequencia']);
             $frequencia->setCondicao($reg['condicao']);
+            $frequencia->setIdTurmaAluno($reg['id_turma_aluno']);
 
             array_push($frequencias, $frequencia);
         }

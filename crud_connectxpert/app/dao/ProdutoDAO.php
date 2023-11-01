@@ -19,10 +19,10 @@ class ProdutoDAO {
         return $this->mapProduto($result);
     }
 
-    public function listAtivos() {
+    public function listVitrine() {
         $conn = Connection::getConn();
 
-        $sql = "SELECT * FROM produto p ORDER BY p.nome";
+        $sql = "SELECT * FROM produto p ORDER BY p.situacao, p.nome";
         $stm = $conn->prepare($sql);    
         $stm->execute();
         $result = $stm->fetchAll();

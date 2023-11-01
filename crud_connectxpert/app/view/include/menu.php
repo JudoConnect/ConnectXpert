@@ -63,6 +63,14 @@ $isProf = $acessoCont->usuarioPossuiPapel([UsuarioPapel::PROFESSOR]);
                         style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;">  Vídeo Aula</a>
                 <?php endif; ?>
 
+                <?php if($isAluno): ?>
+                    <a class="nav-link" href="#?>"
+                        style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;"> Ver Frequência </a>
+
+                        <a class="nav-link" href="<?= BASEURL . '/controller/VitrineController.php?action=list' ?>"
+                        style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;"> Vitrine </a>
+                <?php endif; ?>
+
                 <a class="nav-link" href="<?= LOGOUT_PAGE ?>" 
                 style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;">Sair</a>
 

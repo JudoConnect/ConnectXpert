@@ -310,8 +310,8 @@ CREATE TABLE frequencia (
   condicao enum('presente','ausente') NOT NULL DEFAULT 'presente',
   CONSTRAINT pk_frequencia PRIMARY KEY (id_frequencia)
 ); 
-ALTER TABLE frequencia ADD CONSTRAINT fk_frequencia_encontro FOREIGN KEY (id_encontro) REFERENCES encontro (id_encontro);
-ALTER TABLE frequencia ADD CONSTRAINT fk_frequencia_turma_aluno FOREIGN KEY (id_turma_aluno) REFERENCES turma_aluno (id_turma_aluno);
+ALTER TABLE frequencia ADD CONSTRAINT fk_frequencia_encontro FOREIGN KEY (id_encontro) REFERENCES encontro (id_encontro) ON DELETE CASCADE;
+ALTER TABLE frequencia ADD CONSTRAINT fk_frequencia_turma_aluno FOREIGN KEY (id_turma_aluno) REFERENCES turma_aluno (id_turma_aluno) ON DELETE CASCADE;
 ALTER TABLE frequencia ADD CONSTRAINT uk_encontro_turma_aluno UNIQUE (id_encontro, id_turma_aluno);
 
 CREATE TABLE `video_aula` (

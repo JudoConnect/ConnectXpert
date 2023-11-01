@@ -138,8 +138,12 @@ class TurmaController extends Controller {
     protected function delete() {
         $turma = $this->findTurmaById();
         if($turma) {
-            $this->turmaDao->deleteById($turma->getIdTurma());
-            $this->list("", "Turma excluída com sucesso!");
+            try {
+                $this->turmaDao->deleteById($turma->getIdTurma());
+                $this->list("", "Turma excluída com sucesso!");
+            } catch (PDOException $e) {
+                $this->list("Erro ao excluir a turma da base de dados.");             
+            }
         } else
             $this->list("Turma não econtrada!");
     }

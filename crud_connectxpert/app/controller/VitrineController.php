@@ -25,12 +25,12 @@ class VitrineController extends Controller {
         $this->handleAction();
     }
 
-    protected function list(string $msgErro = "", string $msgSucesso = "") {
-        $produtos = $this->produtoDao->list();
+    protected function list() {
+        $produtos = $this->produtoDao->listVitrine();
        
         $dados["lista"] = $produtos;
 
-        $this->loadView("vitrine/listVitrine.php", $dados,  $msgErro, $msgSucesso);
+        $this->loadView("vitrine/listVitrine.php", $dados);
     }
 }
 

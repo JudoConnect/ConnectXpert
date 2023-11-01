@@ -36,24 +36,33 @@ class FrequenciaController extends Controller {
 
     protected  function createFrequencia() {
         $frequenciasASerCreadas = array();
-       $frequencias = $this->frequenciaDao->listByEncontro($_GET['id']);
-        if($frequencias != null) {
-            $this->list();
-        }
-        else {
-            $alunos = $this->alunoDao->listByTurma($_GET['idTurma']);
+        
+        $frequencias = $this->frequenciaDao->listByEncontro($_GET['id']);
+        $alunos = $this->alunoDao->listByTurma($_GET['idTurma']);
 
-            foreach($alunos as $aluno):
+        foreach($alunos as $aluno):
+            if(! $this->alunoPossuiFrequencia($aluno->getIdTurmaAluno(), $frequencias)) {
                 $frequencia = new Frequencia();
                 $frequencia->setCondicao("presente");
                 $frequencia->setIdEncontro($_GET['id']);
                 $frequencia->setIdTurmaAluno($aluno->getIdTurmaAluno());
                 array_push($frequenciasASerCreadas, $frequencia);
-            endforeach;
+            }
+        endforeach;
 
-            $this->frequenciaDao->insert($frequenciasASerCreadas);
-            $this->list();
+        $this->frequenciaDao->insert($frequenciasASerCreadas);
+        $this->list();
+    }
+
+    private function alunoPossuiFrequencia($idTurmaAluno, $frequencias) {
+        if($frequencias) {
+            foreach($frequencias as $f) {
+                if($f->getIdTurmaAluno() == $idTurmaAluno)
+                    return true;
+            }
         }
+
+        return false;
     }
 
     protected function list(string $msgErro = "", string $msgSucesso = "") {
