@@ -38,7 +38,6 @@ class AlunoController extends Controller {
 
     protected function list(string $msgErro = "", string $msgSucesso = "") {
         $alunos = $this->alunoDao->list();
-        //print_r($alunos);
         $dados["lista"] = $alunos;
 
         $this->loadView("aluno/listAluno.php", $dados,  $msgErro, $msgSucesso);

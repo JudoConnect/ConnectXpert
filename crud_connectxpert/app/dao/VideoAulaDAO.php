@@ -10,12 +10,12 @@ class VideoAulaDAO {
     public function list() {
         $conn = Connection::getConn();
 
-        $sql = "SELECT * FROM video_aula  AS v ORDER BY nome_video_aula";
+        $sql = "SELECT * FROM video_aula AS v ORDER BY nome_video_aula";
         $stm = $conn->prepare($sql);    
         $stm->execute();
         $result = $stm->fetchAll();
         
-        return $this->mapVideoAula($result);
+        return $this->mapVideoAulas($result);
     }
 
     //Método para buscar uma video aula por seu ID
@@ -28,7 +28,7 @@ class VideoAulaDAO {
         $stm->execute([$idVideoAula]);
         $result = $stm->fetchAll();
 
-        $video_aulas = $this->mapVideoAula($result);
+        $video_aulas = $this->mapVideoAulas($result);
 
         if(count($video_aulas) == 1)
             return $video_aulas[0];
@@ -42,15 +42,16 @@ class VideoAulaDAO {
     //Método para inserir uma vídeo aula
     public function insert(VideoAula $video_aula) {
         $conn = Connection::getConn();
-
-        $sql = "INSERT INTO video_aula (nome_video_aula, link_video_aula)" .
-        " VALUES (:nome_video_aula, link_video_aula)";
-        
+    
+        $sql = "INSERT INTO video_aula (nome_video_aula, link_video_aula)".
+        " VALUES (:nome_video_aula, :link_video_aula)";
+            
         $stm = $conn->prepare($sql);
         $stm->bindValue("nome_video_aula", $video_aula->getNomeVideoAula());
         $stm->bindValue("link_video_aula", $video_aula->getLinkVideoAula());
         $stm->execute();
     }
+    
 
     //Método para atualizar uma vídeo aula
     public function update(VideoAula $video_aula) {
@@ -60,7 +61,7 @@ class VideoAulaDAO {
                " WHERE id_video_aula = :id_video_aula";
         
         $stm = $conn->prepare($sql);
-        $stm->bindValue("id_video_aula", $video_aula->getIdVideoAula());
+        $stm->bindValue("id_video_aula",   $video_aula->getIdVideoAula());
         $stm->bindValue("nome_video_aula", $video_aula->getNomeVideoAula());
         $stm->bindValue("link_video_aula", $video_aula->getLinkVideoAula());
         $stm->execute();
@@ -78,7 +79,7 @@ class VideoAulaDAO {
     }
 
     //Método para converter um registro da base de dados em um objeto vídeo aula
-    private function mapVideoAula($result) {
+    private function mapVideoAulas($result) {
         $video_aulas = array();
         foreach ($result as $reg) {
             $video_aula = new VideoAula();

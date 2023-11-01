@@ -29,20 +29,19 @@ class VideoAulaController extends Controller {
 
     protected function list(string $msgErro = "", string $msgSucesso = "") {
         $video_aulas = $this->videoAulaDao->list();
-        //print_r($video_aulas);
         $dados["lista"] = $video_aulas;
  
         $this->loadView("video_aula/listVideoAula.php", $dados,  $msgErro, $msgSucesso);
     }
 
     protected function create() {
-        $dados["papeis"] = UsuarioPapel::getAllAsArray();
+        $dados["id_video_aula"] = 0;
 
         $this->loadView("video_aula/formVideoAula.php", $dados);
     }
 
     protected function edit() {
-        $video_aula = $this->findVideoAulaById();
+        $video_aula = $this->findById();
         if($video_aula) {
             $dados["id_video_aula"] = $video_aula->getIdVideoAula();
             $dados["video_aula"] = $video_aula;
@@ -53,6 +52,10 @@ class VideoAulaController extends Controller {
     }
 
     protected function save() {
+            //var_dump($_POST); // Exibir os dados recebidos do formulário para fins de depuração
+            // Restante do código para processar o salvamento
+        
+        
         //Captura os dados do formulário
         $dados["id_video_aula"] = isset($_POST['id_video_aula']) ? $_POST['id_video_aula'] : 0;
         $nomeVideoAula = isset($_POST['nome_video_aula']) ? trim($_POST['nome_video_aula']) : NULL;
@@ -65,6 +68,7 @@ class VideoAulaController extends Controller {
 
         //Validar os dados
         $erros = $this->videoAulaService->validarDados($video_aula);
+
         if(empty($erros)) {
             //Persiste o objeto
             try {
@@ -96,7 +100,7 @@ class VideoAulaController extends Controller {
     
     
     protected function delete() {
-        $video_aula = $this->findVideoAulaById();
+        $video_aula = $this->findById();
         if($video_aula) {
             $this->videoAulaDao->deleteById($video_aula->getIdVideoAula());
             $this->list("", "Vídeo Aula excluída com sucesso!");
@@ -104,7 +108,7 @@ class VideoAulaController extends Controller {
             $this->list("Vídeo Aula não econtrado!");
     }
 
-    private function findVideoAulaById() {
+    private function findById() {
         $id = 0;
         if(isset($_GET['id']))
             $id = $_GET['id'];

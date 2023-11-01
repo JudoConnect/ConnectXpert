@@ -13,7 +13,7 @@ define('DB_PASSWORD', '');
 define('BASEURL', '/ConnectXpert/crud_connectxpert/app');
 
 //Nome do sistema
-define('APP_NAME', 'Template do Projeto Integrador');
+define('APP_NAME', 'Connect Xpert');
 
 //Página inicial do sistema
 define('HOME_PAGE', BASEURL . '/controller/HomeController.php?action=home');

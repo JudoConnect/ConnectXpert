@@ -14,6 +14,5 @@ class HomeVisitanteController extends Controller {
     }
 }
 
-
 #Criar objeto da classe
 new HomeVisitanteController();

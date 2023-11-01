@@ -50,6 +50,9 @@ $isProf = $acessoCont->usuarioPossuiPapel([UsuarioPapel::PROFESSOR]);
 
                         <a class="nav-link" href="<?= BASEURL . '/controller/IeController.php?action=list' ?>"
                          style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;">Ie</a>
+
+                         <a class="nav-link" href="<?= BASEURL . '/controller/VitrineController.php?action=list' ?>"
+                        style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;"> Vitrine </a>
                 <?php endif; ?>
 
                 <?php if($isProf): ?>

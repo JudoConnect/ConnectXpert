@@ -19,6 +19,17 @@ class ProdutoDAO {
         return $this->mapProduto($result);
     }
 
+    public function listAtivos() {
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM produto p ORDER BY p.nome";
+        $stm = $conn->prepare($sql);    
+        $stm->execute();
+        $result = $stm->fetchAll();
+
+        return $this->mapProduto($result);
+    }
+
     //Método para buscar um produto por seu ID
     public function findProdutoById(int $idProduto) {
         $conn = Connection::getConn();

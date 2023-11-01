@@ -17,22 +17,21 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
 </svg></a>
 </h3></div></div>
 
-<div class="container">
-    
-    <div class="row" style="margin-top: 10px;">
+<div class="container">   
+    <div class="row" style="margin-top:10px;">
         <div class="col-6">
             <form id="frmVideoAula" method="POST" 
                 action="<?= BASEURL ?>/controller/VideoAulaController.php?action=save" >
                 <div class="form-group">
                     <label for="txtNomeVideoAula">Nome da Vídeo Aula:</label>
-                    <input class="form-control" type="text" id="txtNomeVideoAula" name="nomeVideoAula" 
+                    <input class="form-control" type="text" id="txtNomeVideoAula" name="nome_video_aula" 
                         maxlength="70" placeholder="Informe o nome da Vídeo Aula"
-                        value="<?php echo (isset($dados["videoAula"]) ? $dados["videoAula"]->getNomeVideoAula() : ''); ?>" />
+                        value="<?php echo (isset($dados["video_aula"]) ? $dados["video_aula"]->getNomeVideoAula() : ''); ?>" />
 
-                    <label for="txtNomeVideoAula">Link da Vídeo Aula:</label>
-                    <input class="form-control" type="url" id="txtNomeVideoAula" name="nomeVideoAula" 
+                    <label for="txtLinkVideoAula">Link da Vídeo Aula:</label>
+                    <input class="form-control" type="url" id="txtLinkVideoAula" name="link_video_aula" 
                         maxlength="70" placeholder="Informe o link da Vídeo Aula"
-                        value="<?php echo (isset($dados["videoAula"]) ? $dados["videoAula"]->getLinkVideoAula() : ''); ?>" />
+                        value="<?php echo (isset($dados["video_aula"]) ? $dados["video_aula"]->getLinkVideoAula() : ''); ?>" />
                 </div>
              
 

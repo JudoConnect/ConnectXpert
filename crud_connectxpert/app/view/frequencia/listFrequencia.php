@@ -44,7 +44,6 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
                     <tr class="topicos">
                         <th>Foto</th>
                         <th>Nome</th>
-                        <th>Frequência</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -54,7 +53,6 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
                         <tr class="listagem">
                         <td><img src="<?= BASEURL_FOTOS . $aluno->getAluno()->getFoto(); ?>" style="width: 100px; height: auto;" /></td>
                             <td><?= $aluno->getAluno()->getNomeAluno(); ?></td>
-                            <td>Presente</td>
                             <td>
                                 <?php 
                                 if($aluno->getCondicao() == "presente") {
@@ -70,9 +68,6 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
                                     ';
                                 }
                             ?>
-                                
-                                <!-- <button type="button" class="btn btn-outline-success" 
-                                    onclick="registrarPresenca(1)">Lançar presença</button> -->
                             </td>
                         </tr>
                     <?php endforeach ?>
