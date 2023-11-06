@@ -66,4 +66,37 @@ h3 {
    background-color: #ffc39e; 
    border: 1px solid #ffc39e;
   }
-  
+  #uplImagem{
+    visibility: hidden;
+    width: 200px;
+    height: 200px;
+   }
+
+   #uplImagem:before{
+    width: 200px;
+    height: 200px;
+    content: attr(placeholder);
+    visibility: visible;
+    box-sizing: border-box;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffc39e;
+    line-height: 16px;
+    border-radius: 4px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 0;
+    background-image: url("../img/camera.png");
+    background-repeat: no-repeat;
+    background-size: 80px;
+    background-position: center;
+    transition: all 0.5s ease-out;
+   }
+
+   #uplImagem:hover:before{
+    background-size: 100px;
+   }
