@@ -15,7 +15,13 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
                     <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/> 
                 </svg></a></h3>
 
-        <div class="container">
+            
+         <div class="container">
+         <div class="form-row" style="margin-top: 40px;">
+                <div class="form-group col-md-3">
+                        <label for="uplImagem"></label>
+                        <input type="file" name="foto" id="uplImagem" accept="image/*" />
+                    </div>
             <form id="frmProfessor" method="POST" action="<?= BASEURL ?>/controller/ProfessorController.php?action=save" enctype="multipart/form-data">
                 <div class="form-row" style="margin-top: 10px;">
                     <div class="form-group col-md-5">
@@ -26,11 +32,6 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
                     <div class="form-group col-md-4">
                         <label for="txtNascimentoProfessor">Data de Nascimento:</label>
                         <input class="form-control" type="date" id="txtNascimentoProfessor" name="nascimentoProfessor" value="<?php echo (isset($dados["professor"]) ? $dados["professor"]->getNascimentoProfessor() : ''); ?>" />
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="uplImagem"></label>
-                        <input type="file" name="foto" id="uplImagem" accept="image/*" />
-                        
                     </div>
 
                     <?php if (isset($dados["professor"]) && $dados["professor"]->getFotoProfessor()) : ?>

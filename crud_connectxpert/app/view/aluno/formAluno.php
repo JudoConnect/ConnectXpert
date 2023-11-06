@@ -16,38 +16,48 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/aluno/alunostyle.css">';
 </svg></a></h3>
 
 <div class="container">
-    <div class="row">
-        <div class="col-6">
+<div class="form-row" style="margin-top: 40px;">
+                        <label for="uplImagem"></label>
+                        <input type="file" name="foto" id="uplImagem" accept="image/*" />
+                        <?php if(isset($dados["aluno"]) && $dados["aluno"]->getFoto() ):?>
+                    
+                    <img src="<?= BASEURL_FOTOS . $dados["aluno"]->getFoto(); ?>" alt="" width="100px">
+                
+                <?php endif;?>
+                    </div> 
             <form id="frmAluno" method="POST" action="<?= BASEURL ?>/controller/AlunoController.php?action=save" enctype="multipart/form-data" >
-
-                <div class="form-group">
+            <div class="form-row" >
+                    <div class="form-group col-md-7">
                     <label for="txtNomeAluno"><br>Nome do Aluno:</label>
                     <input class="form-control" type="text" id="txtNomeAluno" name="nomeAluno" 
                         maxlength="70" placeholder="Informe o nome do aluno"
                         value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getNomeAluno() : ''); ?>" />
                 </div>
-
-                <div class="form-group">
+                <div class="form-group col-md-4">
                     <label for="txtNascimentoAluno">Data de Nascimento:</label>
                     <input class="form-control" type="date" id="txtNascimentoAluno" name="nascimentoAluno" 
                         value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getNascimentoAluno() : ''); ?>" />
                 </div>
+            </div>
+                <div class="form-row">
 
-                <div class="form-group">
+                <div class="form-group col-md-7">
+                    <label for="txtNomeResponsavel">Nome do Responsável:</label>
+                    <input class="form-control" type="text" id="txtNomeResponsavel" name="nomeResponsavel" 
+                        maxlength="70" placeholder="Informe o nome do responsável pelo aluno"
+                        value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getNomeResponsavel() : ''); ?>" />
+                </div>
+
+                    <div class="form-group col-md-4">
                     <label for="txtTelefoneAluno">Telefone:</label>
                     <input class="form-control" type="text" id="txtTelefoneAluno" name="telefoneAluno" 
                         maxlength="20" placeholder="Informe número de telefone do aluno"
                         value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getTelefone() : ''); ?>" />
                 </div>
 
-                <div class="form-group">
-                    <label for="txtNomeResponsavel">Nome do Responsável:</label>
-                    <input class="form-control" type="text" id="txtNomeResponsavel" name="nomeResponsavel" 
-                        maxlength="70" placeholder="Informe o nome do responsável pelo aluno"
-                        value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getNomeResponsavel() : ''); ?>" />
-                </div>
- 
-                <div class="form-group">
+            
+                <div class="form-row">
+                <div class="form-group ">
                     <label>Sexo do Aluno:</label>
                     <?php foreach($dados["sexo"] as $sexo): ?>
                         <div class="form-radio">
@@ -63,102 +73,100 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/aluno/alunostyle.css">';
                         </div>
                     <?php endforeach; ?>
                 </div>
-
-                <div class="form-group">
+                <div class="form-row">
+                <div class="form-group col-md-6">
                     <label for="txtCpfALuno">Cpf:</label>
                     <input class="form-control" type="text" id="txtCpfAluno" name="cpfAluno" 
                         maxlength="15" placeholder="Informe o cpf"
                         value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getCpfAluno() : ''); ?>"/>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-md-6">
                     <label for="txtRgALuno">Rg:</label>
                     <input class="form-control" type="text" id="txtRgAluno" name="rgAluno" 
                         maxlength="15" placeholder="Informe o rg"
                         value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getRgAluno() : ''); ?>"/>
                 </div>
 
-                <div class="form-group">
+                <div class="form-row">
+                <div class="form-group col-md-12">
                     <label for="txtEmailALuno">Email:</label>
                     <input class="form-control" type="email" id="txtEmailAluno" name="emailAluno" 
-                        maxlength="100" placeholder="Informe o email"
+                         placeholder="Informe o email"
                         value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getEmailAluno() : ''); ?>"/>
                 </div>
 
-                <div class="form-group">
-                    <label for="uplImagem">Foto:</label>
-                    <input type="file" name="foto" id="uplImagem" accept="image/*" />  
-                </div>
-
-                <?php if(isset($dados["aluno"]) && $dados["aluno"]->getFoto() ):?>
-                    
-                    <img src="<?= BASEURL_FOTOS . $dados["aluno"]->getFoto(); ?>" alt="" width="100px">
-                
-                <?php endif;?>
-
-                <div class="form-group">
+                <div class="form-row" >
+                <div class="form-group col-md-6">
                     <label for="txtLoginALuno">Login:</label>
                     <input class="form-control" type="text" id="txtLoginAluno" name="loginAluno" 
                         maxlength="15" placeholder="Informe o login"  
                         value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getLoginAluno() : ''); ?>"/>
                 </div>
+                </div>
 
-                <div class="form-group">
+                <div class="form-row" >
+                <div class="form-group col-md-6">
                     <label for="txtSenha">Senha:</label>
                     <input class="form-control" type="password" id="txtPasswordAluno" name="senhaAluno" 
                         maxlength="15" placeholder="Informe a senha"
                         value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getSenhaAluno() : ''); ?>"/>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-md-6 ">
                     <label for="txtConfSenhaAluno">Confirmação da senha:</label>
                     <input class="form-control" type="password" id="txtConfSenhaAluno" name="confSenhaAluno" 
                         maxlength="15" placeholder="Informe a confirmação da senha"
                         value="<?php echo isset($dados["confSenhaAluno"]) ? $dados["confSenhaAluno"] : '';?>"/>
                 </div>
+                </div>
 
-                <div class="form-group">
+                <div class="form-row" >
+                <div class="form-group col-md-6">
                 <label for="txtHistorico">Histórico:</label>
-                <br>
                 <textarea class="form-control" id="txtHistorico" name="historico" rows="10" cols="30"></textarea>
                <?php echo (isset ($dados["aluno"]) ? $dados["aluno"]->getHistorico() : '');?>
                 </div>
-
-                <div class="form-group">
+                </div>
+                
+                <div class="form-row" >
+                <div class="form-group col-md-6">
                     <label for="txtEndRua">Rua:</label>
                     <input class="form-control" type="text" id="txtEndRua" name="endRua" 
                         maxlength="100" placeholder="Informe a rua"
                         value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getEndRua() : ''); ?>" />
                 </div>
                
-                <div class="form-group">
+                <div class="form-group col-md-6">
                     <label for="txtEndBairro">Bairro:</label>
                     <input class="form-control" type="text" id="txtEndBairro" name="endBairro" 
                         maxlength="100" placeholder="Informe o bairro"
                         value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getEndBairro() : ''); ?>" />
                 </div>
-               
-                <div class="form-group">
+                </div>
+                <div class="form-row" >
+                <div class="form-group col-md-6">
                     <label for="txtEndCidade">Cidade:</label>
                     <input class="form-control" type="text" id="txtEndCidade" name="endCidade" 
                         maxlength="100" placeholder="Informe a Cidade"
                         value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getEndCidade() : ''); ?>" />
                 </div>
                
-                <div class="form-group">
+                <div class="form-group col-md-4">
                     <label for="txtEndEstado">Estado:</label>
                     <input class="form-control" type="text" id="txtEndEstado" name="endEstado" 
                         maxlength="70" placeholder="Informe o Estado"
                         value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getEndEstado() : ''); ?>" />
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-md-2">
                     <label for="txtEndNumero">Número:</label>
                     <input class="form-control" type="text" id="txtEndNumero" name="endNumero" 
                         placeholder="Informe o Número"
                         value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getEndNumero() : ''); ?>" />
                 </div>
-                
+
+                <div class="form-row" >
                 <div class="form-group">
                     <label for="txtEndComplemento">Complemento:</label>
                     <input class="form-control" type="text" id="txtEndComplemento" name="endComplemento" 
@@ -182,8 +190,10 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/aluno/alunostyle.css">';
                     </select>
                    
                 </div>
+                </div>
 
 
+                <div class="form-row" >
                 <div class="form-group">
                     <label>Situação:</label>
                     
@@ -210,11 +220,13 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/aluno/alunostyle.css">';
                         </div>
                     <?php endforeach; ?>
                 </div>
+                                </div>
 
                 <div class="form-group">
                
                 <input type="hidden" id="hddId" name="id_aluno" 
                     value="<?= $dados['id_aluno']; ?>" />
+                </div>
 
                 <button type="submit" class="btn btn-success">Gravar</button>
                 <button type="reset" class="btn btn-danger">Limpar</button>

@@ -16,7 +16,8 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/produto/produtostyle.css
 </h3></div></div>
 
 <div class="container">
-    
+
+
     <div class="row" style="margin-top: 10px;">
         
         <div class="col-6">
@@ -37,11 +38,11 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/produto/produtostyle.css
                         value="<?php echo (isset($dados["produto"]) ? $dados["produto"]->getDescricao() : ''); ?>"/>
                 </div>
 
-                <div class="form-group">
-                    <label for="uplImagem" img="upload.png">Foto:</label>
-                    <input type="file" name="foto" id="uplImagem" accept="image/*" hidden/>  
+                <div class="form-row" style="margin-top: 40px;">
+                        <label for="uplImagem"></label>
+                        <input type="file" name="foto" id="uplImagem" accept="image/*" />
+                    </div> 
 
-                </div>
                 <div img="upload.png"></div>
 
                 <?php if(isset($dados["produto"]) && $dados["produto"]->getFoto() ):?>
