@@ -10,34 +10,36 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
 <div class="container">
 
     <div class="row" style="margin-top: 10px;">
-        <h3 class="col-4">Dados da Turma</h3>
+        <h3 class="col-12">Dados da Turma <a class="btn btn-inserir" 
+                href="<?= BASEURL ?>/controller/TurmaController.php?action=list"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16" style="color: rgba(255, 127, 50, 1);">
+                    <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
+                </svg></a></h3>
 
     </div>
     
     <div class="row" style="margin-top: 10px;">
         <div class="col-12">
-            <span style="font-weight: bold;" > Nome: </span> <?= $dados["turma"]->getNomeTurma() ?>
+            <span style="font-weight: bold; color: rgba(255, 127, 50, 1);" > Nome: </span> <?= $dados["turma"]->getNomeTurma() ?>
         </div>
         <div class="col-12">
-            <span style="font-weight: bold;" > Horário: </span> <?= $dados["turma"]->getHorario() ?>
+            <span style="font-weight: bold; color: rgba(255, 127, 50, 1);" > Horário: </span> <?= $dados["turma"]->getHorario() ?>
         </div>
     </div>
     
     <div class="row" style="margin-top: 10px;">
-        <h3 class="col-4">Professores disponíveis</h3>
+        <h3 class="col-12">Professores disponíveis:</h3>
     </div>
 
     <div class="row" style="margin-top: 10px;">
 
 
-        <div class="col-6">
+        <div class="col-12">
             <form id="frmTurma" method="POST" 
                 action="<?= BASEURL ?>/controller/TurmaProfessorController.php?action=add" >
  
-                <div class="form-group">
-                    <label for="somProfessor">Professores:</label>
+                <div class="form-group ">
                     <select class="form-control" id="somProfessor" name="idProfessor">
-                        <option value="">----Selecione----</option>
+                        <option value="">Selecione</option>
                         <?php foreach($dados['listaProfessores'] as $prof): ?>
                             <option value="<?= $prof->getIdProfessor() ?>" ><?= $prof->getNomeProfessor() ?></option>
                         <?php endforeach; ?>
@@ -47,7 +49,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
 
                 <input type="hidden" name="idTurma" value="<?= $dados["turma"]->getIdTurma() ?>" />
 
-                <button type="submit" class="btn btn-success">Adicionar</button>
+                <button type="submit" class="btn" style="background-color: #ff7f32; border-radius: 16px;"><a style="color:#fdfbeb;">Adicionar</button>
             </form>            
         </div>
 
@@ -59,7 +61,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
 
     <!-- Tabela com os professores já adicionados na turma -->
     <div class="row" style="margin-top: 10px;">
-        <h3 class="col-12">Professores já adicionados na turma</h3>
+        <h3 class="col-12">Professores da turma:</h3>
     </div>
 
     <div class="row" style="margin-top: 10px;">
@@ -88,15 +90,6 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
                         </tr>
                     <?php endforeach; ?>       
             </table>
-        </div>
-    </div>
-
-    
-
-    <div class="row" style="margin-top: 30px;">
-        <div class="col-12">
-       <br> <a class="btn btn-secondary" 
-                href="<?= BASEURL ?>/controller/TurmaController.php?action=list">Voltar</a>
         </div>
     </div>
 </div>
