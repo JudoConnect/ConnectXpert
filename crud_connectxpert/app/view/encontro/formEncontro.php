@@ -21,7 +21,6 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
     </div>
 </div>
 
-
 <div class="container">
     <div class="row">
 <h3 class="col-4">
@@ -57,6 +56,9 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
 
                 <button type="submit" class="btn btn-success">Gravar</button>
                 <button type="reset" class="btn btn-danger">Limpar</button>
+                <div class="row" style="margin-top: 30px;">
+                   
+    </div>
             </form>            
         </div>
 
