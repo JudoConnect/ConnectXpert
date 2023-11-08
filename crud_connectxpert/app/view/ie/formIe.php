@@ -27,7 +27,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
                 <div class="form-group">
                     <label for="txtNomeIe">Nome da Instituição de Ensino:</label>
                     <input class="form-control" type="text" id="txtNomeIe" name="nomeIe" 
-                        maxlength="70" placeholder="Informe o nome da Instituição de Ensino"
+                        maxlength="70" 
                         value="<?php echo (isset($dados["ie"]) ? $dados["ie"]->getNomeIe() : ''); ?>" />
                 </div>
              
@@ -35,8 +35,9 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
                 <input type="hidden" id="hddId" name="id_ie" 
                     value="<?= $dados['id_ie']; ?>" />
 
-                <button type="submit" class="btn btn-success">Gravar</button>
-                <button type="reset" class="btn btn-danger">Limpar</button>
+
+               <button type="submit" class="btn" style="background-color: #ff7f32; border-radius: 16px;"><a style="color:#fdfbeb;"> Cadastrar</a></button>
+                <button type="reset" class="btn" style="background-color: #fdfbeb; border-radius: 16px; border-color: #ff7f32;"><a style="color: #ff7f32;"> Cancelar </a></button>
             </form>            
         </div>
 
