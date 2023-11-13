@@ -32,6 +32,9 @@ class Aluno {
     //Campo para armazenar o ID do aluno em uma turma
     private $idTurmaAluno;
 
+    //Atributo para armazerna a frequencia do aluno em uma turma
+    private $frequenciaAluno;
+
 
 
     /**
@@ -501,6 +504,26 @@ class Aluno {
     public function setIdTurmaAluno($idTurmaAluno)
     {
         $this->idTurmaAluno = $idTurmaAluno;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of frequenciaAluno
+     */ 
+    public function getFrequenciaAluno()
+    {
+        return $this->frequenciaAluno;
+    }
+
+    /**
+     * Set the value of frequenciaAluno
+     *
+     * @return  self
+     */ 
+    public function setFrequenciaAluno($frequenciaAluno)
+    {
+        $this->frequenciaAluno = $frequenciaAluno;
 
         return $this;
     }

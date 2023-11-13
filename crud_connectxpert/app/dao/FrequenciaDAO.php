@@ -157,15 +157,36 @@ class FrequenciaDAO {
    
     }
 
+    public function listFrequenciaAlunoTurma($idAluno, $idTurma) {
+        $conn = Connection::getConn();
+
+        $sql = "SELECT ta.id_turma_aluno, ta.id_turma,
+	    (SELECT count(sub.id_encontro) FROM encontro sub WHERE sub.id_turma = ta.id_turma) AS total_encontros,
+        (SELECT count(sub.id_frequencia) FROM frequencia sub WHERE sub.id_turma_aluno = ta.id_turma_aluno AND sub.condicao = 'ausente') AS total_faltas
+        FROM turma_aluno ta 
+        WHERE ta.id_aluno = ? AND ta.id_turma = ?"; 
+
+        $stm = $conn->prepare($sql);    
+        $stm->execute([$idAluno, $idTurma]);
+        $result = $stm->fetchAll();
+
+        $frequencias = $this->mapFrequenciaAluno($result);
+
+        return $frequencias[0];
+   
+    }
+
    private function mapFrequenciaAluno($result) {
         $frequencias = array();
         foreach ($result as $reg) {
             $frequencia = new FrequenciaAluno();
             $frequencia->setIdTurmaAluno($reg['id_turma_aluno']);
             $frequencia->setIdTurma($reg['id_turma']);
-            $frequencia->setNomeTurma($reg['nome_turma']);
-            $frequencia->setHorario($reg['horario']);
-            $frequencia->setDiaSemana($reg['dia_semana']);
+            if(isset($reg['nome_turma'])) {
+                $frequencia->setNomeTurma($reg['nome_turma']);
+                $frequencia->setHorario($reg['horario']);
+                $frequencia->setDiaSemana($reg['dia_semana']);
+            }
             $frequencia->setTotalEncontros($reg['total_encontros']);
             $frequencia->setTotalFaltas($reg['total_faltas']);
 

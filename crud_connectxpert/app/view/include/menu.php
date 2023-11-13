@@ -75,6 +75,9 @@ $isProf = $acessoCont->usuarioPossuiPapel([UsuarioPapel::PROFESSOR]);
 
                         <a class="nav-link" href="<?= BASEURL . '/controller/VitrineController.php?action=list' ?>"
                         style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;"> Vitrine </a>
+
+                        <a class="nav-link" href="<?= BASEURL . '/controller/VideoAulaController.php?action=listAluno' ?>"
+                        style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;">  Vídeo Aula </a>
                 <?php endif; ?>
 
                 <?php if($isAluno || $isProf || $isAdministrador): ?>
