@@ -64,7 +64,7 @@ $isProf = $acessoCont->usuarioPossuiPapel([UsuarioPapel::PROFESSOR]);
                 <?php endif; ?>
 
                 <?php if($isAluno): ?>
-                    <a class="nav-link" href="#?>"
+                    <a class="nav-link" href="<?= BASEURL . '/controller/FrequenciaController.php?action=list'?>"
                         style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;"> Ver Frequência </a>
 
                         <a class="nav-link" href="<?= BASEURL . '/controller/VitrineController.php?action=list' ?>"

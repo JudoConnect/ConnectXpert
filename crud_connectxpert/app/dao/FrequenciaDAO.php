@@ -4,6 +4,7 @@
 
 include_once(__DIR__ . "/../connection/Connection.php");
 include_once(__DIR__ . "/../model/Frequencia.php");
+include_once(__DIR__ . "/../model/FrequenciaAluno.php");
 include_once(__DIR__ . "/../model/Aluno.php");
 
 class FrequenciaDAO {
@@ -134,5 +135,43 @@ class FrequenciaDAO {
   
         return;
     }
-}
-    
+
+
+    public function listFrequenciaAluno($idAluno) {
+        $conn = Connection::getConn();
+
+        $sql = "SELECT ta.id_turma_aluno, t.id_turma, t.nome_turma, t.horario, t.dia_semana,
+	    (SELECT count(sub.id_encontro) FROM encontro sub WHERE sub.id_turma = t.id_turma) AS total_encontros,
+        (SELECT count(sub.id_frequencia) FROM frequencia sub WHERE sub.id_turma_aluno = ta.id_turma_aluno) AS total_faltas
+        FROM turma_aluno ta
+        JOIN turma t ON (t.id_turma = ta.id_turma) 
+        WHERE ta.id_aluno = ?"; 
+
+        $stm = $conn->prepare($sql);    
+        $stm->execute([$idAluno]);
+        $result = $stm->fetchAll();
+
+        $frequencias = $this->mapFrequenciaAluno($result);
+
+        return;
+   
+    }
+
+   private function mapFrequenciaAluno($result) {
+        $frequencias = array();
+        foreach ($result as $reg) {
+            $frequencia = new FrequenciaAluno();
+            $frequencia->setIdTurmaAluno($reg['idTurmaAluno']);
+            $frequencia->setIdTurma($reg['IdTurma']);
+            $frequencia->setnomeTurma($reg['nomeTurma']);
+            $frequencia->sethorario($reg['horario']);
+            $frequencia->setdiaSemana($reg['diaSemana']);
+            $frequencia->settotalEncontros($reg['totalEncontros']);
+            $frequencia->settotalFaltas($reg['totalFaltas']);
+
+            array_push($frequencias, $frequencia);
+        }
+
+        return $frequencias;
+    }
+   }   
