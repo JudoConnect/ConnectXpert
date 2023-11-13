@@ -11,7 +11,6 @@ class FrequenciaAluno {
    private $diaSemana;
    private $totalEncontros;
    private $totalFaltas;
-   private $frequencia;
 
    /**
     * Get the value of idTurmaAluno
@@ -158,6 +157,6 @@ class FrequenciaAluno {
     */ 
    public function getFrequencia()
    {
-      return $this->frequencia = 100 - (($this->totalFaltas / $this->totalEncontros) * 100);
+      return 100 - (($this->totalFaltas / $this->totalEncontros) * 100);
    }
 }

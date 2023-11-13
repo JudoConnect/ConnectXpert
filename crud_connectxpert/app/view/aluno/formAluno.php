@@ -4,8 +4,11 @@
 
 require_once(__DIR__ . "/../include/header.php");
 require_once(__DIR__ . "/../include/menu.php");
+//require_once(__DIR__ . "/mascara.php");
 echo '<link rel="stylesheet" href="' . BASEURL . '/view/aluno/alunostyle.css">';
 ?>
+<script src = "../../bootstrap/js/funcoesMasc.js">
+    </script>
 
 <div class="container">
     <div class="row">
@@ -50,7 +53,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/aluno/alunostyle.css">';
                         <div class="form-row">
                         <div class="form-group col-md-7">
                             <label for="txtTelefoneAluno">Telefone:</label>
-                            <input class="form-control" type="text" id="txtTelefoneAluno" name="telefoneAluno" maxlength="20"  value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getTelefone() : ''); ?>" />
+                            <input class="form-control" type="text" id="txtTelefoneAluno" name="telefoneAluno" maxlength="14" onfocus="mascTelefone1(this)" onkeypress="mascTelefone2(this)" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getTelefone() : ''); ?>" />
                         </div>
 
                                 <div class="form-group col-md-3">

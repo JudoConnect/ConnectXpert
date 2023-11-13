@@ -18,6 +18,9 @@ define('APP_NAME', 'Connect Xpert');
 //Página inicial do sistema
 define('HOME_PAGE', BASEURL . '/controller/HomeController.php?action=home');
 
+//Página inicial do sistema do visitante
+define('HOME_VISITANTE', BASEURL . '/controller/HomeVisitanteController.php?action=home');
+
 //Página de logout do sistema
 define('LOGIN_PAGE', BASEURL . '/controller/LoginController.php?action=login');
 

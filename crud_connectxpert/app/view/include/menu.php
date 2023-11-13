@@ -31,8 +31,14 @@ $isProf = $acessoCont->usuarioPossuiPapel([UsuarioPapel::PROFESSOR]);
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
                 <div class="navbar-nav">
-                <a class="nav-item nav-link" href="<?= HOME_PAGE ?>" 
-                style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;">Home</a>
+
+                <?php if($isAluno || $isProf || $isAdministrador): ?>
+                    <a class="nav-item nav-link" href="<?= HOME_PAGE ?>" 
+                    style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;">Home</a>
+                <?php else: ?>
+                    <a class="nav-item nav-link" href="<?= HOME_VISITANTE ?>" 
+                    style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;">Home</a>
+                <?php endif; ?>
 
 <!--Se o tipo de usuario for administrador isso aparece-->
                 <?php if($isAdministrador): ?>
@@ -64,15 +70,17 @@ $isProf = $acessoCont->usuarioPossuiPapel([UsuarioPapel::PROFESSOR]);
                 <?php endif; ?>
 
                 <?php if($isAluno): ?>
-                    <a class="nav-link" href="<?= BASEURL . '/controller/FrequenciaController.php?action=list'?>"
-                        style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;"> Ver Frequência </a>
+                    <a class="nav-link" href="<?= BASEURL . '/controller/FrequenciaController.php?action=listFrequenciaAluno'?>"
+                        style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;"> Frequência </a>
 
                         <a class="nav-link" href="<?= BASEURL . '/controller/VitrineController.php?action=list' ?>"
                         style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;"> Vitrine </a>
                 <?php endif; ?>
 
-                <a class="nav-link" href="<?= LOGOUT_PAGE ?>" 
-                style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;">Sair</a>
+                <?php if($isAluno || $isProf || $isAdministrador): ?>
+                    <a class="nav-link" href="<?= LOGOUT_PAGE ?>" 
+                    style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;">Sair</a>
+                <?php endif; ?>
 
                 </div>
             </div>

@@ -142,7 +142,7 @@ class FrequenciaDAO {
 
         $sql = "SELECT ta.id_turma_aluno, t.id_turma, t.nome_turma, t.horario, t.dia_semana,
 	    (SELECT count(sub.id_encontro) FROM encontro sub WHERE sub.id_turma = t.id_turma) AS total_encontros,
-        (SELECT count(sub.id_frequencia) FROM frequencia sub WHERE sub.id_turma_aluno = ta.id_turma_aluno) AS total_faltas
+        (SELECT count(sub.id_frequencia) FROM frequencia sub WHERE sub.id_turma_aluno = ta.id_turma_aluno AND sub.condicao = 'ausente') AS total_faltas
         FROM turma_aluno ta
         JOIN turma t ON (t.id_turma = ta.id_turma) 
         WHERE ta.id_aluno = ?"; 
@@ -153,7 +153,7 @@ class FrequenciaDAO {
 
         $frequencias = $this->mapFrequenciaAluno($result);
 
-        return;
+        return $frequencias;
    
     }
 
@@ -161,13 +161,13 @@ class FrequenciaDAO {
         $frequencias = array();
         foreach ($result as $reg) {
             $frequencia = new FrequenciaAluno();
-            $frequencia->setIdTurmaAluno($reg['idTurmaAluno']);
-            $frequencia->setIdTurma($reg['IdTurma']);
-            $frequencia->setnomeTurma($reg['nomeTurma']);
-            $frequencia->sethorario($reg['horario']);
-            $frequencia->setdiaSemana($reg['diaSemana']);
-            $frequencia->settotalEncontros($reg['totalEncontros']);
-            $frequencia->settotalFaltas($reg['totalFaltas']);
+            $frequencia->setIdTurmaAluno($reg['id_turma_aluno']);
+            $frequencia->setIdTurma($reg['id_turma']);
+            $frequencia->setNomeTurma($reg['nome_turma']);
+            $frequencia->setHorario($reg['horario']);
+            $frequencia->setDiaSemana($reg['dia_semana']);
+            $frequencia->setTotalEncontros($reg['total_encontros']);
+            $frequencia->setTotalFaltas($reg['total_faltas']);
 
             array_push($frequencias, $frequencia);
         }

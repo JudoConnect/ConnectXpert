@@ -21,7 +21,7 @@ class FrequenciaController extends Controller {
         if(! $this->usuarioLogado())
             exit;
 
-        if(! $this->usuarioPossuiPapel([UsuarioPapel::PROFESSOR,UsuarioPapel::ALUNO])) {
+        if(! $this->usuarioPossuiPapel([UsuarioPapel::PROFESSOR, UsuarioPapel::ALUNO])) {
             echo "Acesso negado";
             exit;
         }
@@ -84,13 +84,18 @@ class FrequenciaController extends Controller {
 
     protected function listFrequenciaAluno(string $msgErro = "", string $msgSucesso = "") {
         //Veriricar o ID do aluno logado
-        session_start();
         $idAlunoLogado = $_SESSION[SESSAO_USUARIO_ID];
 
         //Buscar as frequencias do aluno do DAO
+        $frequencias = $this->frequenciaDao->listFrequenciaAluno($idAlunoLogado);
+        $dados["frequencias"] = $frequencias;
+
+        //Carregar os dados do aluno
+        $dados["aluno"] = $this->alunoDao->findById($idAlunoLogado);
+
 
         //Carregar a página para exibir as frequencias
-        
+        $this->loadView("frequencia/listFrequenciaAluno.php", $dados,  $msgErro, $msgSucesso);
     }
 
 
