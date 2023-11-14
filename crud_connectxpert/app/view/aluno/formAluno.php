@@ -4,11 +4,10 @@
 
 require_once(__DIR__ . "/../include/header.php");
 require_once(__DIR__ . "/../include/menu.php");
-//require_once(__DIR__ . "/mascara.php");
 echo '<link rel="stylesheet" href="' . BASEURL . '/view/aluno/alunostyle.css">';
 ?>
-<script src = "../../bootstrap/js/funcoesMasc.js">
-    </script>
+
+<script src = "../../bootstrap/js/funcoesMasc.js"></script>
 
 <div class="container">
     <div class="row">
@@ -58,12 +57,12 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/aluno/alunostyle.css">';
 
                                 <div class="form-group col-md-3">
                                     <label for="txtCpfALuno">CPF:</label>
-                                    <input class="form-control" type="text" id="txtCpfAluno" name="cpfAluno" maxlength="15"  value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getCpfAluno() : ''); ?>" />
+                                    <input class="form-control" type="text" id="txtCpfAluno" name="cpfAluno" maxlength="14" onkeypress="mascCpf(this)"  value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getCpfAluno() : ''); ?>" />
                                 </div>
 
                                 <div class="form-group col-md-2">
                                     <label for="txtRgALuno">RG:</label>
-                                    <input class="form-control" type="text" id="txtRgAluno" name="rgAluno" maxlength="15"  value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getRgAluno() : ''); ?>" />
+                                    <input class="form-control" type="text" id="txtRgAluno" name="rgAluno" maxlength="12"  onkeypress="mascRg(this)" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getRgAluno() : ''); ?>" />
                                 </div>
                         </div>
 
@@ -73,12 +72,12 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/aluno/alunostyle.css">';
                                 <?php foreach ($dados["sexo"] as $sexo) : ?>
                                     <div class="form-radio">
                                         <input type="radio" name="sexo" id="<?= 'ckb' . $sexo ?>" value="<?= strtolower($sexo) ?>" <?php
-                                                                                                                                    if (
-                                                                                                                                        isset($dados['aluno']) &&
-                                                                                                                                        strtolower($sexo) == $dados['aluno']->getSexoAluno()
-                                                                                                                                    )
-                                                                                                                                        echo " checked";
-                                                                                                                                    ?> />
+                                        if (
+                                        isset($dados['aluno']) &&
+                                        strtolower($sexo) == $dados['aluno']->getSexoAluno()
+                                        )
+                                        echo " checked";
+                                        ?> />
                                         <label for="<?= 'ckb' . $sexo ?>"><?= $sexo ?></label>
                                     </div>
                                 <?php endforeach; ?>
@@ -134,8 +133,8 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/aluno/alunostyle.css">';
                                                     <option value="">Selecione</option>
                                                     <?php foreach ($dados['listaIes'] as $ies) : ?>
                                                         <option value="<?= $ies->getIdIe() ?>" <?php if (isset($dados["aluno"]) && $dados["aluno"]->getIdIe() == $ies->getIdIe())
-                                                                                                    echo 'selected';
-                                                                                                ?>><?= $ies->getNomeIe() ?></option>
+                                                        echo 'selected';
+                                                        ?>><?= $ies->getNomeIe() ?></option>
                                                     <?php endforeach; ?>
                                                 </select>
 
@@ -173,17 +172,16 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/aluno/alunostyle.css">';
                                                     <div class="form-radio">
                                                         <input type="radio" name="situacao" id="<?= 'ckb' . $estados ?>" value="<?= strtolower($estados) ?>" <?php
 
-                                                                                                                                                                //condição quando o produto está sendo cadastrado e não existe estado
-                                                                                                                                                                if (!isset($dados['idAluno']) && $estados == "DISPONIVEL") {
-                                                                                                                                                                    echo " checked";
-                                                                                                                                                                }
+                                                        //condição quando o produto está sendo cadastrado e não existe estado
+                                                        if (!isset($dados['idAluno']) && $estados == "DISPONIVEL") {
+                                                            echo " checked";
+                                                            }
 
-                                                                                                                                                                //condição quando o produto está sendo editadoi e existe estado
-                                                                                                                                                                if (isset($dados['aluno']) && strtolower($estados) == $dados['aluno']->getSituacao()) {
-                                                                                                                                                                    echo " checked";
-                                                                                                                                                                }
-
-                                                                                                                                                                ?> />
+                                                            //condição quando o produto está sendo editadoi e existe estado
+                                                            if (isset($dados['aluno']) && strtolower($estados) == $dados['aluno']->getSituacao()) {
+                                                            echo " checked";
+                                                            }
+                                                            ?> />
                                                         <label for="<?= 'ckb' . $estados ?>"><?= $estados ?></label>
                                                     </div>
                                                 <?php endforeach; ?>

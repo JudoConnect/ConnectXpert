@@ -7,6 +7,9 @@ require_once(__DIR__ . "/../include/menu.php");
 echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css">';
 ?>
 
+<script src = "../../bootstrap/js/funcoesMasc.js"></script>
+
+
 <div class="container">
     <div class="row">
         <h3 class="col-4">
@@ -36,7 +39,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
 
                 <div class="form-group">
                     <label for="txtHorario">Horário:</label>
-                    <input class="form-control" type="text" id="txtHorario" name="horario" maxlength="20"  value="<?php echo (isset($dados["turma"]) ? $dados["turma"]->getHorario() : ''); ?>" />
+                    <input class="form-control" type="text" id="txtHorario" name="horario" maxlength="5" onkeypress="mascHorario(this)" value="<?php echo (isset($dados["turma"]) ? $dados["turma"]->getHorario() : ''); ?>" />
                 </div>
 
                 <div class="form-group">

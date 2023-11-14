@@ -7,6 +7,9 @@ require_once(__DIR__ . "/../include/menu.php");
 echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css">';
 
 ?>
+
+<script src = "../../bootstrap/js/funcoesMasc.js"></script>
+
 <div class="container">
     <div class="row">
         <h3 class="col-4">
@@ -45,19 +48,19 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
                     <div class="form-row">
                         <div class="form-group col-md-7">
                             <label for="txtTelefoneProfessor">Telefone:</label>
-                            <input class="form-control" type="text" id="txtTelefoneProfessor" name="telefoneProfessor" maxlength="20" value="<?php echo (isset($dados["professor"]) ? $dados["professor"]->getTelefoneProfessor() : ''); ?>" />
+                            <input class="form-control" type="text" id="txtTelefoneProfessor" name="telefoneProfessor" maxlength="14" onfocus="mascTelefone1(this)" onkeypress="mascTelefone2(this)" value="<?php echo (isset($dados["professor"]) ? $dados["professor"]->getTelefoneProfessor() : ''); ?>" />
                         </div>
 
 
                         <div class="form-group col">
                             <label for="txtCpfProfessor">CPF:</label>
-                            <input class="form-control" type="text" id="txtCpfProfessor" name="cpfProfessor" maxlength="15" value="<?php echo (isset($dados["professor"]) ? $dados["professor"]->getCpfProfessor() : ''); ?>" />
+                            <input class="form-control" type="text" id="txtCpfProfessor" name="cpfProfessor" maxlength="14" onkeypress="mascCpf(this)" value="<?php echo (isset($dados["professor"]) ? $dados["professor"]->getCpfProfessor() : ''); ?>" />
                         </div>
 
 
                         <div class="form-group col">
                             <label for="txtRgProfessor">RG:</label>
-                            <input class="form-control" type="text" id="txtRgProfessor" name="rgProfessor" maxlength="15" value="<?php echo (isset($dados["professor"]) ? $dados["professor"]->getRgProfessor() : ''); ?>" />
+                            <input class="form-control" type="text" id="txtRgProfessor" name="rgProfessor" maxlength="12"  onkeypress="mascRg(this)" value="<?php echo (isset($dados["professor"]) ? $dados["professor"]->getRgProfessor() : ''); ?>" />
                         </div>
                     </div>
 
@@ -66,12 +69,12 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
                         <?php foreach ($dados["sexo"] as $sexo) : ?>
                             <div class="form-radio">
                                 <input type="radio" name="sexo" id="<?= 'ckb' . $sexo ?>" value="<?= strtolower($sexo) ?>" <?php
-                                                                                                                            if (
-                                                                                                                                isset($dados['professor']) &&
-                                                                                                                                strtolower($sexo) == $dados['professor']->getSexoProfessor()
-                                                                                                                            )
-                                                                                                                                echo " checked";
-                                                                                                                            ?> />
+                                    if (
+                                    isset($dados['professor']) &&
+                                    strtolower($sexo) == $dados['professor']->getSexoProfessor()
+                                    )
+                                    echo " checked";
+                                    ?> />
                                 <label for="<?= 'ckb' . $sexo ?>"><?= $sexo ?></label>
                             </div>
                         <?php endforeach; ?>
@@ -88,12 +91,12 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
                         <?php foreach ($dados["tipo"] as $tipo) : ?>
                             <div class="form-radio">
                                 <input type="radio" name="tipo" id="<?= 'ckb' . $tipo ?>" value="<?= $tipo ?>" <?php
-                                                                                                                if (
-                                                                                                                    isset($dados['professor']) &&
-                                                                                                                    $tipo == $dados['professor']->getTipo()
-                                                                                                                )
-                                                                                                                    echo " checked";
-                                                                                                                ?> />
+                                if (
+                                isset($dados['professor']) &&
+                                $tipo == $dados['professor']->getTipo()
+                                )
+                                echo " checked";
+                                ?> />
                                 <label for="<?= 'ckb' . $tipo ?>"><?= $tipo ?></label>
                             </div>
                         <?php endforeach; ?>
