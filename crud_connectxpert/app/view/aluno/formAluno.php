@@ -159,9 +159,6 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/aluno/alunostyle.css">';
             <label for="txtConfSenhaAluno">Confirmação da senha:</label>
             <input class="form-control" type="password" id="txtConfSenhaAluno" name="confSenhaAluno" maxlength="15" value="<?php echo isset($dados["confSenhaAluno"]) ? $dados["confSenhaAluno"] : ''; ?>" />
         </div>
-        </div>
-    </div>
-
 
     <div class="form-row">
         <div class="form-group">
@@ -188,8 +185,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/aluno/alunostyle.css">';
             <?php endforeach; ?>
         </div>
     </div>
-
-
+    </div>
     <button type="submit" class="btn" style="background-color: #ff7f32; border-radius: 16px;"><a style="color:#fdfbeb;"> Cadastrar</a></button>
     <button type="reset" class="btn" style="background-color: #fdfbeb; border-radius: 16px; border-color: #ff7f32;"><a style="color: #ff7f32;"> Cancelar </a></button>
     </form>
@@ -199,8 +195,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/aluno/alunostyle.css">';
 <div class="col-6">
     <?php require_once(__DIR__ . "/../include/msg.php"); ?>
 </div>
-</div>
-</div>
+
 
 <?php
 require_once(__DIR__ . "/../include/footer.php");
