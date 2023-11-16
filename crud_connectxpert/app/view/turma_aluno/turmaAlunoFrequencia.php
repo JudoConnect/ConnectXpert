@@ -39,7 +39,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/utils/busca_select/busca
                         <tr class="topicos">
                             <th>Foto</th>
                             <th>Nome</th>
-                            <th>Aulas / Faltas</th>
+                            <th>Encontros / Faltas</th>
                             <th>Frequência</th>
                         </tr>    
                     </thead> 
