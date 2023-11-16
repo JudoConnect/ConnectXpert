@@ -16,7 +16,7 @@ class VideoAulaController extends Controller {
         if(! $this->usuarioLogado())
             exit;
 
-    if(! $this->usuarioPossuiPapel([UsuarioPapel::PROFESSOR])) {
+    if(! $this->usuarioPossuiPapel([UsuarioPapel::PROFESSOR, UsuarioPapel::ALUNO])) {
         echo "Acesso negado";
         exit;
     }
@@ -32,6 +32,13 @@ class VideoAulaController extends Controller {
         $dados["lista"] = $video_aulas;
  
         $this->loadView("video_aula/listVideoAula.php", $dados,  $msgErro, $msgSucesso);
+    }
+
+    protected function listAluno(string $msgErro = "", string $msgSucesso = "") {
+        $video_aulas = $this->videoAulaDao->listAluno();
+        $dados["lista"] = $video_aulas;
+ 
+        $this->loadView("video_aula/listAlunoVideoAula.php", $dados,  $msgErro, $msgSucesso);
     }
 
     protected function create() {

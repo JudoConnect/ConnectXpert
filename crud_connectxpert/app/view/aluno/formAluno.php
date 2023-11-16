@@ -7,6 +7,8 @@ require_once(__DIR__ . "/../include/menu.php");
 echo '<link rel="stylesheet" href="' . BASEURL . '/view/aluno/alunostyle.css">';
 ?>
 
+<script src = "../../bootstrap/js/funcoesMasc.js"></script>
+
 <div class="container">
     <div class="row">
         <h3 class="col-12">
@@ -40,7 +42,6 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/aluno/alunostyle.css">';
                 </div>
             </div>
 
-
             <div div class="form-row">
                 <div class="form-group col-12">
                     <label for="txtNomeResponsavel">Nome do Responsável:</label>
@@ -51,17 +52,17 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/aluno/alunostyle.css">';
             <div div class="form-row">
                 <div class="form-group col-md-7">
                     <label for="txtTelefoneAluno">Telefone:</label>
-                    <input class="form-control" type="text" id="txtTelefoneAluno" name="telefoneAluno" maxlength="20" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getTelefone() : ''); ?>" />
+                    <input class="form-control" type="text" id="txtTelefoneAluno" name="telefoneAluno" maxlength="14"  onfocus="mascTelefone1(this)" onkeypress="mascTelefone2(this)" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getTelefone() : ''); ?>" />
                 </div>
 
                 <div class="form-group col-md-3">
                     <label for="txtCpfALuno">CPF:</label>
-                    <input class="form-control" type="text" id="txtCpfAluno" name="cpfAluno" maxlength="15" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getCpfAluno() : ''); ?>" />
+                    <input class="form-control" type="text" id="txtCpfAluno" name="cpfAluno" maxlength="15" onkeypress="mascCpf(this)" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getCpfAluno() : ''); ?>" />
                 </div>
 
                 <div class="form-group col-md-2">
                     <label for="txtRgALuno">RG:</label>
-                    <input class="form-control" type="text" id="txtRgAluno" name="rgAluno" maxlength="15" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getRgAluno() : ''); ?>" />
+                    <input class="form-control" type="text" id="txtRgAluno" name="rgAluno" maxlength="12" onkeypress="mascRg(this)" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getRgAluno() : ''); ?>" />
                 </div>
             </div>
 
@@ -154,13 +155,12 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/aluno/alunostyle.css">';
             <label for="txtSenha">Senha:</label>
             <input class="form-control" type="password" id="txtPasswordAluno" name="senhaAluno" maxlength="15" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getSenhaAluno() : ''); ?>" />
         </div>
-
         <div class="form-group col-md-6 ">
             <label for="txtConfSenhaAluno">Confirmação da senha:</label>
             <input class="form-control" type="password" id="txtConfSenhaAluno" name="confSenhaAluno" maxlength="15" value="<?php echo isset($dados["confSenhaAluno"]) ? $dados["confSenhaAluno"] : ''; ?>" />
         </div>
+        </div>
     </div>
-
 
 
     <div class="form-row">
@@ -190,20 +190,12 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/aluno/alunostyle.css">';
     </div>
 
 
-    <div class="form-group">
-
-        <input type="hidden" id="hddId" name="id_aluno" value="<?= $dados['id_aluno']; ?>" />
-    </div>
-
-
     <button type="submit" class="btn" style="background-color: #ff7f32; border-radius: 16px;"><a style="color:#fdfbeb;"> Cadastrar</a></button>
     <button type="reset" class="btn" style="background-color: #fdfbeb; border-radius: 16px; border-color: #ff7f32;"><a style="color: #ff7f32;"> Cancelar </a></button>
-
     </form>
 </div>
-                                                                                                                        </div>
+     </div>
                                                                                                                         
-
 <div class="col-6">
     <?php require_once(__DIR__ . "/../include/msg.php"); ?>
 </div>

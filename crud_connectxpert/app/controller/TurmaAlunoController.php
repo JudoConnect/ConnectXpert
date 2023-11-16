@@ -3,6 +3,7 @@
 require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../dao/TurmaDAO.php");
 require_once(__DIR__ . "/../dao/TurmaAlunoDAO.php");
+require_once(__DIR__ . "/../dao/FrequenciaDAO.php");
 require_once(__DIR__ . "/../dao/AlunoDAO.php");
 require_once(__DIR__ . "/../service/TurmaAlunoService.php");
 require_once(__DIR__ . "/../model/Turma.php");
@@ -13,6 +14,7 @@ class TurmaAlunoController extends Controller {
     private AlunoDAO $alunoDao;
     private TurmaAlunoService $turmaAlunoService;
     private TurmaAlunoDAO $turmaAlunoDao;
+    private FrequenciaDAO $frequenciaDao;
     
 
     public function __construct() {
@@ -28,6 +30,7 @@ class TurmaAlunoController extends Controller {
         $this->turmaAlunoService = new TurmaAlunoService();
         $this->alunoDao = new AlunoDAO();
         $this->turmaAlunoDao = new TurmaAlunoDAO();
+        $this->frequenciaDao = new FrequenciaDAO();
        
 
         $this->handleAction();
@@ -110,6 +113,25 @@ class TurmaAlunoController extends Controller {
 
         $turma = $this->turmaDao->findById($id);
         return $turma;
+    }
+
+    public function listFrequencia() {
+        $turma = $this->findTurmaById();
+        if($turma) {
+            $dados["id_turma"] = $turma->getIdTurma();
+            $dados["turma"] = $turma;
+
+            $alunos = $this->alunoDao->listByTurma($turma->getIdTurma());
+            foreach($alunos as $a) {
+                $freq = $this->frequenciaDao->listFrequenciaAlunoTurma($a->getIdAluno(), $turma->getIdTurma());
+                $a->setFrequenciaAluno($freq);
+            }
+            $dados['listaAlunosturma'] = $alunos;
+
+           
+            $this->loadView("turma_aluno/turmaAlunoFrequencia.php", $dados);
+        } else
+            echo "Turma não encontrada.";
     }
 
 

@@ -12,6 +12,7 @@ class VitrineController extends Controller {
     private ProdutoDAO $produtoDao;
 
     public function __construct() {
+        /*
         if(! $this->usuarioLogado())
             exit;
 
@@ -19,6 +20,7 @@ class VitrineController extends Controller {
             echo "Acesso negado";
             exit;
         }
+        */
 
         $this->produtoDao = new ProdutoDAO();
 

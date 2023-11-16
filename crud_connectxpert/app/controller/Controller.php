@@ -74,6 +74,10 @@ class Controller {
 
     //Método que verifica se o usuário possui um papel necessário
     public function usuarioPossuiPapel(array $papeisNecessarios) {
+        //Habilitar o recurso de sessão no PHP nesta página
+        if(session_status() != PHP_SESSION_ACTIVE)
+            session_start();
+
         if(isset($_SESSION[SESSAO_USUARIO_ID])) {
             $papelUsuarioLogado = $_SESSION[SESSAO_USUARIO_PAPEL];
 

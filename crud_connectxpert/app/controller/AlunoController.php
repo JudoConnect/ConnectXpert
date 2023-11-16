@@ -174,8 +174,12 @@ class AlunoController extends Controller {
     protected function delete() {
         $aluno = $this->findAlunoById();
         if($aluno) {
-            $this->alunoDao->deleteById($aluno->getIdAluno());
-            $this->list("", "Aluno excluído com sucesso!");
+            try {
+                $this->alunoDao->deleteById($aluno->getIdAluno());
+                $this->list("", "Aluno excluído com sucesso!");
+            } catch (PDOException $e) {
+                $this->list("Erro ao excluir o aluno!"); 
+            }
         } else
             $this->list("Aluno não econtrado!");
     }

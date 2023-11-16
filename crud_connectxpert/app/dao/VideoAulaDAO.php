@@ -18,6 +18,17 @@ class VideoAulaDAO {
         return $this->mapVideoAulas($result);
     }
 
+    public function listAluno() {
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM video_aula AS v ORDER BY nome_video_aula";
+        $stm = $conn->prepare($sql);    
+        $stm->execute();
+        $result = $stm->fetchAll();
+        
+        return $this->mapVideoAulas($result);
+    }
+
     //Método para buscar uma video aula por seu ID
     public function findById(int $idVideoAula) {
         $conn = Connection::getConn();
