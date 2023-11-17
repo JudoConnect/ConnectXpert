@@ -21,7 +21,7 @@ $isProf = $acessoCont->administradorPossuiPapel([administradorPapel::PROFESSOR])
     <div id="itensmenu">
         <nav class="navbar navbar-expand-lg " id="menu">
             <div class="row justify-content-md-left">
-                <a class="navbar-brand" href=""><img class="img-responsive" style="  width: 40px; height: 40px; " src="<?= BASEURL . "/view/img/logocx.png" ?>" /></a>
+                <a class="navbar-brand" href="<?= HOME_PAGE ?>"><img class="img-responsive" style="  width: 40px; height: 40px; " src="<?= BASEURL . "/view/img/logocx.png" ?>" /></a>
             </div>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navSite">
@@ -31,8 +31,6 @@ $isProf = $acessoCont->administradorPossuiPapel([administradorPapel::PROFESSOR])
 
             <div class="collapse navbar-collapse" id="navSite">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-
-
                     <!--Se o tipo de usuario for administrador isso aparece-->
                     <?php if ($isAdministrador) : ?>
                         <a class="nav-link" href="<?= BASEURL . '/controller/ProdutoController.php?action=list' ?>" style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;">Produto</a>
