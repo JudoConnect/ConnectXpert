@@ -5,7 +5,7 @@ require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../dao/IeDAO.php");
 require_once(__DIR__ . "/../service/IeService.php");
 require_once(__DIR__ . "/../model/Ie.php");
-require_once(__DIR__ . "/../model/enum/UsuarioPapel.php");
+require_once(__DIR__ . "/../model/enum/administradorPapel.php");
 
 class IeController extends Controller {
  
@@ -13,10 +13,10 @@ class IeController extends Controller {
     private IeService $ieService;
 
     public function __construct() {
-        if(! $this->usuarioLogado())
+        if(! $this->administradorLogado())
             exit;
 
-    if(! $this->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR])) {
+    if(! $this->administradorPossuiPapel([administradorPapel::ADMINISTRADOR])) {
         echo "Acesso negado";
         exit;
     }
@@ -58,7 +58,7 @@ class IeController extends Controller {
         $dados["id_ie"] = isset($_POST['id_ie']) ? $_POST['id_ie'] : 0;
         $nomeIe = isset($_POST['nomeIe']) ? trim($_POST['nomeIe']) : NULL;
 
-        //Cria objeto Usuario
+        //Cria objeto administrador
         $ie = new Ie();
         $ie->setNomeIe($nomeIe);
 

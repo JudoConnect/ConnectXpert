@@ -2,7 +2,7 @@
 #Nome do arquivo: LoginService.php
 #Objetivo: classe service para Login
 
-require_once(__DIR__ . "/../model/Usuario.php");
+require_once(__DIR__ . "/../model/administrador.php");
 
 class LoginService {
 

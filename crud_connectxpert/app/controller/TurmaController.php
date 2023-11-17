@@ -6,7 +6,7 @@ require_once(__DIR__ . "/../dao/ProfessorDAO.php");
 require_once(__DIR__ . "/../dao/AlunoDAO.php");
 require_once(__DIR__ . "/../service/TurmaService.php");
 require_once(__DIR__ . "/../model/Turma.php");
-require_once(__DIR__ . "/../model/enum/UsuarioPapel.php");
+require_once(__DIR__ . "/../model/enum/administradorPapel.php");
 
 
 class TurmaController extends Controller {
@@ -17,10 +17,10 @@ class TurmaController extends Controller {
     private TurmaService $turmaService;
 
     public function __construct() {
-        if(! $this->usuarioLogado())
+        if(! $this->administradorLogado())
             exit;
 
-        if(! $this->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR, UsuarioPapel::PROFESSOR])) {
+        if(! $this->administradorPossuiPapel([administradorPapel::ADMINISTRADOR, administradorPapel::PROFESSOR])) {
             echo "Acesso negado";
             exit;
         }
@@ -35,12 +35,12 @@ class TurmaController extends Controller {
     }
         
     protected function listProfessor() {
-        if(! $this->usuarioPossuiPapel([UsuarioPapel::PROFESSOR])) {
+        if(! $this->administradorPossuiPapel([administradorPapel::PROFESSOR])) {
             echo "Acesso negado";
             exit;
         }
 
-        $idProfessor = $_SESSION[SESSAO_USUARIO_ID];
+        $idProfessor = $_SESSION[SESSAO_administrador_ID];
         
         $turmas = $this->turmaDao->listByProfessor($idProfessor);
         $dados["lista"] = $turmas;
@@ -53,7 +53,7 @@ class TurmaController extends Controller {
     }
 
     protected function list(string $msgErro = "", string $msgSucesso = "") {
-        if(! $this->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR])) {
+        if(! $this->administradorPossuiPapel([administradorPapel::ADMINISTRADOR])) {
             echo "Acesso negado";
             exit;
         }
@@ -65,7 +65,7 @@ class TurmaController extends Controller {
     }
 
     protected function create() {
-        if(! $this->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR])) {
+        if(! $this->administradorPossuiPapel([administradorPapel::ADMINISTRADOR])) {
             echo "Acesso negado";
             exit;
         }
@@ -96,7 +96,7 @@ class TurmaController extends Controller {
         $horario = isset($_POST['horario']) ? trim($_POST['horario']) : NULL;
         $dia_semana = isset($_POST['diaSemana']) ? trim($_POST['diaSemana']) : NULL;
 
-        //Cria objeto Usuario
+        //Cria objeto administrador
         $turma = new Turma();
         $turma->setNomeTurma($nome_turma);
         $turma->setNumAlunos($num_alunos);

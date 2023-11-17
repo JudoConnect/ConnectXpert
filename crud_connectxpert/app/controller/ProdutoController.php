@@ -4,7 +4,7 @@ require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../dao/ProdutoDAO.php");
 require_once(__DIR__ . "/../service/ProdutoService.php");
 require_once(__DIR__ . "/../model/Produto.php");
-require_once(__DIR__ . "/../model/enum/UsuarioPapel.php");
+require_once(__DIR__ . "/../model/enum/administradorPapel.php");
 require_once(__DIR__ . "/../model/enum/Situacao.php");
 require_once(__DIR__ . "/../service/ImagemService.php");
 
@@ -16,10 +16,10 @@ class ProdutoController extends Controller {
     private ImagemService $imagemService;
 
     public function __construct() {
-        if(! $this->usuarioLogado())
+        if(! $this->administradorLogado())
             exit;
 
-        if(! $this->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR])) {
+        if(! $this->administradorPossuiPapel([administradorPapel::ADMINISTRADOR])) {
             echo "Acesso negado";
             exit;
         }
@@ -42,7 +42,7 @@ class ProdutoController extends Controller {
 
     
     protected function create() {
-        $dados["papeis"] = UsuarioPapel::getAllAsArray();
+        $dados["papeis"] = administradorPapel::getAllAsArray();
         $dados["estadosProduto"] = Situacao::getAllAsArray();
 
         $this->loadView("produto/form.php", $dados);
