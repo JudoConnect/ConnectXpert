@@ -6,7 +6,7 @@ ini_set('display_startup_erros',1);
 error_reporting(E_ALL);
   
 require_once(__DIR__ . "/../util/config.php");
-require_once(__DIR__ . "/../model/enum/UsuarioPapel.php");
+require_once(__DIR__ . "/../model/enum/administradorPapel.php");
 
 class Controller {
 
@@ -60,11 +60,11 @@ class Controller {
     }
 
     //Método que verifica se o usuário está logado
-    protected function usuarioLogado() {
+    protected function administradorLogado() {
         //Habilitar o recurso de sessão no PHP nesta página
         session_start();
 
-        if(! isset($_SESSION[SESSAO_USUARIO_ID])) {
+        if(! isset($_SESSION[SESSAO_administrador_ID])) {
             header("location: " . LOGIN_PAGE);
             return false;
         }
@@ -73,17 +73,17 @@ class Controller {
     }
 
     //Método que verifica se o usuário possui um papel necessário
-    public function usuarioPossuiPapel(array $papeisNecessarios) {
+    public function administradorPossuiPapel(array $papeisNecessarios) {
         //Habilitar o recurso de sessão no PHP nesta página
         if(session_status() != PHP_SESSION_ACTIVE)
             session_start();
 
-        if(isset($_SESSION[SESSAO_USUARIO_ID])) {
-            $papelUsuarioLogado = $_SESSION[SESSAO_USUARIO_PAPEL];
+        if(isset($_SESSION[SESSAO_administrador_ID])) {
+            $papeladministradorLogado = $_SESSION[SESSAO_administrador_PAPEL];
 
             //Percorre os papeis necessários e verifica se existem nos papéis do usuário
             foreach($papeisNecessarios as $papel) {
-                if($papel == $papelUsuarioLogado)
+                if($papel == $papeladministradorLogado)
                     return true;
             }
         }

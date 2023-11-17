@@ -5,7 +5,7 @@ require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../dao/VideoAulaDAO.php");
 require_once(__DIR__ . "/../service/VideoAulaService.php");
 require_once(__DIR__ . "/../model/VideoAula.php");
-require_once(__DIR__ . "/../model/enum/UsuarioPapel.php");
+require_once(__DIR__ . "/../model/enum/administradorPapel.php");
 
 class VideoAulaController extends Controller {
  
@@ -13,10 +13,10 @@ class VideoAulaController extends Controller {
     private VideoAulaService $videoAulaService;
 
     public function __construct() {
-        if(! $this->usuarioLogado())
+        if(! $this->administradorLogado())
             exit;
 
-    if(! $this->usuarioPossuiPapel([UsuarioPapel::PROFESSOR, UsuarioPapel::ALUNO])) {
+    if(! $this->administradorPossuiPapel([administradorPapel::PROFESSOR, administradorPapel::ALUNO])) {
         echo "Acesso negado";
         exit;
     }
@@ -68,7 +68,7 @@ class VideoAulaController extends Controller {
         $nomeVideoAula = isset($_POST['nome_video_aula']) ? trim($_POST['nome_video_aula']) : NULL;
         $linkVideoAula = isset($_POST['link_video_aula']) ? trim($_POST['link_video_aula']) : NULL;
 
-        //Cria objeto Usuario
+        //Cria objeto administrador
         $video_aula = new VideoAula();
         $video_aula->setNomeVideoAula($nomeVideoAula);
         $video_aula->setLinkVideoAula($linkVideoAula);

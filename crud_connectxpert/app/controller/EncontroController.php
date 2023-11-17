@@ -5,7 +5,7 @@ require_once(__DIR__ . "/../dao/EncontroDAO.php");
 require_once(__DIR__ . "/../dao/TurmaDAO.php");
 require_once(__DIR__ . "/../service/EncontroService.php");
 require_once(__DIR__ . "/../model/Encontro.php");
-require_once(__DIR__ . "/../model/enum/UsuarioPapel.php");
+require_once(__DIR__ . "/../model/enum/administradorPapel.php");
 
 class EncontroController extends Controller {
 
@@ -14,10 +14,10 @@ class EncontroController extends Controller {
     private TurmaDAO $turmaDao;
 
     public function __construct() {
-        if(! $this->usuarioLogado())
+        if(! $this->administradorLogado())
             exit;
 
-        if(! $this->usuarioPossuiPapel([UsuarioPapel::PROFESSOR])) {
+        if(! $this->administradorPossuiPapel([administradorPapel::PROFESSOR])) {
             echo "Acesso negado";
             exit;
         }

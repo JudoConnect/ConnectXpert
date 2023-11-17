@@ -7,7 +7,7 @@ require_once(__DIR__ . "/../service/AlunoService.php");
 require_once(__DIR__ . "/../service/ImagemService.php");
 require_once(__DIR__ . "/../model/Aluno.php");
 require_once(__DIR__ . "/../model/enum/Sexo.php");
-require_once(__DIR__ . "/../model/enum/UsuarioPapel.php");
+require_once(__DIR__ . "/../model/enum/administradorPapel.php");
 require_once(__DIR__ . "/../model/enum/Situacao.php");
 
 
@@ -20,10 +20,10 @@ class AlunoController extends Controller {
 
 
     public function __construct() {
-        if(! $this->usuarioLogado())
+        if(! $this->administradorLogado())
         exit;
 
-        if(! $this->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR])) {
+        if(! $this->administradorPossuiPapel([administradorPapel::ADMINISTRADOR])) {
             echo "Acesso negado";
             exit;
         }

@@ -1,5 +1,5 @@
 <?php
-#Nome do arquivo: usuario/list.php
+#Nome do arquivo: administrador/list.php
 #Objetivo: interface para listagem dos usuários do sistema
 
 require_once(__DIR__ . "/../include/header.php");
@@ -16,33 +16,33 @@ require_once(__DIR__ . "/../include/menu.php");
     <div class="row" style="margin-top: 10px;">
         
         <div class="col-6">
-            <form id="frmUsuario" method="POST" 
-                action="<?= BASEURL ?>/controller/UsuarioController.php?action=save" >
+            <form id="frmadministrador" method="POST" 
+                action="<?= BASEURL ?>/controller/administradorController.php?action=save" >
                 <div class="form-group">
                     <label for="txtNome">Nome:</label>
                     <input class="form-control" type="text" id="txtNome" name="nome" 
                         maxlength="70" placeholder="Informe o nome"
-                        value="<?php echo (isset($dados["usuario"]) ? $dados["usuario"]->getNome() : ''); ?>" />
+                        value="<?php echo (isset($dados["administrador"]) ? $dados["administrador"]->getNome() : ''); ?>" />
                 </div>
 
                 <div class="form-group">
                     <label for="txtNascimento">Nascimento:</label>
                     <input class="form-control" type="date" id="txtNascimento" name="nascimento" 
-                        value="<?php echo (isset($dados["usuario"]) ? $dados["usuario"]->getNascimento() : ''); ?>" />
+                        value="<?php echo (isset($dados["administrador"]) ? $dados["administrador"]->getNascimento() : ''); ?>" />
                 </div>
 
                 <div class="form-group">
                     <label for="txtRg">RG:</label>
                     <input class="form-control" type="text" id="txtRg" name="rg" 
                         maxlength="12" placeholder="Informe o RG"
-                        value="<?php echo (isset($dados["usuario"]) ? $dados["usuario"]->getRg() : ''); ?>" />
+                        value="<?php echo (isset($dados["administrador"]) ? $dados["administrador"]->getRg() : ''); ?>" />
                 </div>
 
                 <div class="form-group">
                     <label for="txtCpf">CPF:</label>
                     <input class="form-control" type="text" id="txtCpf" name="cpf" 
                         maxlength="12" placeholder="Informe o CPF"
-                        value="<?php echo (isset($dados["usuario"]) ? $dados["usuario"]->getCpf() : ''); ?>" />
+                        value="<?php echo (isset($dados["administrador"]) ? $dados["administrador"]->getCpf() : ''); ?>" />
                 </div>
 
 
@@ -50,7 +50,7 @@ require_once(__DIR__ . "/../include/menu.php");
                     <label for="txtTelefone">Telefone:</label>
                     <input class="form-control" type="text" id="txtTelefone" name="telefone" 
                         maxlength="14" placeholder="Informe número de telefone"
-                        value="<?php echo (isset($dados["usuario"]) ? $dados["usuario"]->getTelefone() : ''); ?>" />
+                        value="<?php echo (isset($dados["administrador"]) ? $dados["administrador"]->getTelefone() : ''); ?>" />
                 </div>
 
                 <div class="form-group">
@@ -61,8 +61,8 @@ require_once(__DIR__ . "/../include/menu.php");
                                 name="sexo" id="<?= 'ckb' . $sexo ?>" value="<?= $sexo ?>"
                                 
                                 <?php
-                                    if(isset($dados['usuario']) && 
-                                        in_array($sexo, $dados['usuario']->getSexoAsArray()))
+                                    if(isset($dados['administrador']) && 
+                                        in_array($sexo, $dados['administrador']->getSexoAsArray()))
                                         echo " checked";
                                 ?>        
                             />
@@ -81,8 +81,8 @@ require_once(__DIR__ . "/../include/menu.php");
                                 value="<?= $papel ?>"
                                 
                                 <?php
-                                    if(isset($dados['usuario']) && 
-                                        in_array($papel, $dados['usuario']->getPapeisAsArray()))
+                                    if(isset($dados['administrador']) && 
+                                        in_array($papel, $dados['administrador']->getPapeisAsArray()))
                                         echo " checked";
                                 ?>        
                             />
@@ -97,14 +97,14 @@ require_once(__DIR__ . "/../include/menu.php");
                     <label for="txtLogin">Login:</label>
                     <input class="form-control" type="text" id="txtLogin" name="login" 
                         maxlength="15" placeholder="Informe o login"
-                        value="<?php echo (isset($dados["usuario"]) ? $dados["usuario"]->getLogin() : ''); ?>"/>
+                        value="<?php echo (isset($dados["administrador"]) ? $dados["administrador"]->getLogin() : ''); ?>"/>
                 </div>
 
                 <div class="form-group">
                     <label for="txtSenha">Senha:</label>
                     <input class="form-control" type="password" id="txtPassword" name="senha" 
                         maxlength="15" placeholder="Informe a senha"
-                        value="<?php echo (isset($dados["usuario"]) ? $dados["usuario"]->getSenha() : ''); ?>"/>
+                        value="<?php echo (isset($dados["administrador"]) ? $dados["administrador"]->getSenha() : ''); ?>"/>
                 </div>
 
                 <div class="form-group">
@@ -131,7 +131,7 @@ require_once(__DIR__ . "/../include/menu.php");
     <div class="row" style="margin-top: 30px;">
         <div class="col-12">
         <a class="btn btn-secondary" 
-                href="<?= BASEURL ?>/controller/UsuarioController.php?action=list">Voltar</a>
+                href="<?= BASEURL ?>/controller/administradorController.php?action=list">Voltar</a>
         </div>
     </div>
 </div>

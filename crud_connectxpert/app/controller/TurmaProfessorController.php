@@ -16,10 +16,10 @@ class TurmaProfessorController extends Controller {
     
 
     public function __construct() {
-        if(! $this->usuarioLogado())
+        if(! $this->administradorLogado())
             exit;
 
-        if(! $this->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR, UsuarioPapel::PROFESSOR])) {
+        if(! $this->administradorPossuiPapel([administradorPapel::ADMINISTRADOR, administradorPapel::PROFESSOR])) {
             echo "Acesso negado";
             exit;
         }

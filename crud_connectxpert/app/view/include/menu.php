@@ -3,18 +3,18 @@
 #Objetivo: menu da aplicação para ser incluído em outras páginas
 
 require_once(__DIR__ . "/../../controller/AcessoController.php");
-require_once(__DIR__ . "/../../model/enum/UsuarioPapel.php");
+require_once(__DIR__ . "/../../model/enum/administradorPapel.php");
 echo '<link rel="stylesheet" href="' . BASEURL . '/view/include/menustyle.css">';
 
 $nome = "(Sessão expirada)";
-if(isset($_SESSION[SESSAO_USUARIO_NOME]))
-    $nome = $_SESSION[SESSAO_USUARIO_NOME];
+if(isset($_SESSION[SESSAO_administrador_NOME]))
+    $nome = $_SESSION[SESSAO_administrador_NOME];
 
 //Variável para validar o acesso
 $acessoCont = new AcessoController();
-$isAdministrador = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR]);
-$isAluno = $acessoCont->usuarioPossuiPapel([UsuarioPapel::ALUNO]);
-$isProf = $acessoCont->usuarioPossuiPapel([UsuarioPapel::PROFESSOR]);
+$isAdministrador = $acessoCont->administradorPossuiPapel([administradorPapel::ADMINISTRADOR]);
+$isAluno = $acessoCont->administradorPossuiPapel([administradorPapel::ALUNO]);
+$isProf = $acessoCont->administradorPossuiPapel([administradorPapel::PROFESSOR]);
 
 ?>
 <div class="col-xs-12" id="nav-container">
@@ -40,7 +40,7 @@ $isProf = $acessoCont->usuarioPossuiPapel([UsuarioPapel::PROFESSOR]);
                     style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;">Home</a>
                 <?php endif; ?>
 
-<!--Se o tipo de usuario for administrador isso aparece-->
+<!--Se o tipo de administrador for administrador isso aparece-->
                 <?php if($isAdministrador): ?>
                         <a class="nav-link" href="<?= BASEURL . '/controller/ProdutoController.php?action=list' ?>"
                         style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;">Produto</a>
