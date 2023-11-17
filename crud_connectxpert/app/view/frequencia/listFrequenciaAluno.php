@@ -31,7 +31,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
                         <th>Turma</th>
                         <th>Dia Semana</th>
                         <th>Horário</th>
-                        <th>Aulas / Faltas</th>
+                        <th>Encontros / Faltas</th>
                         <th>Frequência</th>
                     </tr>
                     </tbody>

@@ -3,7 +3,7 @@
 require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../dao/ProdutoDAO.php");
 require_once(__DIR__ . "/../model/Produto.php");
-require_once(__DIR__ . "/../model/enum/UsuarioPapel.php");
+require_once(__DIR__ . "/../model/enum/administradorPapel.php");
 require_once(__DIR__ . "/../model/enum/Situacao.php");
 
 
@@ -13,10 +13,10 @@ class VitrineController extends Controller {
 
     public function __construct() {
         /*
-        if(! $this->usuarioLogado())
+        if(! $this->administradorLogado())
             exit;
 
-        if(! $this->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR,  UsuarioPapel::PROFESSOR,  UsuarioPapel::ALUNO])) {
+        if(! $this->administradorPossuiPapel([administradorPapel::ADMINISTRADOR,  administradorPapel::PROFESSOR,  administradorPapel::ALUNO])) {
             echo "Acesso negado";
             exit;
         }

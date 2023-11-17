@@ -21,7 +21,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/aluno/alunostyle.css">';
         </div>
     </div>
     <div class="row" style="margin-top: 10px;">
-        <div class="col-12">
+        <div class="col-md-12">
             <table id="tabAlunos" class='table table-striped'>
                 <thead>
                     <tr class="topicos">

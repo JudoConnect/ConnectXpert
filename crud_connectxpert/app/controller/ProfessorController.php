@@ -6,7 +6,7 @@ require_once(__DIR__ . "/../service/ProfessorService.php");
 require_once(__DIR__ . "/../model/Professor.php");
 require_once(__DIR__ . "/../model/enum/Tipo.php");
 require_once(__DIR__ . "/../model/enum/Sexo.php");
-require_once(__DIR__ . "/../model/enum/UsuarioPapel.php");
+require_once(__DIR__ . "/../model/enum/administradorPapel.php");
 require_once(__DIR__ . "/../service/ImagemService.php");
 
 class ProfessorController extends Controller {
@@ -16,10 +16,10 @@ class ProfessorController extends Controller {
     private ImagemService $imagemService;
 
     public function __construct() {
-        if(! $this->usuarioLogado())
+        if(! $this->administradorLogado())
             exit;
 
-    if(! $this->usuarioPossuiPapel([UsuarioPapel::ADMINISTRADOR])) {
+    if(! $this->administradorPossuiPapel([administradorPapel::ADMINISTRADOR])) {
         echo "Acesso negado";
         exit;
     }
@@ -80,7 +80,7 @@ class ProfessorController extends Controller {
         $arqFotoAntiga = isset($_POST['arquivoFoto']) ? trim($_POST['arquivoFoto']) : NULL;
         $foto = $_FILES["foto"];
 
-        //Cria objeto Usuario
+        //Cria objeto administrador
         $professor = new Professor();
         $professor->setNomeProfessor($nome_professor);
         $professor->setNascimentoProfessor($nascimento_professor);

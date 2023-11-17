@@ -1,10 +1,10 @@
 <?php 
-#Nome do arquivo: Usuario.php
-#Objetivo: classe Model para Usuario
+#Nome do arquivo: administrador.php
+#Objetivo: classe Model para administrador
 
-require_once(__DIR__ . "/enum/UsuarioPapel.php");
+require_once(__DIR__ . "/enum/administradorPapel.php");
 
-class Usuario {
+class administrador {
 
     private $id;
     private $nome;
@@ -115,20 +115,20 @@ class Usuario {
     
     public function getPapeisAsArray() {
         if($this->papeis) 
-            return explode(UsuarioPapel::$SEPARADOR, $this->papeis);
+            return explode(administradorPapel::$SEPARADOR, $this->papeis);
         
         return array();    
     }
 
     public function setPapeisAsArray($array) {
         if($array)
-            $this->papeis = implode(UsuarioPapel::$SEPARADOR, $array);
+            $this->papeis = implode(administradorPapel::$SEPARADOR, $array);
         else
             $this->papeis = NULL;
     }
 
     public function getPapeisStr() {
-        return str_replace(UsuarioPapel::$SEPARADOR, ", ", $this->papeis);
+        return str_replace(administradorPapel::$SEPARADOR, ", ", $this->papeis);
     }
 
     /**

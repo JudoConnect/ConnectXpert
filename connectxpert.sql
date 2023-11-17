@@ -152,22 +152,22 @@ INSERT INTO `turma` (`id_turma`, `nome_turma`, `num_alunos`, `horario`, `dia_sem
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `usuario`
+-- Estrutura para tabela `administrador`
 --
 
-CREATE TABLE `usuario` (
-  `id_usuario` int(11) NOT NULL,
-  `nome_usuario` varchar(70) NOT NULL,
+CREATE TABLE `administrador` (
+  `id_administrador` int(11) NOT NULL,
+  `nome_administrador` varchar(70) NOT NULL,
   `login` varchar(15) NOT NULL,
   `senha` varchar(15) NOT NULL,
   `papeis` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `usuario`
+-- Despejando dados para a tabela `administrador`
 --
 
-INSERT INTO `usuario` (`id_usuario`, `nome_usuario`, `login`, `senha`, `papeis`) VALUES
+INSERT INTO `administrador` (`id_administrador`, `nome_administrador`, `login`, `senha`, `papeis`) VALUES
 (1, 'Sr. Administrador', 'admin', 'admin', 'ADMINISTRADOR'),
 (2, 'Sr. Root', 'root', 'root', 'ADMINISTRADOR');
 
@@ -207,11 +207,11 @@ ALTER TABLE `turma`
   ADD PRIMARY KEY (`id_turma`);
 
 --
--- Índices de tabela `usuario`
+-- Índices de tabela `administrador`
 --
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id_usuario`),
-  ADD UNIQUE KEY `uk_usuario` (`login`);
+ALTER TABLE `administrador`
+  ADD PRIMARY KEY (`id_administrador`),
+  ADD UNIQUE KEY `uk_administrador` (`login`);
 
 --
 -- AUTO_INCREMENT para tabelas despejadas
@@ -248,10 +248,10 @@ ALTER TABLE `turma`
   MODIFY `id_turma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT de tabela `usuario`
+-- AUTO_INCREMENT de tabela `administrador`
 --
-ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `administrador`
+  MODIFY `id_administrador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restrições para tabelas despejadas

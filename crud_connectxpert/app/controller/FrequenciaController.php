@@ -5,7 +5,7 @@ require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../dao/FrequenciaDAO.php");
 require_once(__DIR__ . "/../model/Frequencia.php");
 require_once(__DIR__ . "/../model/enum/Condicao.php");
-require_once(__DIR__ . "/../model/enum/UsuarioPapel.php");
+require_once(__DIR__ . "/../model/enum/administradorPapel.php");
 require_once(__DIR__ . "/../dao/EncontroDAO.php");
 require_once(__DIR__ . "/../dao/TurmaDAO.php");
 require_once(__DIR__ . "/../dao/AlunoDAO.php");
@@ -18,10 +18,10 @@ class FrequenciaController extends Controller {
     private AlunoDAO      $alunoDao;
      
     public function __construct() {
-        if(! $this->usuarioLogado())
+        if(! $this->administradorLogado())
             exit;
 
-        if(! $this->usuarioPossuiPapel([UsuarioPapel::PROFESSOR, UsuarioPapel::ALUNO])) {
+        if(! $this->administradorPossuiPapel([administradorPapel::PROFESSOR, administradorPapel::ALUNO])) {
             echo "Acesso negado";
             exit;
         }
@@ -84,7 +84,7 @@ class FrequenciaController extends Controller {
 
     protected function listFrequenciaAluno(string $msgErro = "", string $msgSucesso = "") {
         //Veriricar o ID do aluno logado
-        $idAlunoLogado = $_SESSION[SESSAO_USUARIO_ID];
+        $idAlunoLogado = $_SESSION[SESSAO_administrador_ID];
 
         //Buscar as frequencias do aluno do DAO
         $frequencias = $this->frequenciaDao->listFrequenciaAluno($idAlunoLogado);

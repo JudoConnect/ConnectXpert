@@ -1,32 +1,32 @@
 <?php
     
-require_once(__DIR__ . "/../model/Usuario.php");
+require_once(__DIR__ . "/../model/administrador.php");
 
-class UsuarioService {
+class administradorService {
 
     /* Método para validar os dados do usuário que vem do formulário */
-    public function validarDados(Usuario $usuario, string $confSenha) {
+    public function validarDados(administrador $administrador, string $confSenha) {
         $erros = array();
 
         //Validar campos vazios
-        if(! $usuario->getNome())
+        if(! $administrador->getNome())
             array_push($erros, "O campo Nome é obrigatório.");
 
-        if(! $usuario->getLogin())
+        if(! $administrador->getLogin())
             array_push($erros, "O campo Login é obrigatório.");
 
-        if(! $usuario->getSenha())
+        if(! $administrador->getSenha())
             array_push($erros, "O campo Senha é obrigatório.");
 
         if(! $confSenha)
             array_push($erros, "O campo Confirmação da senha é obrigatório.");
 
-        if(! $usuario->getPapeis()) 
+        if(! $administrador->getPapeis()) 
             array_push($erros, "Selecione ao menos um papel no campo Papéis do usuário.");
 
 
         //Validar se a senha é igual a contra senha
-        if($usuario->getSenha() && $confSenha && $usuario->getSenha() != $confSenha)
+        if($administrador->getSenha() && $confSenha && $administrador->getSenha() != $confSenha)
             array_push($erros, "O campo Senha deve ser igual ao Confirmação da senha.");
 
         return $erros;

@@ -21,3 +21,6 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/include/indexstyle.css">
     </div>
 </div>
 
+<?php  
+require_once(__DIR__ . "/../include/footer.php");
+?>
