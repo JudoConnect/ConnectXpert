@@ -97,8 +97,13 @@ class IeController extends Controller {
     protected function delete() {
         $ie = $this->findIeById();
         if($ie) {
-            $this->ieDao->deleteById($ie->getIdIe());
-            $this->list("", "Instituição de Ensino excluída com sucesso!");
+            try {
+                $this->ieDao->deleteById($ie->getIdIe());
+                $this->list("", "Turma excluída com sucesso!");
+            } catch (PDOException $e) {
+                $this->list("Erro ao excluir a turma da base de dados.");             
+            }
+           
         } else
             $this->list("Instituição de Ensino não econtrado!");
     }

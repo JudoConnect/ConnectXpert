@@ -7,7 +7,6 @@ require_once(__DIR__ . "/../include/menu.php");
 echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
 ?>
 
-
 <div class="container">
     <div class="row">
     <h3 class="col-4">Instituição de Ensino <a class="btn-inserir" 
@@ -45,7 +44,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
                             </td>
 
                             <td><a class="btn-excluir" 
-                                onclick="return confirm('onfirma a exclusão da ie?');"
+                                onclick="return confirm('Confirma a exclusão da ie?');"
                                 href="<?= BASEURL ?>/controller/IeController.php?action=delete&id=<?= $ie->getIdIe() ?>">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
   <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>

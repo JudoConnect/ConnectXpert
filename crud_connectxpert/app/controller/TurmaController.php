@@ -133,7 +133,7 @@ class TurmaController extends Controller {
         $msgsErro = implode("<br>", $erros);
         $this->loadView("turma/formTurma.php", $dados, $msgsErro);
     }
-    
+     
     
     protected function delete() {
         $turma = $this->findTurmaById();
