@@ -67,16 +67,15 @@ INSERT INTO `aluno` (`id_aluno`, `nome_aluno`, `nascimento_aluno`, `telefone`, `
 CREATE TABLE `ie` (
   `id_ie` int(11) NOT NULL,
   `nome_ie` varchar(70) NOT NULL,
-  `serie_ie` enum('Ensino Fundamental ( 1º ao 5º)','Ensino Fundamental II ( 6º ao 9º)','Ensino Médio ( 1º ao 3º)','Graduação') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `ie`
 --
 
-INSERT INTO `ie` (`id_ie`, `nome_ie`, `serie_ie`) VALUES
-(6, 'IFPR', ''),
-(10, 'Dom Pedro III', 'Ensino Fundamental ( 1º ao 5º)');
+INSERT INTO `ie` (`id_ie`, `nome_ie`) VALUES
+(6, 'IFPR'),
+(10, 'Dom Pedro III');
 
 -- --------------------------------------------------------
 
