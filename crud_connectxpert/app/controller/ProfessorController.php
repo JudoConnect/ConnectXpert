@@ -147,13 +147,17 @@ class ProfessorController extends Controller {
         $msgsErro = implode("<br>", $erros);
         $this->loadView("professor/formProfessor.php", $dados, $msgsErro);
     }
-    
+     
     
     protected function delete() {
         $professor = $this->findProfessorById();
         if($professor) {
+            try{
             $this->professorDao->deleteById($professor->getIdProfessor());
             $this->list("", "Professor excluído com sucesso!");
+            } catch(PDOException $e) {
+                $this->list("Erro ao excluir o professor!"); 
+            }
         } else
             $this->list("Professor não econtrado!");
     }

@@ -63,6 +63,9 @@ $isProf = $acessoCont->administradorPossuiPapel([administradorPapel::PROFESSOR])
                     <?php if ($isAluno || $isProf || $isAdministrador) : ?>
                         <a class="nav-link" href="<?= LOGOUT_PAGE ?>" style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;">Sair</a>
                     <?php endif; ?>
+
+                    <a class="nav-link" href="<?= BASEURL . '/controller/VitrineController.php?action=list' ?>" style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;"> Vitrine </a>
+
                 </ul>
             </div>
         </nav>
