@@ -22,7 +22,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
         </div>
     </div>
     <div class="row" style="margin-top: 10px;">
-        <div class="col-12">
+        <div class="col-md-12">
             <table id="tabProfessores" class='table table-striped'>
                 <thead>
                     <tr class="topicos">

@@ -12,7 +12,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
 
 <div class="container">
     <div class="row">
-    <h3 class="col-4">Turmas
+    <h3 class="col-md-12">Turmas
                 <a class="btn-inserir"  
 
                 href="<?= BASEURL ?>/controller/TurmaController.php?action=create">
