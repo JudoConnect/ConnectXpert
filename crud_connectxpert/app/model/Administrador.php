@@ -11,7 +11,6 @@ class administrador {
     private $login;
     private $senha;
     private $papeis;
-    private $tipo;
 
     /**
      * Get the value of id
@@ -131,21 +130,4 @@ class administrador {
         return str_replace(administradorPapel::$SEPARADOR, ", ", $this->papeis);
     }
 
-    /**
-     * Get the value of tipo
-     */
-    public function getTipo()
-    {
-        return $this->tipo;
-    }
-
-    /**
-     * Set the value of tipo
-     */
-    public function setTipo($tipo): self
-    {
-        $this->tipo = $tipo;
-
-        return $this;
-    }
 }

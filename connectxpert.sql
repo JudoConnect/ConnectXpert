@@ -318,3 +318,5 @@ CREATE TABLE `video_aula` (
   `nome_video_aula` varchar(95) NOT NULL,  
   `link_video_aula` varchar(1000) NOT NULL
 )
+
+ALTER TABLE `video_aula` ADD CONSTRAINT `FK_VIDEO_AULA_PROFESSOR` FOREIGN KEY (`id_professor`) REFERENCES `video_aula`(`id_video_aula`) ON DELETE RESTRICT ON UPDATE RESTRICT;
