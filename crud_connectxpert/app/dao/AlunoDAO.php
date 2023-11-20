@@ -19,6 +19,17 @@ class AlunoDAO {
         return $this->mapAlunos($result);
     }
 
+    public function listAtivos() {
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM aluno  AS a WHERE a.situacao = 'disponivel' ORDER BY nome_aluno";
+        $stm = $conn->prepare($sql);    
+        $stm->execute();
+        $result = $stm->fetchAll();
+        
+        return $this->mapAlunos($result);
+    }
+
     //Método para buscar um aluno por seu ID
     public function findById(int $id) {
         $conn = Connection::getConn();

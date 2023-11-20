@@ -42,7 +42,7 @@ class TurmaAlunoController extends Controller {
             $dados["id_turma"] = $turma->getIdTurma();
             $dados["turma"] = $turma;
 
-            $dados['listaAlunos'] = $this->alunoDao->list();
+            $dados['listaAlunos'] = $this->alunoDao->listAtivos();
 
             $dados['listaAlunosturma'] = $this->alunoDao->listByTurma($turma->getIdTurma());
 
