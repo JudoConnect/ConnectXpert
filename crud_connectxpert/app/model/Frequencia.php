@@ -8,9 +8,9 @@ class Frequencia {
     private $idEncontro;
     private $idTurmaAluno;
     private $condicao;
-
     private $turmaaluno;
     private $aluno;
+    
     /**
      * Get the value of idFrequencia
      */ 
