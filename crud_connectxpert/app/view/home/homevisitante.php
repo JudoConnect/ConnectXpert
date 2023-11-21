@@ -5,7 +5,7 @@ require_once(__DIR__ . "/../include/header.php");
 require_once(__DIR__ . "/../../util/config.php");
 echo '<link rel="stylesheet" href="' . BASEURL . '/view/home/indexstyle.css">';
 ?>
-
+ 
 <div class="col-xs-12" id="nav-container">
     <div id="itensmenu">
         <nav class="navbar navbar-expand-lg " id="menu">
@@ -13,8 +13,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/home/indexstyle.css">';
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="row justify-content-md-left">
-  <a class="navbar-brand" href=""><img class="img-responsive" style="  width: 40px; height: 40px; " 
-            src="<?= BASEURL . "/view/img/logocx.png" ?>" /></a>
+                <a class="navbar-brand" href="<?= HOME_VISITANTE ?>"><img class="img-responsive" style="  width: 40px; height: 40px; " src="<?= BASEURL . "/view/img/logocx.png" ?>" /></a>
             </div>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
