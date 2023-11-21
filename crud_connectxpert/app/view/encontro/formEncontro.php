@@ -13,10 +13,10 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
     </div>
     <div class="row" style="margin-top: 10px;">
         <div class="col-12">
-            <span style="font-weight: bold;">Nome: </span> <?= $dados["turma"]->getNomeTurma() ?>
+            <span style="font-weight: bold; color: #ff7f32;">Nome: </span> <?= $dados["turma"]->getNomeTurma() ?>
         </div>
         <div class="col-12">
-            <span style="font-weight: bold;">Horário: </span> <?= $dados["turma"]->getHorario() ?>
+            <span style="font-weight: bold; color: #ff7f32;">Horário: </span> <?= $dados["turma"]->getHorario() ?>
         </div>
     </div>
 </div>
@@ -37,9 +37,9 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
             <form id="frmEncontro" method="POST" 
                 action="<?= BASEURL ?>/controller/EncontroController.php?action=save" >
                 <div class="form-group">
-                    <label for="txtNomeEncontro">Nome do Encontro:</label>
+                    <label for="txtNomeEncontro" >Nome do Encontro:</label>
                     <input class="form-control" type="text" id="txtNomeEncontro" name="nomeEncontro" 
-                        maxlength="70" placeholder="Informe o nome do Encontro"
+                        maxlength="70" 
                         value="<?php echo (isset($dados["encontro"]) ? $dados["encontro"]->getNomeEncontro() : ''); ?>" />
                 </div>
 

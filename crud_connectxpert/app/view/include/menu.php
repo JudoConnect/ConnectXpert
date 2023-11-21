@@ -25,8 +25,9 @@ $isProf = $acessoCont->administradorPossuiPapel([administradorPapel::PROFESSOR])
             </div>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navSite">
-                <!--span class="navbar-toggler-icon"></!--span-->
-                --
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-square-fill" viewBox="0 0 16 16 " style="color: rgba(255, 127, 50, 1);">
+                    <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4 4a.5.5 0 0 0-.374.832l4 4.5a.5.5 0 0 0 .748 0l4-4.5A.5.5 0 0 0 12 6H4z" />
+                </svg>
             </button>
 
             <div class="collapse navbar-collapse" id="navSite">
@@ -64,7 +65,6 @@ $isProf = $acessoCont->administradorPossuiPapel([administradorPapel::PROFESSOR])
                         <a class="nav-link" href="<?= LOGOUT_PAGE ?>" style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;">Sair</a>
                     <?php endif; ?>
 
-                    <a class="nav-link" href="<?= BASEURL . '/controller/VitrineController.php?action=list' ?>" style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;"> Vitrine </a>
 
                 </ul>
             </div>

@@ -25,12 +25,12 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
                 <div class="form-group">
                     <label for="txtNomeVideoAula">Nome da Vídeo Aula:</label>
                     <input class="form-control" type="text" id="txtNomeVideoAula" name="nome_video_aula" 
-                        maxlength="70" placeholder="Informe o nome da Vídeo Aula"
+                        maxlength="70" 
                         value="<?php echo (isset($dados["video_aula"]) ? $dados["video_aula"]->getNomeVideoAula() : ''); ?>" />
 
                     <label for="txtLinkVideoAula">Link da Vídeo Aula:</label>
                     <input class="form-control" type="url" id="txtLinkVideoAula" name="link_video_aula" 
-                        maxlength="70" placeholder="Informe o link da Vídeo Aula"
+                        maxlength="70" 
                         value="<?php echo (isset($dados["video_aula"]) ? $dados["video_aula"]->getLinkVideoAula() : ''); ?>" />
                 </div>
              
@@ -38,8 +38,9 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
                 <input type="hidden" id="hddIdVideoAula" name="id_video_aula" 
                     value="<?= $dados['id_video_aula']; ?>" />
 
-                <button type="submit" class="btn btn-success">Gravar</button>
-                <button type="reset" class="btn btn-danger">Limpar</button>
+                    <button type="submit" class="btn" style="background-color: #ff7f32; border-radius: 16px;"><a style="color:#fdfbeb;"> Cadastrar</a></button>
+                <button type="reset" class="btn" style="background-color: #fdfbeb; border-radius: 16px; border-color: #ff7f32;"><a style="color: #ff7f32;"> Cancelar </a></button>
+
             </form>            
         </div>
 

@@ -1,11 +1,12 @@
 <?php
-//Redirecionar para a página inicial do sistema
-//header("location: ./app/controller/HomeController.php?action=home");
+#Nome do arquivo: produto/list.php
+#Objetivo: interface para listagem dos produtos do sistema
+
 require_once(__DIR__ . "/../include/header.php");
-require_once(__DIR__ . "/../../util/config.php");
-echo '<link rel="stylesheet" href="' . BASEURL . '/view/home/indexstyle.css">';
+
+echo '<link rel="stylesheet" href="' . BASEURL . '/view/produto/produtostyle.css">';
 ?>
- 
+
 <div class="col-xs-12" id="nav-container">
     <div id="itensmenu">
         <nav class="navbar navbar-expand-lg " id="menu">
@@ -34,18 +35,24 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/home/indexstyle.css">';
 
 
 <div class="container">
-    <div class="row">
-        <div class="col-6"> 
-            <img class="foto" style=" width: 500px; height: 500px; left: 736px; top: 108px;" 
-            src="<?= BASEURL . "/view/img/corpointeiro.lindas.semfundo.png" ?>" />
+    <h3 class="col-4">Vitrine </h3> <br> 
+    <div class="row" style="margin-top: 10px;">
+                    <?php foreach($dados['lista'] as $prod): ?>
+                        <div class="card my-2 mx-2 Card" style="width: 18rem;">
+                        <div class="card-body">
+                            <img src="<?= BASEURL_FOTOS . $prod->getFoto(); ?>" style="width: 100%; height: 120px;" />
+                            <h5 class="vitrine" style="font-weight: bold; color:rgba(10, 174, 148, 1);"><?php echo $prod->getNome();?></h5>
+                            <p class="card-text">
+                            <?php echo $prod->getDescricao();?></p>   
+                            <p class="card-text">
+                            <?php echo $prod->getSituacao();?></p>          
+                    </div> 
+                </div>                           
+            <?php endforeach; ?>                                       
         </div>
-        <h3 class="col-6" style=" width: 536px; height: 230px; 
-                  top: 100px; color: rgba(255, 127, 50, 1); font-style: normal;
-                  font-size: 48px; font-weight: 700; line-height: 1.2;">
-                  Connect Xpert: Organize e Acompanhe com Facilidade</h3>
-        <div>
     </div>
 </div>
+
 <?php  
 require_once(__DIR__ . "/../include/footer.php");
 ?>

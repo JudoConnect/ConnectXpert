@@ -17,6 +17,13 @@ class VitrineController extends Controller {
 
         $this->handleAction();
     }
+    protected function listV() {
+        $produtos = $this->produtoDao->listVitrine();
+       
+        $dados["lista"] = $produtos;
+    
+        $this->loadView("vitrine/listVitrineVisitante.php", $dados);
+    }
 
     protected function list() {
         $produtos = $this->produtoDao->listVitrine();
@@ -26,6 +33,7 @@ class VitrineController extends Controller {
         $this->loadView("vitrine/listVitrine.php", $dados);
     }
 }
+
 
 #Criar objeto da classe
 $vitCont = new VitrineController();
