@@ -1,5 +1,5 @@
 <?php
-#Nome do arquivo: produto/list.php
+#Nome do arquivo: vitrine/listVitrine.php
 #Objetivo: interface para listagem dos produtos do sistema
 
 require_once(__DIR__ . "/../include/header.php");

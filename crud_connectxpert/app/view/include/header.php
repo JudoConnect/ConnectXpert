@@ -2,7 +2,6 @@
 #Nome do arquivo: view/include/header.php
 #Objetivo: header a ser utilizados em todas as páginas do projeto
 
-//require_once(__DIR__ . "/../../util/config.php");
 ?>
 <!DOCTYPE html>
 <html lang="pt">

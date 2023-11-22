@@ -1,5 +1,5 @@
 <?php 
-#Nome do arquivo: administrador.php
+#Nome do arquivo: Administrador.php
 #Objetivo: classe Model para administrador
 
 require_once(__DIR__ . "/enum/administradorPapel.php");

@@ -71,7 +71,6 @@ class TurmaController extends Controller {
         }
 
         $dados["id_turma"] = 0;
-        //$dados['listaProfessores'] = $this->professorDao->list();
 
         $this->loadView("turma/formTurma.php", $dados);
     }

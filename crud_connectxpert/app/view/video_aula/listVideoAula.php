@@ -1,5 +1,5 @@
 <?php
-#Nome do arquivo: ie/list.php
+#Nome do arquivo: video_aula/listVideoAula.php
 #Objetivo: interface para listagem das videos aulas do sistema
 
 require_once(__DIR__ . "/../include/header.php");

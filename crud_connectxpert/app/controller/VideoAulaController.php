@@ -59,8 +59,8 @@ class VideoAulaController extends Controller {
     }
 
     protected function save() {
-            //var_dump($_POST); // Exibir os dados recebidos do formulário para fins de depuração
-            // Restante do código para processar o salvamento
+        // Exibir os dados recebidos do formulário para fins de depuração
+        // Restante do código para processar o salvamento
         
         
         //Captura os dados do formulário

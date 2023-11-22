@@ -40,7 +40,7 @@ class EncontroDAO {
             " - Erro: mais de um encontro encontrado.");
     }
 
-    //Método para inserir um Encontro
+    //Método para inserir um encontro
     public function insert(Encontro $encontro) {
         $conn = Connection::getConn();
 
@@ -57,7 +57,7 @@ class EncontroDAO {
     }
 
 
-    //Método para atualizar um Encontro
+    //Método para atualizar um encontro
     public function update(Encontro $encontro) {
         $conn = Connection::getConn();
 
@@ -72,7 +72,7 @@ class EncontroDAO {
         $stm->execute();
     }
     
-    //Método para deletar um Encontro pelo seu ID
+    //Método para deletar um encontro pelo seu ID
     public function deleteById(int $idEncontro) {
         $conn = Connection::getConn();
         $sql = "DELETE FROM encontro WHERE id_encontro = :id";
@@ -82,7 +82,7 @@ class EncontroDAO {
         $stm->execute();
     }
    
-    //Método para converter um registro da base de dados em um objeto Encontro
+    //Método para converter um registro da base de dados em um objeto encontro
     private function mapEncontro($result) {
         $encontros = array();
         foreach ($result as $reg) {

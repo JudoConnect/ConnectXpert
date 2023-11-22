@@ -7,7 +7,7 @@ include_once(__DIR__ . "/../model/Turma.php");
 
 class TurmaAlunoDAO {
  
-    //Método para inserir uma TurmaAluno
+    //Método para inserir um aluno dentro de uma turma
     public function insert(int $idTurma, int $idAluno) {
         $conn = Connection::getConn();
 
@@ -21,7 +21,7 @@ class TurmaAlunoDAO {
         $stm->execute();
     }
 
-    //Método para excluir uma TurmaAluno pelo seu ID
+    //Método para excluir um aluno de dentro de uma turma pelo seu ID
     public function deleteById(int $id) {
         $conn = Connection::getConn();
 

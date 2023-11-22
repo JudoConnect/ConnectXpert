@@ -79,7 +79,7 @@ class ProfessorDAO {
             " - Erro: mais de um professor encontrado.");
     }
 
-    //Método para inserir um Professor
+    //Método para inserir um professor
     public function insert(Professor $professor) {
         $conn = Connection::getConn();
 
@@ -102,7 +102,7 @@ class ProfessorDAO {
         $stm->execute();
     }
 
-    //Método para atualizar um Professor
+    //Método para atualizar um professor
     public function update(Professor $professor) {
         $conn = Connection::getConn();
 
@@ -129,7 +129,7 @@ class ProfessorDAO {
         $stm->execute();
     }
 
-    //Método para excluir um Professor pelo seu ID
+    //Método para excluir um professor pelo seu ID
     public function deleteById(int $id) {
         $conn = Connection::getConn();
 
@@ -140,7 +140,7 @@ class ProfessorDAO {
         $stm->execute();
     }
 
-    //Método para converter um registro da base de dados em um objeto Professor
+    //Método para converter um registro da base de dados em um objeto professor
     private function mapProfessores($result) {
         $professores = array();
         foreach ($result as $reg) {

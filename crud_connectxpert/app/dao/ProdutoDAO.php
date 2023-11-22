@@ -51,7 +51,7 @@ class ProdutoDAO {
             " - Erro: mais de um produto encontrado.");
     }
 
-    //Método para inserir um Produto
+    //Método para inserir um produto
     public function insert(Produto $produto) {
         $conn = Connection::getConn();
 
@@ -66,7 +66,7 @@ class ProdutoDAO {
         $stm->execute();
     }
 
-    //Método para atualizar um Produto
+    //Método para atualizar um produto
     public function update(Produto $produto) {
         $conn = Connection::getConn();
 
@@ -83,7 +83,7 @@ class ProdutoDAO {
         $stm->execute();
     }
     
-    //Método para deletar um Produto pelo seu ID
+    //Método para deletar um produto pelo seu ID
     public function deleteById(int $idProduto) {
         $conn = Connection::getConn();
 
@@ -94,7 +94,7 @@ class ProdutoDAO {
         $stm->execute();
     }
    
-    //Método para converter um registro da base de dados em um objeto Produto
+    //Método para converter um registro da base de dados em um objeto produto
     private function mapProduto($result) {
         $produtos = array();
         foreach ($result as $reg) {

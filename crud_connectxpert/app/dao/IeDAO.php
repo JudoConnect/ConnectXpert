@@ -1,12 +1,12 @@
 <?php
 #Nome do arquivo: IeDAO.php
-#Objetivo: classe DAO para o model de Instituicao de Ensino
+#Objetivo: classe DAO para o model de Instituição de Ensino
 
 include_once(__DIR__ . "/../connection/Connection.php");
 include_once(__DIR__ . "/../model/Ie.php");
 
 class IeDAO {
-    //Método para listar as ie a partir da base de dados
+    //Método para listar as instituição de ensino a partir da base de dados
     public function list() {
         $conn = Connection::getConn();
 
@@ -18,7 +18,7 @@ class IeDAO {
         return $this->mapIe($result);
     }
 
-    //Método para buscar uma ie por seu ID
+    //Método para buscar uma instituição de ensino por seu ID
     public function findById(int $idIe) {
         $conn = Connection::getConn();
 
@@ -39,7 +39,7 @@ class IeDAO {
             " - Erro: mais de uma IES encontrado.");
     }
 
-    //Método para inserir uma Ie
+    //Método para inserir uma instituição de ensino
     public function insert(Ie $ie) {
         $conn = Connection::getConn();
 
@@ -52,7 +52,7 @@ class IeDAO {
         $stm->execute();
     }
 
-    //Método para atualizar uma Ie
+    //Método para atualizar uma instituição de ensino
     public function update(Ie $ie) {
         $conn = Connection::getConn();
 
@@ -65,7 +65,7 @@ class IeDAO {
         $stm->execute();
     }
 
-    //Método para excluir uma Ie pelo seu ID
+    //Método para excluir uma instituição de ensino pelo seu ID
     public function deleteById(int $id) {
         $conn = Connection::getConn();
 
@@ -76,7 +76,7 @@ class IeDAO {
         $stm->execute();
     }
 
-    //Método para converter um registro da base de dados em um objeto Ie
+    //Método para converter um registro da base de dados em um objeto instituição de ensino
     private function mapIe($result) {
         $ies = array();
         foreach ($result as $reg) {

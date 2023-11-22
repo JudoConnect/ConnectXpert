@@ -38,23 +38,7 @@ body {
     border: 1px solid #ff7f32;
     border-radius: 0.2rgb(255, 127, 50,)
 }
-/* .pseudo-body{
-    width: 100vw;
-    height: 100vh !important;
-    margin: 0;
-    padding: 0;
-    background-color: #ff7f32;
-    position: relative;
-} */
 .form-holder{
-    /* width: 800px;
-    height: 100vh;
-    margin: 0;
-    padding: 5vh 5vw;
-    position: absolute;
-    right: 0;
-    top: 0;
-   */
    background-color:  #fffde7; 
     
 }

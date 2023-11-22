@@ -1,5 +1,5 @@
 <?php
-#Classe controller para Usuário
+#Classe controller para Administrador
 require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../dao/administradorDAO.php");
 require_once(__DIR__ . "/../service/administradorService.php");
@@ -28,7 +28,6 @@ class administradorController extends Controller {
 
     protected function list(string $msgErro = "", string $msgSucesso = "") {
         $administradors = $this->administradorDao->list();
-        //print_r($administradors);
         $dados["lista"] = $administradors;
 
         $this->loadView("administrador/list.php", $dados,  $msgErro, $msgSucesso);
@@ -48,7 +47,6 @@ class administradorController extends Controller {
             $dados["id"] = $administrador->getId();
             $administrador->setSenha("");
             $dados["administrador"] = $administrador;
-            //$dados["confSenha"] = $administrador->getSenha();
             $dados["papeis"] = administradorPapel::getAllAsArray();
 
             $this->loadView("administrador/form.php", $dados);

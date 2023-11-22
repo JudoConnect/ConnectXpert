@@ -6,7 +6,7 @@ include_once(__DIR__ . "/../connection/Connection.php");
 include_once(__DIR__ . "/../model/VideoAula.php");
 
 class VideoAulaDAO {
-    //Método para listar os videos a partir da base de dados
+    //Método para listar as videos aulas a partir da base de dados
     public function list() {
         $conn = Connection::getConn();
 

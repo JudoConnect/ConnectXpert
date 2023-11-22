@@ -40,11 +40,8 @@ class Controller {
     protected function loadView(string $path, array $dados, string $msgErro = "", string $msgSucesso = "") {
         
         //Verificar os dados que estão sendo recebidos na função
-        //print_r($dados);
-        //exit;
-
+     
         $caminho = __DIR__ . "/../view/" . $path;
-        //echo $caminho;
         if(file_exists($caminho)) {
             require $caminho;
         } else {

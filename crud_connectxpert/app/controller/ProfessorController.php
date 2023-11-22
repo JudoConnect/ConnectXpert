@@ -33,7 +33,6 @@ class ProfessorController extends Controller {
 
     protected function list(string $msgErro = "", string $msgSucesso = "") {
         $professores = $this->professorDao->list();
-        //print_r($professores);
         $dados["lista"] = $professores;
 
         $this->loadView("professor/listProfessor.php", $dados,  $msgErro, $msgSucesso);
@@ -51,7 +50,6 @@ class ProfessorController extends Controller {
         $professor = $this->findProfessorById();
         if($professor) {
             $dados["id_professor"] = $professor->getIdProfessor();
-            //$professor->setSenhaProfessor("");
             $dados["professor"] = $professor;
             $dados["confSenhaProfessor"] = $professor->getSenhaProfessor();
             $dados["sexo"] = Sexo::getAllAsArray();
@@ -109,10 +107,6 @@ class ProfessorController extends Controller {
 
             //Persiste o objeto
             try {
-                //echo $nomeArquivoFoto;
-                //print_r($professor);
-               // print_r($foto);
-               //                                                    exit;
                 
                 if($dados["id_professor"] == 0)  //Inserindo
                     $this->professorDao->insert($professor);

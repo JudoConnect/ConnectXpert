@@ -141,7 +141,6 @@ class EncontroController extends Controller {
         $encontro = $this->encontroDao->findEncontroById($id);
         return $encontro;
 
-        //$this->loadView("encontro/formEncontro.php", $dados, $msgsErro);        
     }
 
     private function getIdTurmaParam() {

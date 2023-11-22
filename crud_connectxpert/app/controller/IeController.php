@@ -29,7 +29,6 @@ class IeController extends Controller {
 
     protected function list(string $msgErro = "", string $msgSucesso = "") {
         $ies = $this->ieDao->list();
-        //print_r($ies);
         $dados["lista"] = $ies;
  
         $this->loadView("ie/listIe.php", $dados,  $msgErro, $msgSucesso);
@@ -80,7 +79,7 @@ class IeController extends Controller {
                 $this->list("", $msg);
                 exit;
             } catch (PDOException $e) {
-                $erros = ["Erro ao salvar instuição de ensino na base de dados." . $e];                
+                $erros = ["Erro ao salvar Instituição de Ensino na base de dados." . $e];                
             }
         }
 
@@ -99,9 +98,9 @@ class IeController extends Controller {
         if($ie) {
             try {
                 $this->ieDao->deleteById($ie->getIdIe());
-                $this->list("", "Turma excluída com sucesso!");
+                $this->list("", "Instituição de Ensino excluída com sucesso!");
             } catch (PDOException $e) {
-                $this->list("Erro ao excluir a turma da base de dados.");             
+                $this->list("Erro ao excluir a Instituição de Ensino da base de dados.");             
             }
            
         } else

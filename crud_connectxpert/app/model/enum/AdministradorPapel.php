@@ -1,5 +1,5 @@
 <?php
-#Nome do arquivo: administradorPapel.php
+#Nome do arquivo: AdministradorPapel.php
 #Objetivo: classe Enum para os papeis de permissões do model de administrador
 
 class administradorPapel {

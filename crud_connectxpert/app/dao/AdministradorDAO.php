@@ -7,7 +7,7 @@ include_once(__DIR__ . "/../model/administrador.php");
 
 class administradorDAO {
 
-    //Método para listar os usuários a partir da base de dados
+    //Método para listar os administradores a partir da base de dados
     public function list() {
         $conn = Connection::getConn();
 
@@ -19,7 +19,7 @@ class administradorDAO {
         return $this->mapadministradors($result);
     }
 
-    //Método para buscar um usuário por seu ID
+    //Método para buscar um administrador por seu ID
     public function findById(int $id) {
         $conn = Connection::getConn();
 
@@ -41,7 +41,7 @@ class administradorDAO {
     }
 
 
-    //Método para buscar um usuário por seu login e senha
+    //Método para buscar um administrador por seu login e senha
     public function findByLoginSenha(string $login, string $senha) {
         $conn = Connection::getConn();
 

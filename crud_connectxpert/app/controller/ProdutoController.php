@@ -33,7 +33,6 @@ class ProdutoController extends Controller {
 
     protected function list(string $msgErro = "", string $msgSucesso = "") {
         $produtos = $this->produtoDao->list();
-        //print_r($produtos);
        
         $dados["lista"] = $produtos;
 
@@ -120,11 +119,7 @@ class ProdutoController extends Controller {
         //Se há erros, volta para o formulário
         
         //Carregar os valores recebidos por POST de volta para o formulário
-        /*
-        $dados["nome"] = $nome;
-        $dados["descricao"] = $descricao;
-        $dados["foto"] = $foto;
-        */
+        
         $dados['produto'] = $produto;
         $dados["estadosProduto"] = Situacao::getAllAsArray();
 

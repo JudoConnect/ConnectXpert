@@ -54,7 +54,7 @@ class TurmaDAO {
         die("TurmaDAO.findById()" . " - Erro: mais de uma turma encontrada.");
     }
 
-    //Método para inserir uma Turma
+    //Método para inserir uma turma
     public function insert(Turma $turma) {
         $conn = Connection::getConn();
 
@@ -70,7 +70,7 @@ class TurmaDAO {
         $stm->execute();
     }
 
-    //Método para atualizar uma Turma
+    //Método para atualizar uma turma
     public function update(Turma $turma) {
         $conn = Connection::getConn();
 
@@ -87,7 +87,7 @@ class TurmaDAO {
         $stm->execute();
     }
 
-    //Método para excluir uma Turma pelo seu ID
+    //Método para excluir uma turma pelo seu ID
     public function deleteById(int $id) {
         $conn = Connection::getConn();
 
@@ -98,7 +98,7 @@ class TurmaDAO {
         $stm->execute();
     }
 
-    //Método para converter um registro da base de dados em um objeto Turma
+    //Método para converter um registro da base de dados em um objeto turma
     private function mapTurmas($result) {
         $turmas = array();
         foreach ($result as $reg) {

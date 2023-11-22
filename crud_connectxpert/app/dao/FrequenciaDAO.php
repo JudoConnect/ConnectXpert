@@ -8,7 +8,7 @@ include_once(__DIR__ . "/../model/FrequenciaAluno.php");
 include_once(__DIR__ . "/../model/Aluno.php");
 
 class FrequenciaDAO {
-    //Método para listar a Frequencia a partir da base de dados
+    //Método para listar a frequencia a partir da base de dados
     public function list($id) {
         $conn = Connection::getConn();
 
@@ -35,7 +35,7 @@ class FrequenciaDAO {
             return $this->mapFrequencias($result);
     }
 
-    //Método para atualizar uma Frequencia
+    //Método para atualizar uma frequencia
     public function insert(Array $frequencia) {
         $conn = Connection::getConn();
 
@@ -73,7 +73,7 @@ class FrequenciaDAO {
     }
 
 
-    //Método para atualizar uma Frequencia
+    //Método para atualizar uma frequencia
     public function update(Frequencia $frequencia) {
         $conn = Connection::getConn();
 
@@ -86,7 +86,7 @@ class FrequenciaDAO {
         $stm->execute();
     }
 
-    //Método para converter um registro da base de dados em um objeto Ie
+    //Método para converter um registro da base de dados em um objeto frequencia
     private function mapFrequencias($result) {
         $frequencias = array();
         foreach ($result as $reg) {

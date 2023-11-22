@@ -77,7 +77,6 @@ class FrequenciaController extends Controller {
         $dados["encontro"] = $encontro;
         $dados["turma"] = $this->turmaDao->findById($encontro->getIdTurma());
         $dados["frequencia"] = $this->frequenciaDao->list($_GET['id']);
-        // $dados["listaAlunos"] = $this->alunoDao->listByTurma($encontro->getIdTurma());
 
         $this->loadView("frequencia/listFrequencia.php", $dados,  $msgErro, $msgSucesso);
     }
@@ -104,8 +103,6 @@ class FrequenciaController extends Controller {
         $idFrequencia = isset($_POST['idFrequencia']) ? $_POST['idFrequencia'] : NULL;
         $frequenciaAtual = isset($_POST['frequencia']) ? $_POST['frequencia'] : NULL;
 
-        //echo $idEncontro . " - PHP " . $idTurmaAluno;
-        //exit;
 
         if($frequenciaAtual == "ausente") {
             $frequenciaAtual = "presente";

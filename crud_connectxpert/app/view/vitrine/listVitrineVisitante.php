@@ -1,6 +1,6 @@
 <?php
-#Nome do arquivo: produto/list.php
-#Objetivo: interface para listagem dos produtos do sistema
+#Nome do arquivo: vitrine/list.php
+#Objetivo: interface para listagem dos produtos para os visitantes do sistema
 
 require_once(__DIR__ . "/../include/header.php");
 
