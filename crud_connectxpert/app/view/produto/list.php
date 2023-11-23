@@ -23,6 +23,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/produto/produtostyle.css
 
     <div class="row" style="margin-top: 10px;">
         <div class="col-12">
+            <div class="table-responsive">
             <table id="tabProdutos" class='table table-striped'>
                 <thead>
                     <tr class="topicos">
