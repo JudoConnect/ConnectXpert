@@ -34,35 +34,35 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/aluno/alunostyle.css">';
             <div div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="txtNomeAluno">Nome:</label>
-                    <input class="form-control" type="text" id="txtNomeAluno" name="nomeAluno" maxlength="70" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getNomeAluno() : ''); ?>" />
+                    <input class="form-control" type="text" id="txtNomeAluno" name="nomeAluno" maxlength="70" style="background-color: #ffc39e; border: 1px solid #ffc39e;" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getNomeAluno() : ''); ?>" />
                 </div>
                 <div class="form-group col">
                     <label for="txtNascimentoAluno">Data de Nascimento:</label>
-                    <input class="form-control" type="date" id="txtNascimentoAluno" name="nascimentoAluno" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getNascimentoAluno() : ''); ?>" />
+                    <input class="form-control" type="date" id="txtNascimentoAluno" name="nascimentoAluno" style="background-color: #ffc39e; border: 1px solid #ffc39e;" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getNascimentoAluno() : ''); ?>" />
                 </div>
             </div>
 
             <div div class="form-row">
                 <div class="form-group col-12">
                     <label for="txtNomeResponsavel">Nome do Responsável:</label>
-                    <input class="form-control" type="text" id="txtNomeResponsavel" name="nomeResponsavel" maxlength="70" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getNomeResponsavel() : ''); ?>" />
+                    <input class="form-control" type="text" id="txtNomeResponsavel" name="nomeResponsavel" maxlength="70" style="background-color: #ffc39e; border: 1px solid #ffc39e;" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getNomeResponsavel() : ''); ?>" />
                 </div>
             </div>
 
             <div div class="form-row">
                 <div class="form-group col-md-7">
                     <label for="txtTelefoneAluno">Telefone:</label>
-                    <input class="form-control" type="text" id="txtTelefoneAluno" name="telefoneAluno" maxlength="14"  onfocus="mascTelefone1(this)" onkeypress="mascTelefone2(this)" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getTelefone() : ''); ?>" />
+                    <input class="form-control" type="text" id="txtTelefoneAluno" name="telefoneAluno" maxlength="14" style="background-color: #ffc39e; border: 1px solid #ffc39e;" onfocus="mascTelefone1(this)" onkeypress="mascTelefone2(this)" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getTelefone() : ''); ?>" />
                 </div>
 
                 <div class="form-group col-md-3">
                     <label for="txtCpfALuno">CPF:</label>
-                    <input class="form-control" type="text" id="txtCpfAluno" name="cpfAluno" maxlength="15" onkeypress="mascCpf(this)" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getCpfAluno() : ''); ?>" />
+                    <input class="form-control" type="text" id="txtCpfAluno" name="cpfAluno" maxlength="15" style="background-color: #ffc39e; border: 1px solid #ffc39e;" onkeypress="mascCpf(this)" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getCpfAluno() : ''); ?>" />
                 </div>
 
                 <div class="form-group col-md-2">
                     <label for="txtRgALuno">RG:</label>
-                    <input class="form-control" type="text" id="txtRgAluno" name="rgAluno" maxlength="12" onkeypress="mascRg(this)" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getRgAluno() : ''); ?>" />
+                    <input class="form-control" type="text" id="txtRgAluno" name="rgAluno" maxlength="12" style="background-color: #ffc39e; border: 1px solid #ffc39e;" onkeypress="mascRg(this)" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getRgAluno() : ''); ?>" />
                 </div>
             </div>
 
@@ -85,7 +85,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/aluno/alunostyle.css">';
 
             <div class="form-group">
                 <label for="txtEmailALuno">Email:</label>
-                <input class="form-control" type="email" id="txtEmailAluno" name="emailAluno" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getEmailAluno() : ''); ?>" />
+                <input class="form-control" type="email" id="txtEmailAluno" name="emailAluno" style="background-color: #ffc39e; border: 1px solid #ffc39e;" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getEmailAluno() : ''); ?>" />
             </div>
     </div>
 
@@ -96,41 +96,41 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/aluno/alunostyle.css">';
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="txtEndRua">Rua:</label>
-            <input class="form-control" type="text" id="txtEndRua" name="endRua" maxlength="100" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getEndRua() : ''); ?>" />
+            <input class="form-control" type="text" id="txtEndRua" name="endRua" maxlength="100" style="background-color: #ffc39e; border: 1px solid #ffc39e;" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getEndRua() : ''); ?>" />
         </div>
 
         <div class="form-group col">
             <label for="txtEndBairro">Bairro:</label>
-            <input class="form-control" type="text" id="txtEndBairro" name="endBairro" maxlength="100" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getEndBairro() : ''); ?>" />
+            <input class="form-control" type="text" id="txtEndBairro" name="endBairro" maxlength="100" style="background-color: #ffc39e; border: 1px solid #ffc39e;" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getEndBairro() : ''); ?>" />
         </div>
 
 
         <div class="form-group col">
             <label for="txtEndComplemento">Complemento:</label>
-            <input class="form-control" type="text" id="txtEndComplemento" name="endComplemento" maxlength="100" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getEndComplemento() : ''); ?>" />
+            <input class="form-control" type="text" id="txtEndComplemento" name="endComplemento" maxlength="100" style="background-color: #ffc39e; border: 1px solid #ffc39e;" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getEndComplemento() : ''); ?>" />
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="txtEndCidade">Cidade:</label>
-            <input class="form-control" type="text" id="txtEndCidade" name="endCidade" maxlength="100" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getEndCidade() : ''); ?>" />
+            <input class="form-control" type="text" id="txtEndCidade" name="endCidade" maxlength="100" style="background-color: #ffc39e; border: 1px solid #ffc39e;" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getEndCidade() : ''); ?>" />
         </div>
 
         <div class="form-group col-md-4">
             <label for="txtEndEstado">Estado:</label>
-            <input class="form-control" type="text" id="txtEndEstado" name="endEstado" maxlength="70" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getEndEstado() : ''); ?>" />
+            <input class="form-control" type="text" id="txtEndEstado" name="endEstado" maxlength="70" style="background-color: #ffc39e; border: 1px solid #ffc39e;" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getEndEstado() : ''); ?>" />
         </div>
 
         <div class="form-group col-md-2">
             <label for="txtEndNumero">Número:</label>
-            <input class="form-control" type="text" id="txtEndNumero" name="endNumero" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getEndNumero() : ''); ?>" />
+            <input class="form-control" type="text" id="txtEndNumero" name="endNumero" style="background-color: #ffc39e; border: 1px solid #ffc39e;" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getEndNumero() : ''); ?>" />
         </div>
 
         <hr>
 
         <div class="form-group col-md-6">
             <label for="somIes">Instituição de Ensino:</label>
-            <select class="form-control" id="somIes" name="idIes">
+            <select class="form-control" id="somIes" name="idIes" style="background-color: #ffc39e; border: 1px solid #ffc39e;">
                 <option value="">Selecione</option>
                 <?php foreach ($dados['listaIes'] as $ies) : ?>
                     <option value="<?= $ies->getIdIe() ?>" <?php if (isset($dados["aluno"]) && $dados["aluno"]->getIdIe() == $ies->getIdIe())
@@ -146,18 +146,18 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/aluno/alunostyle.css">';
  font-size: 24px; font-weight: 800; line-height: 1.2; letter-spacing: 1px; text-decoration: none; text-transform: none;">Login</h4>
     <div class="form-group">
         <label for="txtLoginALuno">Login:</label>
-        <input class="form-control" type="text" id="txtLoginAluno" name="loginAluno" maxlength="15" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getLoginAluno() : ''); ?>" />
+        <input class="form-control" type="text" id="txtLoginAluno" name="loginAluno" maxlength="15" style="background-color: #ffc39e; border: 1px solid #ffc39e;" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getLoginAluno() : ''); ?>" />
     </div>
 
 
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="txtSenha">Senha:</label>
-            <input class="form-control" type="password" id="txtPasswordAluno" name="senhaAluno" maxlength="15" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getSenhaAluno() : ''); ?>" />
+            <input class="form-control" type="password" id="txtPasswordAluno" name="senhaAluno" maxlength="15" style="background-color: #ffc39e; border: 1px solid #ffc39e;" value="<?php echo (isset($dados["aluno"]) ? $dados["aluno"]->getSenhaAluno() : ''); ?>" />
         </div>
         <div class="form-group col-md-6 ">
             <label for="txtConfSenhaAluno">Confirmação da senha:</label>
-            <input class="form-control" type="password" id="txtConfSenhaAluno" name="confSenhaAluno" maxlength="15" value="<?php echo isset($dados["confSenhaAluno"]) ? $dados["confSenhaAluno"] : ''; ?>" />
+            <input class="form-control" type="password" id="txtConfSenhaAluno" name="confSenhaAluno" maxlength="15" style="background-color: #ffc39e; border: 1px solid #ffc39e;" value="<?php echo isset($dados["confSenhaAluno"]) ? $dados["confSenhaAluno"] : ''; ?>" />
         </div>
 
     <div class="form-row">

@@ -11,7 +11,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/administrador/administra
 
 <div class="container">
     <div class="row">
-    <h3 class="col-4">Usuários</h3>
+    <h3 class="col-12">Usuários</h3>
         <div class="col-3">
             <a class="btn-inserir" 
                 href="<?= BASEURL ?>/controller/administradorController.php?action=create">

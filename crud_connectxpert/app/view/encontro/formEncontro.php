@@ -9,7 +9,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
 ?>
 <div class="container">
     <div class="row" style="margin-top: 10px;">
-        <h3 class="col-4">Dados da Turma</h3>
+        <h3 class="col-12">Dados da Turma</h3>
     </div>
     <div class="row" style="margin-top: 10px;">
         <div class="col-12">
@@ -23,7 +23,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
 
 <div class="container">
     <div class="row">
-<h3 class="col-4">
+<h3 class="col-12">
     <?php if($dados['id_encontro'] == 0) echo "Inserir"; else echo "Alterar"; ?> 
     Encontro <a class="btn-inserir" 
         href="<?= BASEURL ?>/controller/EncontroController.php?action=list&id=<?= $dados["turma"]->getIdTurma() ?>"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16"  style="color: rgba(255, 127, 50, 1);" >
@@ -39,13 +39,13 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
                 <div class="form-group">
                     <label for="txtNomeEncontro" >Nome do Encontro:</label>
                     <input class="form-control" type="text" id="txtNomeEncontro" name="nomeEncontro" 
-                        maxlength="70" 
+                        maxlength="70" style="background-color: #ffc39e; border: 1px solid #ffc39e;"
                         value="<?php echo (isset($dados["encontro"]) ? $dados["encontro"]->getNomeEncontro() : ''); ?>" />
                 </div>
 
                 <div class="form-group">
                     <label for="txtDiaEncontro">Dia do Encontro:</label>
-                    <input class="form-control" type="date" id="txtDiaEncontro" name="diaEncontro" 
+                    <input class="form-control" type="date" id="txtDiaEncontro" name="diaEncontro" style="background-color: #ffc39e; border: 1px solid #ffc39e;" 
                         value="<?php echo (isset($dados["encontro"]) ? $dados["encontro"]->getDiaEncontro() : ''); ?>" />
                 </div>
 

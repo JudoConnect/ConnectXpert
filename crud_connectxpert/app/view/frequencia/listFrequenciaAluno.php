@@ -9,19 +9,19 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
 ?>
     <div class="container">
     <div class="row" style="margin-top: 10px;">
-        <h3 class="col-4">Dados do Aluno</h3>
+        <h3 class="col-12">Dados do Aluno</h3>
         </div>
         <div class="row" style="margin-top: 10px;">
         <div class="col-12">
-            <span style="font-weight: bold;">Nome: </span> <?= $dados["aluno"]->getNomeAluno(); ?>
+            <span style="font-weight: bold; color: rgba(255, 127, 50, 1);">Nome: </span> <?= $dados["aluno"]->getNomeAluno(); ?>
         </div>
         <div class="col-12">
-            <span style="font-weight: bold;">CPF: </span> <?= $dados["aluno"]->getCpfAluno(); ?>
+            <span style="font-weight: bold; color: rgba(255, 127, 50, 1);">CPF: </span> <?= $dados["aluno"]->getCpfAluno(); ?>
         </div>  
     </div>
 
     <div class="row">
-        <h3 class="col-4"> Frequências nas Turmas </h3>
+        <h3 class="col-12"> Frequências nas Turmas </h3>
     </div>
     <div class="row" style="margin-top: 10px;" >
         <div class="col-12">
@@ -38,7 +38,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
                 </thead>
                 <tbody>
                     <?php foreach($dados["frequencias"] as $freq): ?>
-                        <tr>
+                        <tr class="listagem">
                             <td><?= $freq->getNomeTurma(); ?></td>
                             <td><?= $freq->getDiaSemana(); ?></td>
                             <td><?= $freq->getHorario(); ?></td>
