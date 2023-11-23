@@ -48,9 +48,13 @@ $isProf = $acessoCont->administradorPossuiPapel([administradorPapel::PROFESSOR])
                     <?php endif; ?>
 
                     <?php if ($isProf) : ?>
+
+
                         <a class="nav-link" href="<?= BASEURL . '/controller/TurmaController.php?action=listProfessor' ?>" style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;">Turma</a>
 
                         <a class="nav-link" href="<?= BASEURL . '/controller/VideoAulaController.php?action=list' ?>" style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;"> Vídeo Aula</a>
+
+                        <a class="nav-link" href="<?= BASEURL . '/controller/VitrineController.php?action=list' ?>" style="color: #ff7f32;font-style: normal; font-size: 18px; font-weight: regular;"> Vitrine </a>
                     <?php endif; ?>
 
                     <?php if ($isAluno) : ?>
