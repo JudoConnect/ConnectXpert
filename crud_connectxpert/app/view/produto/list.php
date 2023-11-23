@@ -37,7 +37,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/produto/produtostyle.css
                         <tr class="listagem">
                             <td><img src="<?= BASEURL_FOTOS . $prod->getFoto(); ?>" style="width: auto; height: 100px;" /></td>
                             <td><?= $prod->getNome(); ?></td>
-                            <td><?= $prod->getDescricao(); ?></td>
+                            <td style="text-transform: none;"><?= $prod->getDescricao(); ?></td>
                             <td><?= $prod->getSituacao(); ?></td>
 
                             <td><a class="btn-alterar" 
