@@ -39,13 +39,13 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
                 <div class="form-group">
                     <label for="txtNomeEncontro" >Nome do Encontro:</label>
                     <input class="form-control" type="text" id="txtNomeEncontro" name="nomeEncontro" 
-                        maxlength="70" 
+                        maxlength="70" style="background-color: #ffc39e; border: 1px solid #ffc39e;"
                         value="<?php echo (isset($dados["encontro"]) ? $dados["encontro"]->getNomeEncontro() : ''); ?>" />
                 </div>
 
                 <div class="form-group">
                     <label for="txtDiaEncontro">Dia do Encontro:</label>
-                    <input class="form-control" type="date" id="txtDiaEncontro" name="diaEncontro" 
+                    <input class="form-control" type="date" id="txtDiaEncontro" name="diaEncontro" style="background-color: #ffc39e; border: 1px solid #ffc39e;" 
                         value="<?php echo (isset($dados["encontro"]) ? $dados["encontro"]->getDiaEncontro() : ''); ?>" />
                 </div>
 

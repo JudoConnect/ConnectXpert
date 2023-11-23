@@ -29,22 +29,22 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
             <form id="frmTurma" method="POST" action="<?= BASEURL ?>/controller/TurmaController.php?action=save">
                 <div class="form-group">
                     <label for="txtNomeTurma">Nome da Turma:</label>
-                    <input class="form-control" type="text" id="txtNomeTurma" name="nomeTurma" maxlength="70"  value="<?php echo (isset($dados["turma"]) ? $dados["turma"]->getNomeTurma() : ''); ?>" />
+                    <input class="form-control" type="text" id="txtNomeTurma" name="nomeTurma" maxlength="70" style="background-color: #ffc39e; border: 1px solid #ffc39e;" value="<?php echo (isset($dados["turma"]) ? $dados["turma"]->getNomeTurma() : ''); ?>" />
                 </div>
 
                 <div class="form-group">
                     <label for="txtNumAlunos">Número de Alunos:</label>
-                    <input class="form-control" type="text" id="txtNumAlunos" name="numAlunos" maxlength="3" value="<?php echo (isset($dados["turma"]) ? $dados["turma"]->getNumAlunos() : ''); ?>" />
+                    <input class="form-control" type="text" id="txtNumAlunos" name="numAlunos" maxlength="3" style="background-color: #ffc39e; border: 1px solid #ffc39e;" value="<?php echo (isset($dados["turma"]) ? $dados["turma"]->getNumAlunos() : ''); ?>" />
                 </div>
 
                 <div class="form-group">
                     <label for="txtHorario">Horário:</label>
-                    <input class="form-control" type="text" id="txtHorario" name="horario" maxlength="5" onkeypress="mascHorario(this)" value="<?php echo (isset($dados["turma"]) ? $dados["turma"]->getHorario() : ''); ?>" />
+                    <input class="form-control" type="text" id="txtHorario" name="horario" maxlength="5" style="background-color: #ffc39e; border: 1px solid #ffc39e;" onkeypress="mascHorario(this)" value="<?php echo (isset($dados["turma"]) ? $dados["turma"]->getHorario() : ''); ?>" />
                 </div>
 
                 <div class="form-group">
                     <label for="txtDiaSemana">Dia da Semana:</label>
-                    <input class="form-control" type="text" id="txtDiaSemana" name="diaSemana" maxlength="60"  value="<?php echo (isset($dados["turma"]) ? $dados["turma"]->getDiaSemana() : ''); ?>" />
+                    <input class="form-control" type="text" id="txtDiaSemana" name="diaSemana" maxlength="60" style="background-color: #ffc39e; border: 1px solid #ffc39e;"  value="<?php echo (isset($dados["turma"]) ? $dados["turma"]->getDiaSemana() : ''); ?>" />
                     <fieldset>
                 </div>
 

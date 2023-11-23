@@ -27,7 +27,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
                 <div class="form-group">
                     <label for="txtNomeIe">Nome da Instituição de Ensino:</label>
                     <input class="form-control" type="text" id="txtNomeIe" name="nomeIe" 
-                        maxlength="70" 
+                        maxlength="70" style="background-color: #ffc39e; border: 1px solid #ffc39e;"
                         value="<?php echo (isset($dados["ie"]) ? $dados["ie"]->getNomeIe() : ''); ?>" />
                 </div>
              

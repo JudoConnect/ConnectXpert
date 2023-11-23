@@ -25,12 +25,12 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/turma/turmastyle.css">';
                 <div class="form-group">
                     <label for="txtNomeVideoAula">Nome da Vídeo Aula:</label>
                     <input class="form-control" type="text" id="txtNomeVideoAula" name="nome_video_aula" 
-                        maxlength="70" 
+                        maxlength="70" style="background-color: #ffc39e; border: 1px solid #ffc39e;"
                         value="<?php echo (isset($dados["video_aula"]) ? $dados["video_aula"]->getNomeVideoAula() : ''); ?>" />
 
                     <label for="txtLinkVideoAula">Link da Vídeo Aula:</label>
                     <input class="form-control" type="url" id="txtLinkVideoAula" name="link_video_aula" 
-                        maxlength="70" 
+                        maxlength="70" style="background-color: #ffc39e; border: 1px solid #ffc39e;"
                         value="<?php echo (isset($dados["video_aula"]) ? $dados["video_aula"]->getLinkVideoAula() : ''); ?>" />
                 </div>
              

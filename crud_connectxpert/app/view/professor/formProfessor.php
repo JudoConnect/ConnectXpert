@@ -34,12 +34,12 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
                     <div class="form-row" style="margin-top: 10px;">
                         <div class="form-group col-md-5">
                             <label for="txtNomeProfessor">Nome:</label>
-                            <input class="form-control" type="text" id="txtNomeProfessor" name="nomeProfessor" maxlength="70" value="<?php echo (isset($dados["professor"]) ? $dados["professor"]->getNomeProfessor() : ''); ?>" />
+                            <input class="form-control" type="text" id="txtNomeProfessor" name="nomeProfessor" maxlength="70" style="background-color: #ffc39e; border: 1px solid #ffc39e;" value="<?php echo (isset($dados["professor"]) ? $dados["professor"]->getNomeProfessor() : ''); ?>" />
                         </div>
 
                         <div class="form-group col-md-4">
                             <label for="txtNascimentoProfessor">Data de Nascimento:</label>
-                            <input class="form-control" type="date" id="txtNascimentoProfessor" name="nascimentoProfessor" value="<?php echo (isset($dados["professor"]) ? $dados["professor"]->getNascimentoProfessor() : ''); ?>" />
+                            <input class="form-control" type="date" id="txtNascimentoProfessor" name="nascimentoProfessor" style="background-color: #ffc39e; border: 1px solid #ffc39e;" value="<?php echo (isset($dados["professor"]) ? $dados["professor"]->getNascimentoProfessor() : ''); ?>" />
                         </div>
 
 
@@ -48,19 +48,19 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
                     <div class="form-row">
                         <div class="form-group col-md-7">
                             <label for="txtTelefoneProfessor">Telefone:</label>
-                            <input class="form-control" type="text" id="txtTelefoneProfessor" name="telefoneProfessor" maxlength="14" onfocus="mascTelefone1(this)" onkeypress="mascTelefone2(this)" value="<?php echo (isset($dados["professor"]) ? $dados["professor"]->getTelefoneProfessor() : ''); ?>" />
+                            <input class="form-control" type="text" id="txtTelefoneProfessor" name="telefoneProfessor" maxlength="14"style="background-color: #ffc39e; border: 1px solid #ffc39e;"  onfocus="mascTelefone1(this)" onkeypress="mascTelefone2(this)" value="<?php echo (isset($dados["professor"]) ? $dados["professor"]->getTelefoneProfessor() : ''); ?>" />
                         </div>
 
 
                         <div class="form-group col">
                             <label for="txtCpfProfessor">CPF:</label>
-                            <input class="form-control" type="text" id="txtCpfProfessor" name="cpfProfessor" maxlength="14" onkeypress="mascCpf(this)" value="<?php echo (isset($dados["professor"]) ? $dados["professor"]->getCpfProfessor() : ''); ?>" />
+                            <input class="form-control" type="text" id="txtCpfProfessor" name="cpfProfessor" maxlength="14" style="background-color: #ffc39e; border: 1px solid #ffc39e;" onkeypress="mascCpf(this)" value="<?php echo (isset($dados["professor"]) ? $dados["professor"]->getCpfProfessor() : ''); ?>" />
                         </div>
 
 
                         <div class="form-group col">
                             <label for="txtRgProfessor">RG:</label>
-                            <input class="form-control" type="text" id="txtRgProfessor" name="rgProfessor" maxlength="12"  onkeypress="mascRg(this)" value="<?php echo (isset($dados["professor"]) ? $dados["professor"]->getRgProfessor() : ''); ?>" />
+                            <input class="form-control" type="text" id="txtRgProfessor" name="rgProfessor" maxlength="12" style="background-color: #ffc39e; border: 1px solid #ffc39e;" onkeypress="mascRg(this)" value="<?php echo (isset($dados["professor"]) ? $dados["professor"]->getRgProfessor() : ''); ?>" />
                         </div>
                     </div>
 
@@ -82,7 +82,7 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
 
                     <div class="form-group">
                         <label for="txtEmailProfessor">Email:</label>
-                        <input class="form-control" type="email" id="txtEmailProfessor" name="emailProfessor" maxlength="100" value="<?php echo (isset($dados["professor"]) ? $dados["professor"]->getEmailProfessor() : ''); ?>" />
+                        <input class="form-control" type="email" id="txtEmailProfessor" name="emailProfessor" maxlength="100" style="background-color: #ffc39e; border: 1px solid #ffc39e;" value="<?php echo (isset($dados["professor"]) ? $dados["professor"]->getEmailProfessor() : ''); ?>" />
                     </div>
 
 
@@ -104,18 +104,18 @@ echo '<link rel="stylesheet" href="' . BASEURL . '/view/professor/profstyle.css"
 
                     <div class="form-group">
                         <label for="txtLoginProfessor">Login:</label>
-                        <input class="form-control" type="text" id="txtLoginProfessor" name="loginProfessor" maxlength="15" value="<?php echo (isset($dados["professor"]) ? $dados["professor"]->getLoginProfessor() : ''); ?>" />
+                        <input class="form-control" type="text" id="txtLoginProfessor" name="loginProfessor" maxlength="15" style="background-color: #ffc39e; border: 1px solid #ffc39e;" value="<?php echo (isset($dados["professor"]) ? $dados["professor"]->getLoginProfessor() : ''); ?>" />
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="txtSenha">Senha:</label>
-                            <input class="form-control" type="password" id="txtPasswordProfessor" name="senhaProfessor" maxlength="15" value="<?php echo (isset($dados["professor"]) ? $dados["professor"]->getSenhaProfessor() : ''); ?>" />
+                            <input class="form-control" type="password" id="txtPasswordProfessor" name="senhaProfessor" maxlength="15" style="background-color: #ffc39e; border: 1px solid #ffc39e;" value="<?php echo (isset($dados["professor"]) ? $dados["professor"]->getSenhaProfessor() : ''); ?>" />
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="txtConfSenhaProfessor">Confirmação da senha:</label>
-                            <input class="form-control" type="password" id="txtConfSenhaProfessor" name="confSenhaProfessor" maxlength="15" value="<?php echo isset($dados['confSenhaProfessor']) ? $dados['confSenhaProfessor'] : ''; ?>" />
+                            <input class="form-control" type="password" id="txtConfSenhaProfessor" name="confSenhaProfessor" maxlength="15" style="background-color: #ffc39e; border: 1px solid #ffc39e;" value="<?php echo isset($dados['confSenhaProfessor']) ? $dados['confSenhaProfessor'] : ''; ?>" />
                         </div>
                         <input type="hidden" id="hddId" name="id_professor" value="<?= $dados['id_professor']; ?>" />
 
